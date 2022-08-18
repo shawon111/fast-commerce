@@ -1,15 +1,16 @@
-import { Badge, Box, Button, Divider, Grid, Stack, Typography } from '@mui/material';
+import { Badge, Box, Button, Divider, Grid, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import React from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 import Link from 'next/link';
 import { FaSearch, FaRegUser } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { RiShoppingCart2Line, RiHeart2Fill } from 'react-icons/ri';
+import { HiMenu } from 'react-icons/hi';
 
 const Header = () => {
     return (
-        <Box py="30px">
-            <Stack spacing={0}>
+        <Box p="30px 0px 20px 0px">
+            <Stack spacing={0} pb="30px">
                 <ResponsiveContainer>
                     <Grid sx={{ alignItems: 'center' }} container spacing={2}>
                         <Grid item xs={6} lg={3}>
@@ -129,9 +130,31 @@ const Header = () => {
                     </Grid>
                 </ResponsiveContainer>
             </Stack>
-            <Stack>
+            <Stack pt="20px" borderTop="1px solid #f0f2f5">
                 <ResponsiveContainer>
-                    
+                    <Grid container spacing={2}>
+                        <Grid item lg={8}>
+                            <Box>
+                                <ul className='nav-menu' style={{
+                                    display: 'flex',
+                                }}>
+                                    <li style={{ cursor: 'pointer' }}><span style={{
+                                        display: 'flex',
+                                        alignItems: 'center'
+                                    }}><HiMenu style={{ marginRight: '5px', fontSize: '20px', fontWeight: '700' }} />Products</span></li>
+                                    <li><Link href="/">Homepage</Link></li>
+                                    <li><Link href="/shop">Shop</Link></li>
+                                    <li><Link href="/blog">Blog</Link></li>
+                                    <li><Link href="/contact">Contact</Link></li>
+                                </ul>
+                            </Box>
+                        </Grid>
+                        <Grid item sx={{textAlign: 'end'}} lg={4}>
+                            <Typography color="#5b6c8f" fontWeight="500" fontSize="15px" variant='p'>
+                                Need help? 0020 500 - FastCommerce - 000
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </ResponsiveContainer>
             </Stack>
         </Box>

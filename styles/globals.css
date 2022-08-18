@@ -18,8 +18,32 @@ a {
 }
 :root {
   --darkColor: #103178;
-  --brandColor: #FFC800;
+  --brandColor: #FD8D27;
 }
+
+ul{
+  list-style-type: none;
+}
+
+.nav-menu li {
+  padding: 0 14px;
+  color: var(--darkColor);
+  font-size: 18px;
+  font-weight: 500;
+  transition: color .3s;
+}
+.nav-menu li:hover{
+  color: var(--brandColor);
+}
+.nav-menu li a {
+  color: var(--darkColor);
+  transition: color .3s;
+}
+
+.nav-menu li a:hover{
+  color: var(--brandColor);
+}
+
 .primary-logo{
   font-size: 30px;
   color: var(--darkColor);
