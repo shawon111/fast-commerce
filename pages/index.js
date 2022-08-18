@@ -1,8 +1,11 @@
+import Layout from "../components/Global/Layout";
 
 export default function Home() {
   return (
-    <div>
-      <h1>fast commerce homepage</h1>
-    </div>
+    <>
+      <Layout>
+        <h1>This is fast commerce home page</h1>
+      </Layout>
+    </>
   )
 }
