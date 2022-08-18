@@ -17,7 +17,50 @@ a {
   text-decoration: none;
 }
 :root {
-  --darkColorr: #103178;
+  --darkColor: #103178;
   --brandColor: #FFC800;
+}
+.primary-logo{
+  font-size: 30px;
+  color: var(--darkColor);
+}
+
+.darkText{
+  color: var(--darkColor);
+}
+
+.search-input{
+  width: 430px;
+  font-family: 'Jost', sans-serif;
+  color: var(--darkColor);
+}
+
+.search-input::placeholder { 
+  color:#103178b0;
+  opacity: 1;
+}
+
+.search-input:-ms-input-placeholder { 
+  color: #103178b0;
+}
+
+.search-input::-ms-input-placeholder { 
+  color: #103178b0;
+}
+
+@media only screen and ( max-width: 1200px ) {
+  .search-input{
+    width: 360px;
+  }
+}
+@media only screen and ( max-width: 900px ) {
+  .search-input{
+    width: 280px;
+  }
+}
+@media only screen and ( max-width: 400px ) {
+  .search-input{
+    width: 200px;
+  }
 }
 
