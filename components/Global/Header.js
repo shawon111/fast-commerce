@@ -77,7 +77,7 @@ const Header = () => {
                                         fontWeight: '600',
                                         color: '#103178'
                                     }}>
-                                        <option selected value="1">USD</option>
+                                        <option value="1">USD</option>
                                         <option value="2">EURO</option>
                                     </select>
                                 </Box>
