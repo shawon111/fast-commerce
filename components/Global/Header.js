@@ -20,7 +20,8 @@ const Header = () => {
                                     <Box sx={{
                                         display: 'flex',
                                         alignItems: 'center',
-                                        width: 'fit-content'
+                                        width: 'fit-content',
+                                        cursor: 'pointer'
                                     }}>
                                         <RiHeart2Fill style={{
                                             fontSize: '40px',
