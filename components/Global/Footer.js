@@ -16,7 +16,9 @@ const Footer = () => {
                 <Stack>
                     <Box>
                         <Grid container spacing={2}>
-                            <Grid item xs={12} sm={4} lg={2}>
+                            <Grid item xs={12} sm={4} lg={2} sx={{
+                                marginTop: {lg: '0px', xs: '30px'}
+                            }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
                                         fontSize: '18px',
@@ -45,7 +47,9 @@ const Footer = () => {
                                     </Box>
                                 </Box>
                             </Grid>
-                            <Grid item xs={12} sm={4} lg={2}>
+                            <Grid item xs={12} sm={4} lg={2} sx={{
+                                marginTop: {lg: '0px', xs: '30px'}
+                            }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
                                         fontSize: '18px',
@@ -59,22 +63,24 @@ const Footer = () => {
                                     <Box className='footer-links'>
                                         <ul>
                                             <li>
-                                                <Link href="/">About Us</Link>
+                                                <Link href="/">My account</Link>
                                             </li>
                                             <li>
-                                                <Link href="/">Privacy Policy</Link>
+                                                <Link href="/">My orders</Link>
                                             </li>
                                             <li>
-                                                <Link href="/">Sales</Link>
+                                                <Link href="/">Shipping</Link>
                                             </li>
                                             <li>
-                                                <Link href="/">Terms & Conditions</Link>
+                                                <Link href="/">Wishlist</Link>
                                             </li>
                                         </ul>
                                     </Box>
                                 </Box>
                             </Grid>
-                            <Grid item xs={12} sm={4} lg={2}>
+                            <Grid item xs={12} sm={4} lg={2} sx={{
+                                marginTop: {lg: '0px', xs: '30px'}
+                            }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
                                         fontSize: '18px',
@@ -88,22 +94,24 @@ const Footer = () => {
                                     <Box className='footer-links'>
                                         <ul>
                                             <li>
-                                                <Link href="/">About Us</Link>
+                                                <Link href="/">BestSellers</Link>
                                             </li>
                                             <li>
-                                                <Link href="/">Privacy Policy</Link>
+                                                <Link href="/">Discount</Link>
                                             </li>
                                             <li>
-                                                <Link href="/">Sales</Link>
+                                                <Link href="/">Latest products</Link>
                                             </li>
                                             <li>
-                                                <Link href="/">Terms & Conditions</Link>
+                                                <Link href="/">Sale</Link>
                                             </li>
                                         </ul>
                                     </Box>
                                 </Box>
                             </Grid>
-                            <Grid item xs={12} sm={6} lg={4}>
+                            <Grid item xs={12} sm={7} lg={4} sx={{
+                                marginTop: {lg: '0px', xs: '30px'}
+                            }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
                                         fontSize: '18px',
@@ -149,7 +157,9 @@ const Footer = () => {
                                     </Box>
                                 </Box>
                             </Grid>
-                            <Grid item xs={12} sm={6} lg={2}>
+                            <Grid item xs={12} sm={5} lg={2} sx={{
+                                marginTop: {lg: '0px', xs: '30px'}
+                            }}>
                                 <Box>
                                     <Link href="/">
                                         <Box sx={{
@@ -218,7 +228,7 @@ const Footer = () => {
                             <Grid item xs={12} md={6}>
                                 <Box sx={{
                                     display:'flex',
-                                    justifyContent: 'end',
+                                    justifyContent: {lg: 'end', xs: 'flex-start'},
                                     alignItems: 'center'
                                 }}>
                                     <a style={{

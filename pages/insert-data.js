@@ -66,7 +66,7 @@ const InsertData = () => {
             product.append('gallaryImages', galleryImages[i])
         }
 
-        axios.post("https://powerful-reef-69542.herokuapp.com/addproduct", product)
+        axios.post("https://fast-commerce-backend.onrender.com/addproduct", product)
             .then(res => console.log(res))
             .catch(err => console.log(err.response.data))
 
