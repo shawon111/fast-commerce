@@ -13,7 +13,7 @@ const BannerSlider = ({ bannerSlider }) => {
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
             backgroundPosition: { lg: 'right center', xs: 'bottom' },
-            minHeight: '85vh'
+            height: '90vh'
         }}>
             <ResponsiveContainer>
                 <Grid container spacing={2}>

@@ -57,21 +57,21 @@ ul{
 }
 
 .brandBtn {
-  background-color: var(--brandColor);
-  color: #fff;
-  padding: 8px 50px;
-  font-weight: 500;
-  border-radius: 40px;
-  border: 1px solid var(--brandColor);
-  font-size: 20px;
-  transition: all .3s;
-  box-shadow: none;
+  background-color: var(--brandColor) !important;
+  color: #fff !important;
+  padding: 8px 50px !important;
+  font-weight: 500 !important;
+  border-radius: 40px !important;
+  border: 1px solid var(--brandColor) !important;
+  font-size: 20px !important;
+  transition: all .3s !important;
+  box-shadow: none !important;
 }
 
 .brandBtn:hover{
-  background-color: #fff;
-  color: var(--brandColor);
-  box-shadow: none;
+  background-color: #fff !important;
+  color: var(--brandColor) !important;
+  box-shadow: none !important;
 }
 
 .search-input{
@@ -131,24 +131,24 @@ ul{
 
 /* swiper slider css */
 .home_hero_banners:hover .swiper-button-prev{
-  display: flex;
+  display: flex !important;
 } 
 .home_hero_banners:hover .swiper-button-next{
-  display: flex;
+  display: flex !important;
 } 
 .swiper-button-prev, .swiper-button-next {
-color: #fff;
-background-color: var(--darkColor);
-width: 55px;
-height: 55px;
-border-radius: 50%;
-display: none;
+color: #fff !important;
+background-color: var(--darkColor) !important;
+width: 55px !important;
+height: 55px !important;
+border-radius: 50% !important;
+display: none !important;
 }
 .swiper-button-next::after {
-  content: "🡪";
-  font-size: 30px;
+  content: "🡪" !important;
+  font-size: 30px !important;
 }
 .swiper-button-prev::after {
-  content: "🡨";
-  font-size: 30px;
+  content: "🡨" !important;
+  font-size: 30px !important;
 }
