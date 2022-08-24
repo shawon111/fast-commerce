@@ -10,7 +10,7 @@ body {
   /* overflow: hidden; */
 }
 
-h1, h2, h3, h4, h5,h6, p, a {
+h1, h2, h3, h4, h5,h6, p, a, button {
   font-family: 'Jost', sans-serif !important;
 }
 
@@ -56,6 +56,24 @@ ul{
   color: var(--darkColor);
 }
 
+.brandBtn {
+  background-color: var(--brandColor);
+  color: #fff;
+  padding: 8px 50px;
+  font-weight: 500;
+  border-radius: 40px;
+  border: 1px solid var(--brandColor);
+  font-size: 20px;
+  transition: all .3s;
+  box-shadow: none;
+}
+
+.brandBtn:hover{
+  background-color: #fff;
+  color: var(--brandColor);
+  box-shadow: none;
+}
+
 .search-input{
   width: 430px;
   font-family: 'Jost', sans-serif;
@@ -90,6 +108,7 @@ ul{
   color: var(--brandColor);
 }
 
+/* homepage style code */
 
 
 /* media queries */
@@ -110,3 +129,26 @@ ul{
   }
 }
 
+/* swiper slider css */
+.home_hero_banners:hover .swiper-button-prev{
+  display: flex;
+} 
+.home_hero_banners:hover .swiper-button-next{
+  display: flex;
+} 
+.swiper-button-prev, .swiper-button-next {
+color: #fff;
+background-color: var(--darkColor);
+width: 55px;
+height: 55px;
+border-radius: 50%;
+display: none;
+}
+.swiper-button-next::after {
+  content: "🡪";
+  font-size: 30px;
+}
+.swiper-button-prev::after {
+  content: "🡨";
+  font-size: 30px;
+}
