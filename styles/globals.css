@@ -136,6 +136,22 @@ ul{
   color: var(--brandColor);
 }
 
+.product_item_hover_element:hover{
+  background-color: var(--brandColor);
+}
+.product_card_overlay{
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  opacity: 0;
+  transition: right 1s ease, opacity .5s ease;
+}
+.product_card_container:hover .product_card_overlay {
+  right: 15px;
+  top: 15px;
+  opacity: 1;
+}
+
 /* homepage style code */
 
 
@@ -155,15 +171,24 @@ ul{
   .search-input{
     width: 200px;
   }
+  .swiper-button-prev::after {
+    font-size: 20px !important;
+  }
+  .swiper-button-prev::before {
+    font-size: 20px !important;
+  }
 }
 
 /* swiper slider css */
-.home_hero_banners:hover .swiper-button-prev{
+.home_hero_banners:hover .swiper-button-prev , .basic_product_grid:hover .swiper-button-prev {
   display: flex !important;
 } 
-.home_hero_banners:hover .swiper-button-next{
+.home_hero_banners:hover .swiper-button-next , .basic_product_grid:hover .swiper-button-next {
   display: flex !important;
 } 
+
+
+
 .swiper-button-prev, .swiper-button-next {
 color: #fff !important;
 background-color: var(--darkColor) !important;
