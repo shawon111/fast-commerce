@@ -7,7 +7,6 @@
 
 body {
   font-family: 'Jost', sans-serif;
-  /* overflow: hidden; */
 }
 
 h1, h2, h3, h4, h5,h6, p, a, button {
@@ -74,6 +73,25 @@ ul{
   box-shadow: none !important;
 }
 
+.darkBtn {
+  background-color: var(--darkColor) !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+  border-radius: 40px !important;
+  border: 1px solid var(--darkColor) !important;
+  transition: all .3s !important;
+  box-shadow: none !important;
+  text-transform: capitalize;
+}
+
+.darkBtn:hover{
+  background-color: var(--brandColor) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  border: 1px solid var(--brandColor) !important;
+}
+
+
 .search-input{
   width: 430px;
   font-family: 'Jost', sans-serif;
@@ -92,6 +110,16 @@ ul{
 .search-input::-ms-input-placeholder { 
   color: #103178b0;
 }
+
+/* home page */
+.banner_small img {
+  transition: transform .5s ease-in;
+}
+
+.banner_small:hover img{
+  transform: scale(1.1) rotate(-30deg);
+}
+
 
 
 /* footer style codes */
