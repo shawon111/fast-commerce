@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import {RiHeartAddLine, RiAlignLeft, RiShoppingCart2Line} from 'react-icons/ri';
 import {HiSearch} from 'react-icons/hi';
+import Link from 'next/link';
 
 const BasicProductItem = ({ product }) => {
     const { name, price, rating_star, image } = product;
@@ -101,14 +102,17 @@ const BasicProductItem = ({ product }) => {
                 marginTop: '15px',
                 padding: '0px 30px 30px 30px'
             }}>
-                <Typography sx={{
+                <Link href="/">
+                <Typography className='product_cart_title' sx={{
                     color: '#103178',
                     fontSize: '16px',
                     fontWeight: '500',
-                    marginBottom: '15px'
+                    marginBottom: '15px',
+                    cursor: 'pointer'
                 }} variant='h5'>
                     {name}
                 </Typography>
+                </Link>
                 <Typography sx={{
                     color: '#103178',
                     fontSize: '18px',
