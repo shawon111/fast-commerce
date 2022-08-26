@@ -1,6 +1,4 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
-import { borderRadius } from '@mui/system';
-import Image from 'next/image';
 import React from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 

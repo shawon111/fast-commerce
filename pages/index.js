@@ -8,12 +8,12 @@ export default function Home() {
   const metaInfo = {title: "FastComerce - best fashion store online", keywords: "fast commerce, ecommerce", metaDesc: "Fast commerce is the best shopping website online"};
 
   const sectionBannerOneData = {
-    title: "Long sleeve denim shirt for women",
+    title: "Long sleeve denim shirt",
     price: "35.99",
     discount: "-30",
     link: "/",
-    bgImage: "/images/bigbanner2.jpg",
-    badgeBgColor: "#103178",
+    bgImage: "/images/bigbanner2.png",
+    badgeBgColor: "#FD8D27",
     badgeColor: "#fff",
     buttonColor: "#FD8D27",
     textColor: "#103178",
