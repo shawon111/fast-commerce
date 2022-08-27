@@ -33,6 +33,18 @@ export default function Home() {
     textColor: "#fff",
     priceColor: '#FFC800'
   }
+  const sectionBannerThreeData = {
+    title: "Digital DSW-5X Smart Watch",
+    price: "89.99",
+    discount: "-40",
+    link: "/",
+    bgImage: "/images/bigbanner-4.jpg",
+    badgeBgColor: "#FD8D27",
+    badgeColor: "#fff",
+    buttonColor: "#FD8D27",
+    textColor: "#103178",
+    priceColor: '#FD8D27'
+  }
   return (
     <>
       <Layout metaInfo={metaInfo}>
@@ -43,6 +55,7 @@ export default function Home() {
           <FeaturedProducts />
           <SectionBanner data={sectionBannerTwoData} />
           <PopularProducts />
+          <SectionBanner data={sectionBannerThreeData} />
       </Layout>
     </>
   )
