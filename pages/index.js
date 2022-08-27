@@ -3,6 +3,7 @@ import SectionBanner from "../components/Global/SectionBanner";
 import FeaturedProducts from "../components/Pages/Home/FeaturedProducts";
 import HomeHeroSection from "../components/Pages/Home/HomeHeroSection";
 import LatestProducts from "../components/Pages/Home/LatestProducts";
+import PopularProducts from "../components/Pages/Home/PopularProducts";
 import ProductBanner from "../components/Pages/Home/ProductBanner";
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
           <SectionBanner data={sectionBannerOneData} />
           <FeaturedProducts />
           <SectionBanner data={sectionBannerTwoData} />
+          <PopularProducts />
       </Layout>
     </>
   )

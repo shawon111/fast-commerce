@@ -7,7 +7,6 @@ const SectionTitle = ({ children }) => {
             fontSize: {lg: '40px', sm: '37px', xs: '34px'},
             color: '#103178',
             fontWeight: '700',
-            textTransform: 'capitalize',
             textAlign: 'center'
         }} variant='h2'>
             {

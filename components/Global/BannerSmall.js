@@ -34,7 +34,7 @@ const BannerSmall = ({ bannerData }) => {
                                 fontWeight: '500',
                                 display: 'inline-block',
                                 marginBottom: '5px'
-                            }} variant='contain'>{badge}</span> : ""
+                            }} variant='contained'>{badge}</span> : ""
                         }
                         <Typography sx={{
                             fontSize: { sm: '25px', xs: '21px' },
