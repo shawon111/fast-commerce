@@ -1,5 +1,6 @@
 import Layout from "../components/Global/Layout";
 import SectionBanner from "../components/Global/SectionBanner";
+import FeaturedProducts from "../components/Pages/Home/FeaturedProducts";
 import HomeHeroSection from "../components/Pages/Home/HomeHeroSection";
 import LatestProducts from "../components/Pages/Home/LatestProducts";
 import ProductBanner from "../components/Pages/Home/ProductBanner";
@@ -26,6 +27,7 @@ export default function Home() {
           <ProductBanner />
           <LatestProducts />
           <SectionBanner data={sectionBannerOneData} />
+          <FeaturedProducts />
       </Layout>
     </>
   )
