@@ -7,17 +7,19 @@ import Image from 'next/image';
 const BannerSlider = ({ bannerSlider }) => {
     return (
         <Box className='banner_1' sx={{
-            padding: '80px 0px',
+            padding: {lg: '60px 0px', sm: '30px 0px', xs: '20px 0px'},
             backgroundColor: `${bannerSlider.bgColor}`,
             backgroundImage: `url(${bannerSlider.backgroundImage})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
             backgroundPosition: { lg: 'right center', xs: 'bottom' },
-            height: '90vh'
+            height: {lg: '90vh', md: '70vh', sm: '50vh'}
         }}>
             <ResponsiveContainer>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <Grid sx={{
+                        textAlign: {sm: 'start', xs: 'center'}
+                    }} item xs={12} sm={6} md={4} lg={4}>
                         <Typography sx={{
                             color: '#103178',
                             fontSize: { lg: '70px', sm: '44px', xs: '35px' },

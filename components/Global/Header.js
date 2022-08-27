@@ -1,5 +1,5 @@
 import { Badge, Box, Button, Divider, Grid, Menu, MenuItem, Stack, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 import Link from 'next/link';
 import { FaSearch, FaRegUser } from 'react-icons/fa';
@@ -8,12 +8,18 @@ import { RiShoppingCart2Line, RiHeart2Fill } from 'react-icons/ri';
 import { HiMenu } from 'react-icons/hi';
 
 const Header = () => {
+    const [showMobileSearchField , setShowMobileSearchField] = useState(false);
+
     return (
-        <Box p="30px 0px 20px 0px">
-            <Stack spacing={0} pb="30px">
+        <Box sx={{
+            padding: {md: '30px 0px 20px 0px', xs: '10px 0px'}
+        }}>
+            <Stack spacing={0} sx={{
+                paddingBottom: {md: '30px', xs: '0px'}
+            }}>
                 <ResponsiveContainer>
                     <Grid sx={{ alignItems: 'center' }} container spacing={2}>
-                        <Grid item xs={6} lg={3}>
+                        <Grid item xs={8} sm={6} lg={3}>
 
                             <Box>
                                 <Link href="/">
@@ -27,14 +33,33 @@ const Header = () => {
                                             fontSize: '40px',
                                             color: '#103178'
                                         }} />
-                                        <Typography className='primary-logo' fontWeight="700" variant="h4" w="fit-content">
+                                        <Typography sx={{
+                                            fontSize: { md: '30px', sm: '28px', xs: '26px' }
+                                        }} className='primary-logo' fontWeight="700" variant="h4" w="fit-content">
                                             FastComm.
                                         </Typography>
                                     </Box>
                                 </Link>
                             </Box>
                         </Grid>
-                        <Grid item xs={6} lg={5} sx={{ alignItems: 'center' }}>
+                        {/* mobile search icon */}
+                        <Grid item sx={{
+                            display: { md: 'none', xs: 'flex' },
+                            justifyContent: 'flex-end'
+                        }} sm={6} xs={4}>
+                            <Button
+                                variant="text"
+                                height="35px"
+                                fontSize="40px"
+                                onClick={()=> setShowMobileSearchField(!showMobileSearchField)}
+                            ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
+                        </Grid>
+
+                        {/* mobile search bar  */}
+                        <Grid item xs={12} sx={{
+                            display: { md: 'none', xs:  `${showMobileSearchField ? "flex" : "none"}`},
+                            justifyContent: 'center'
+                        }}>
                             <Box sx={{
                                 background: '#F0F2F5',
                                 width: 'fit-content',
@@ -60,8 +85,38 @@ const Header = () => {
                                 ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
                             </Box>
                         </Grid>
-                        <Grid xs={0} lg={4} sx={{
-                            display: 'flex',
+                        {/* tablet and desktop search bar */}
+                        <Grid item xs={12} sm={6} lg={5} sx={{
+                            alignItems: 'center',
+                            display: {md: 'block', xs: 'none'}
+                        }}>
+                            <Box sx={{
+                                background: '#F0F2F5',
+                                width: 'fit-content',
+                                padding: '5px 0px',
+                                borderRadius: '30px'
+                            }}>
+                                <input style={{
+                                    border: 'none',
+                                    outline: 'none',
+                                    height: '35px',
+                                    background: 'transparent',
+                                    padding: '0px 20px',
+                                    fontSize: '15px',
+                                    fontWeight: '600',
+                                }}
+                                    type="search"
+                                    className='search-input'
+                                    placeholder='Search for products'
+                                /><Button
+                                    variant="text"
+                                    height="35px"
+                                    fontSize="40px"
+                                ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
+                            </Box>
+                        </Grid>
+                        <Grid xs={3} lg={4} sx={{
+                            display: { md: 'flex', xs: 'none' },
                             justifyContent: 'end',
                         }} item>
                             <Stack
@@ -131,10 +186,12 @@ const Header = () => {
                     </Grid>
                 </ResponsiveContainer>
             </Stack>
-            <Stack pt="20px" borderTop="1px solid #f0f2f5">
+            <Stack pt="20px" sx={{
+                display: { md: 'block', xs: 'none' }
+            }} borderTop="1px solid #f0f2f5">
                 <ResponsiveContainer>
                     <Grid container spacing={2}>
-                        <Grid item lg={8}>
+                        <Grid item lg={8} md={6}>
                             <Box>
                                 <ul className='nav-menu' style={{
                                     display: 'flex',
@@ -150,7 +207,7 @@ const Header = () => {
                                 </ul>
                             </Box>
                         </Grid>
-                        <Grid item sx={{textAlign: 'end'}} lg={4}>
+                        <Grid item sx={{ textAlign: 'end' }} lg={4} md={6}>
                             <Typography color="#5b6c8f" fontWeight="500" fontSize="15px" variant='p'>
                                 Need help? 0020 500 - FastCommerce - 000
                             </Typography>

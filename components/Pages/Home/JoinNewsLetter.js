@@ -6,7 +6,7 @@ import SectionTitle from '../../Global/SectionTitle';
 const JoinNewsLetter = () => {
     return (
         <Box sx={{
-            padding: '60px 0px',
+            padding: {lg: '60px 0px', sm: '30px 0px', xs: '20px 0px'},
             backgroundImage: `url(/images/home-newsletter-bg.png)`,
             backgroundSize: 'contain',
             backgroundPosition: 'left center',

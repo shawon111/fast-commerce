@@ -120,7 +120,6 @@ ul {
 }
 
 .primary-logo {
-  font-size: 30px;
   color: var(--darkColor);
 }
 
@@ -216,7 +215,7 @@ ul {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 570px) {
   .search-input {
     width: 200px;
   }
@@ -254,12 +253,12 @@ ul {
 }
 
 .swiper-button-next::after {
-  content: "🡪" !important;
+  /* content: "🡪" !important; */
   font-size: 30px !important;
 }
 
 .swiper-button-prev::after {
-  content: "🡨" !important;
+  /* content: "🡨" !important; */
   font-size: 30px !important;
 }
 

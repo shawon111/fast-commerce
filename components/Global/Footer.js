@@ -16,7 +16,7 @@ const Footer = () => {
                 <Stack>
                     <Box>
                         <Grid container spacing={2}>
-                            <Grid item xs={12} sm={4} lg={2} sx={{
+                            <Grid item xs={6} sm={4} lg={2} sx={{
                                 marginTop: {lg: '0px', xs: '30px'}
                             }}>
                                 <Box>
@@ -47,7 +47,7 @@ const Footer = () => {
                                     </Box>
                                 </Box>
                             </Grid>
-                            <Grid item xs={12} sm={4} lg={2} sx={{
+                            <Grid item xs={6} sm={4} lg={2} sx={{
                                 marginTop: {lg: '0px', xs: '30px'}
                             }}>
                                 <Box>

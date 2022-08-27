@@ -35,7 +35,7 @@ const ProductBanner = () => {
     ]
     return (
         <Box sx={{
-            padding: '30px 0px'
+            padding: {lg: '30px 0px', sm: '25px 0px', xs: '20px 0px'}
         }}>
             <ResponsiveContainer>
                 <Grid container spacing={2}>

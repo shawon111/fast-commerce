@@ -7,7 +7,7 @@ import { BiShoppingBag } from 'react-icons/bi';
 const ShippingFeatures = () => {
     return (
         <Box sx={{
-            padding: '60px 0px 0px 0px'
+            padding: {lg: '60px 0px 0px 0px', sm: '30px 0px 0px 0px', xs: '20px 0px 0px 0px'}
         }}>
             <Box sx={{
                 borderTop: '1px solid #f0f2f5'
@@ -66,7 +66,8 @@ const ShippingFeatures = () => {
                                     display: 'flex',
                                     alignItems: 'center',
                                     padding: '15px 0px',
-                                    justifyContent: 'center'
+                                    justifyContent: 'center',
+                                    marginLeft: {md: '0px', sm:'10px', xs: '0px'}
                                 }}>
                                     <RiTruckLine style={{
                                         fontSize: '18px',
@@ -76,7 +77,7 @@ const ShippingFeatures = () => {
                                     <Typography sx={{
                                         fontSize: '16px',
                                         color: '#103178',
-                                        fontWeight: '600'
+                                        fontWeight: '600',
                                     }} variant="h4">
                                         Free delivery for order over $200
                                     </Typography>

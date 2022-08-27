@@ -72,7 +72,7 @@ const LatestProducts = () => {
     ]
     return (
         <Box sx={{
-            padding: '60px 0px'
+            padding: {lg: '60px 0px', sm: '30px 0px', xs: '20px 0px'}
         }}>
             <ResponsiveContainer>
                 <Box>
@@ -99,13 +99,13 @@ const LatestProducts = () => {
                                             slidesPerView: 5,
                                         },
                                         900: {
-                                            slidesPerView: 3,
+                                            slidesPerView: 4,
                                         },
                                         600: {
-                                            slidesPerView: 2,
+                                            slidesPerView: 3,
                                         },
                                         320: {
-                                            slidesPerView: 1,
+                                            slidesPerView: 2,
                                         }
                                     }}
                                 >

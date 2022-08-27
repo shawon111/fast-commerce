@@ -21,7 +21,8 @@ export default function Home() {
     badgeColor: "#fff",
     buttonColor: "#FD8D27",
     textColor: "#103178",
-    priceColor: '#FD8D27'
+    priceColor: '#FD8D27',
+    overlayColor: '#ffffff8f, #ffffff8f'
   }
   const sectionBannerTwoData = {
     title: "Women's L3X5 Leather Bag",
@@ -33,19 +34,21 @@ export default function Home() {
     badgeColor: "#fff",
     buttonColor: "#FFC800",
     textColor: "#fff",
-    priceColor: '#FFC800'
+    priceColor: '#FFC800',
+    overlayColor: '#0000004d, #0000004d'
   }
   const sectionBannerThreeData = {
     title: "Digital DSW-5X Smart Watch",
     price: "89.99",
     discount: "-40",
     link: "/",
-    bgImage: "/images/bigbanner-4.jpg",
-    badgeBgColor: "#FD8D27",
+    bgImage: "/images/bigbanner1.jpg",
+    badgeBgColor: "#FFC800",
     badgeColor: "#fff",
-    buttonColor: "#FD8D27",
-    textColor: "#103178",
-    priceColor: '#FD8D27'
+    buttonColor: "#FFC800",
+    textColor: "#fff",
+    priceColor: '#FFC800',
+    overlayColor: '#0000004d, #0000004d'
   }
   return (
     <>

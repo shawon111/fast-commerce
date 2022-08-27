@@ -3,14 +3,15 @@ import React from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 
 const SectionBanner = ({ data }) => {
-    const { title, price, discount, badgeBgColor, priceColor, link, bgImage, badgeColor, buttonColor, textColor } = data;
+    const { title, price, discount, badgeBgColor, priceColor, link, bgImage, badgeColor, buttonColor, textColor, overlayColor } = data;
     return (
         <Box sx={{
-            padding: '60px 0px'
+            padding: {lg: '60px 0px', sm: '30px 0px', xs: '20px 0px'}
         }}>
             <ResponsiveContainer>
                 <Box sx={{
-                    backgroundImage: `url(${bgImage})`,
+                    backgroundImage: `url(${bgImage}), linear-gradient(${overlayColor})`,
+                    backgroundBlendMode: 'overlay',
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
@@ -18,7 +19,9 @@ const SectionBanner = ({ data }) => {
                     borderRadius: '5px'
                 }}>
                     <Grid container spacing={1}>
-                        <Grid lg={3} md={4} sm={8} xs={12}>
+                        <Grid lg={3} md={4} sm={8} xs={12} sx={{
+                            textAlign: {sm: 'start', xs: 'center'}
+                        }}>
                             <Typography
                                 sx={{
                                     fontWeight: '700',
@@ -58,7 +61,9 @@ const SectionBanner = ({ data }) => {
                         <Grid lg={6} md={5} sm={0} xs={0}>
 
                         </Grid>
-                        <Grid lg={3} md={3} sm={4} xs={12}>
+                        <Grid sx={{
+                            marginTop: {sm: '0px', xs: '30px'}
+                        }} lg={3} md={3} sm={4} xs={12}>
                             <Box sx={{
                                 display: 'flex',
                                 alignItems:'baseline',

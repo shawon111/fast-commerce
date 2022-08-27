@@ -70,7 +70,7 @@ const FeaturedProducts = () => {
     ]
     return (
         <Box sx={{
-            padding: '60px 0px'
+            padding: {lg: '60px 0px', sm: '30px 0px', xs:'20px 0px'}
         }}>
             <ResponsiveContainer>
                 <Box>
@@ -86,7 +86,7 @@ const FeaturedProducts = () => {
                             borderLeft: '1px solid #f0f2f5'
                         }} container spacing={0}>
                             {
-                                products.map((item, index) => <Grid lg={2.4} md={3} sm={4} xs={12} key={index}>
+                                products.map((item, index) => <Grid lg={2.4} md={3} sm={4} xs={6} key={index}>
                                     <BasicProductItem product={item} />
                                 </Grid>)
                             }
