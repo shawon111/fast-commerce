@@ -1,7 +1,9 @@
 import Layout from "../components/Global/Layout";
 import SectionBanner from "../components/Global/SectionBanner";
+import ShippingFeatures from "../components/Global/ShippingFeatures";
 import FeaturedProducts from "../components/Pages/Home/FeaturedProducts";
 import HomeHeroSection from "../components/Pages/Home/HomeHeroSection";
+import JoinNewsLetter from "../components/Pages/Home/JoinNewsLetter";
 import LatestProducts from "../components/Pages/Home/LatestProducts";
 import PopularProducts from "../components/Pages/Home/PopularProducts";
 import ProductBanner from "../components/Pages/Home/ProductBanner";
@@ -56,6 +58,8 @@ export default function Home() {
           <SectionBanner data={sectionBannerTwoData} />
           <PopularProducts />
           <SectionBanner data={sectionBannerThreeData} />
+          <JoinNewsLetter />
+          <ShippingFeatures />
       </Layout>
     </>
   )

@@ -48,7 +48,7 @@ ul {
 }
 
 .basicBtn {
-  font-weight: 500 !important;
+  font-weight: 500;
   transition: all .3s !important;
   box-shadow: none !important;
 }
@@ -189,7 +189,18 @@ ul {
 }
 
 /* homepage style code */
+.newsletter_home ::placeholder {
+  color: #103178b0;
+  opacity: 1;
+}
 
+.newsletter_home :-ms-input-placeholder {
+  color: #103178b0;
+}
+
+.newsletter_home ::-ms-input-placeholder {
+  color: #103178b0;
+}
 
 /* media queries */
 
