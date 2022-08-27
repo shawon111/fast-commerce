@@ -20,6 +20,18 @@ export default function Home() {
     textColor: "#103178",
     priceColor: '#FD8D27'
   }
+  const sectionBannerTwoData = {
+    title: "Women's L3X5 Leather Bag",
+    price: "119.99",
+    discount: "-15",
+    link: "/",
+    bgImage: "/images/bigbanner3.jpg",
+    badgeBgColor: "#FFC800",
+    badgeColor: "#fff",
+    buttonColor: "#FFC800",
+    textColor: "#fff",
+    priceColor: '#FFC800'
+  }
   return (
     <>
       <Layout metaInfo={metaInfo}>
@@ -28,6 +40,7 @@ export default function Home() {
           <LatestProducts />
           <SectionBanner data={sectionBannerOneData} />
           <FeaturedProducts />
+          <SectionBanner data={sectionBannerTwoData} />
       </Layout>
     </>
   )
