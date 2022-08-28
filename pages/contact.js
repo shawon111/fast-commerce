@@ -4,6 +4,7 @@ import ShippingFeatures from '../components/Global/ShippingFeatures';
 import { Box, Grid } from '@mui/material'
 import ContactInfo from '../components/Pages/Contact/ContactInfo';
 import ResponsiveContainer from '../components/Global/ResponsiveContainer';
+import ContactMap from '../components/Pages/Contact/ContactMap';
 
 const Contact = () => {
     const metaInfo = { title: "Contact | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, contact, fast commerce contact", metaDesc: "Contact with fast commerce to get the best deal" };
@@ -18,7 +19,9 @@ const Contact = () => {
                             <Grid md={4} xs={12} item>
                                 <ContactInfo />
                             </Grid>
-                            <Grid md={8} xs={12} item></Grid>
+                            <Grid md={8} xs={12} item>
+                                <ContactMap />
+                            </Grid>
                         </Grid>
                     </ResponsiveContainer>
                 </Box>
