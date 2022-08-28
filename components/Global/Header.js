@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <Box sx={{
-            padding: {md: '30px 0px 20px 0px', xs: '10px 0px'}
+            padding: {md: '30px 0px 0px 0px', xs: '10px 0px 0px 0px'}
         }}>
             <Stack spacing={0} sx={{
                 paddingBottom: {md: '30px', xs: '0px'}
@@ -187,8 +187,9 @@ const Header = () => {
                 </ResponsiveContainer>
             </Stack>
             <Stack pt="20px" sx={{
-                display: { md: 'block', xs: 'none' }
-            }} borderTop="1px solid #f0f2f5">
+                display: { md: 'block', xs: 'none' },
+                paddingBottom: {md: '20px', xs: '10px'}
+            }} borderTop="1px solid #f0f2f5" borderBottom="1px solid #f0f2f5">
                 <ResponsiveContainer>
                     <Grid container spacing={2}>
                         <Grid item lg={8} md={6}>

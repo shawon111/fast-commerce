@@ -19,7 +19,7 @@ const SectionBanner = ({ data }) => {
                     borderRadius: '5px'
                 }}>
                     <Grid container spacing={1}>
-                        <Grid lg={3} md={4} sm={8} xs={12} sx={{
+                        <Grid item lg={3} md={4} sm={8} xs={12} sx={{
                             textAlign: {sm: 'start', xs: 'center'}
                         }}>
                             <Typography
@@ -58,12 +58,12 @@ const SectionBanner = ({ data }) => {
                                 className="basicBtn"
                                 variant="contained">Add to cart</Button>
                         </Grid>
-                        <Grid lg={6} md={5} sm={0} xs={0}>
+                        <Grid item lg={6} md={5} sm={0} xs={0}>
 
                         </Grid>
                         <Grid sx={{
                             marginTop: {sm: '0px', xs: '30px'}
-                        }} lg={3} md={3} sm={4} xs={12}>
+                        }} item lg={3} md={3} sm={4} xs={12}>
                             <Box sx={{
                                 display: 'flex',
                                 alignItems:'baseline',

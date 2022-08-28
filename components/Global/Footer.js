@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { RiHeart2Fill } from 'react-icons/ri';
 import {FaFacebookF, FaPinterestP, FaLinkedinIn} from 'react-icons/fa';
 import {AiOutlineInstagram, AiFillYoutube} from 'react-icons/ai';
+import Tooltip from '@mui/material/Tooltip';
 
 const Footer = () => {
     return (
@@ -231,41 +232,51 @@ const Footer = () => {
                                     justifyContent: {lg: 'end', xs: 'flex-start'},
                                     alignItems: 'center'
                                 }}>
-                                    <a style={{
-                                        color: "#5b6c8f",
-                                        fontSize: '20px',
-                                        margin: '5px 9px'
-                                    }} href="https://facebook.com">
-                                        <FaFacebookF />
-                                    </a>
-                                    <a style={{
-                                        color: "#5b6c8f",
-                                        fontSize: '20px',
-                                        margin: '5px 9px'
-                                    }} href="https://instagram.com">
-                                        <AiOutlineInstagram />
-                                    </a>
-                                    <a style={{
-                                        color: "#5b6c8f",
-                                        fontSize: '20px',
-                                        margin: '5px 9px'
-                                    }} href="https://youtube.com">
-                                        <AiFillYoutube />
-                                    </a>
-                                    <a style={{
-                                        color: "#5b6c8f",
-                                        fontSize: '20px',
-                                        margin: '5px 9px'
-                                    }} href="https://pinterest.com">
-                                        <FaPinterestP />
-                                    </a>
-                                    <a style={{
-                                        color: "#5b6c8f",
-                                        fontSize: '20px',
-                                        margin: '5px 9px'
-                                    }} href="https://linkedin.com">
-                                        <FaLinkedinIn />
-                                    </a>
+                                       <Tooltip title="Facebook" placement="top" arrow>
+                                <a style={{
+                                    color: "#5b6c8f",
+                                    fontSize: '20px',
+                                    margin: '5px 9px'
+                                }} href="https://facebook.com">
+                                    <FaFacebookF />
+                                </a>
+                            </Tooltip>
+                            <Tooltip title="Instagram" placement="top" arrow>
+                            <a style={{
+                                color: "#5b6c8f",
+                                fontSize: '20px',
+                                margin: '5px 9px'
+                            }} href="https://instagram.com">
+                                <AiOutlineInstagram />
+                            </a>
+                            </Tooltip>
+                            <Tooltip title="Youtube" placement="top" arrow>
+                            <a style={{
+                                color: "#5b6c8f",
+                                fontSize: '20px',
+                                margin: '5px 9px'
+                            }} href="https://youtube.com">
+                                <AiFillYoutube />
+                            </a>
+                            </Tooltip>
+                            <Tooltip title="Pinterest" placement="top" arrow>
+                            <a style={{
+                                color: "#5b6c8f",
+                                fontSize: '20px',
+                                margin: '5px 9px'
+                            }} href="https://pinterest.com">
+                                <FaPinterestP />
+                            </a>
+                            </Tooltip>
+                            <Tooltip title="Linkedin" placement="top" arrow>
+                            <a style={{
+                                color: "#5b6c8f",
+                                fontSize: '20px',
+                                margin: '5px 9px'
+                            }} href="https://linkedin.com">
+                                <FaLinkedinIn />
+                            </a>
+                            </Tooltip>
                                 </Box>
                             </Grid>
                         </Grid>
