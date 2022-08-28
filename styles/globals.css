@@ -169,6 +169,12 @@ ul {
   color: #fff !important;
 }
 
+.contact_input {
+  font-family: 'Jost', sans-serif;
+  color: var(--darkColor);
+  width: 100%;
+}
+
 /* footer style codes */
 .footer-links a {
   display: block;
@@ -231,11 +237,19 @@ ul {
   .search-input {
     width: 280px;
   }
+  .brandBtn {
+    font-size: 18px !important;
+    padding: 6px 30px !important;
+  }
 }
 
 @media only screen and (max-width: 570px) {
   .search-input {
     width: 200px;
+  }
+  .brandBtn {
+    font-size: 16px !important;
+    padding: 6px 25px !important;
   }
 
   .swiper-button-prev::after {
