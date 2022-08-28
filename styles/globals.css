@@ -187,6 +187,10 @@ ul {
   background-color: var(--brandColor);
 }
 
+.product_item_hover_element:hover svg {
+  color: #fff !important;
+}
+
 .product_card_overlay {
   position: absolute;
   top: 15px;

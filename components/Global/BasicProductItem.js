@@ -1,4 +1,4 @@
-import { Box, Rating, Stack, Typography } from '@mui/material';
+import { Box, Rating, Stack, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import Image from 'next/image';
 import {RiHeartAddLine, RiAlignLeft, RiShoppingCart2Line} from 'react-icons/ri';
@@ -31,6 +31,7 @@ const BasicProductItem = ({ product }) => {
                 </Box>
                 <Box className='product_card_overlay'>
                     <Stack spacing={1}>
+                    <Tooltip title="Wishlist" placement="bottom-start" arrow>
                         <Box className="product_item_hover_element" sx={{
                             width: '30px',
                             height: '30px',
@@ -47,6 +48,8 @@ const BasicProductItem = ({ product }) => {
                                 fontWeight: '700'
                             }} />
                         </Box>
+                    </Tooltip>
+                    <Tooltip title="Add to compare" placement="bottom-start" arrow>
                         <Box className="product_item_hover_element" sx={{
                             width: '30px',
                             height: '30px',
@@ -63,6 +66,9 @@ const BasicProductItem = ({ product }) => {
                                 fontWeight: '700'
                             }} />
                         </Box>
+                    </Tooltip>
+                    <Tooltip title="Quick view" placement="bottom-start" arrow>
+
                         <Box className="product_item_hover_element" sx={{
                             width: '30px',
                             height: '30px',
@@ -79,6 +85,9 @@ const BasicProductItem = ({ product }) => {
                                 fontWeight: '700'
                             }} />
                         </Box>
+                    </Tooltip>
+                    <Tooltip title="Add to cart" placement="bottom-start" arrow>
+
                         <Box className="product_item_hover_element" sx={{
                             width: '30px',
                             height: '30px',
@@ -95,6 +104,7 @@ const BasicProductItem = ({ product }) => {
                                 fontWeight: '700'
                             }} />
                         </Box>
+                    </Tooltip>
                     </Stack>
                 </Box>
             </Box>
