@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import Layout from '../../components/Global/Layout';
 import ResponsiveContainer from '../../components/Global/ResponsiveContainer';
@@ -12,11 +12,27 @@ const Blog = () => {
             <Layout metaInfo={metaInfo}>
                 <ResponsiveContainer>
                     <Box>
-                        <Grid container>
+                        <Box>
+                            <Typography sx={{
+                                textAlign: 'start',
+                                fontSize: { lg: '50px', sm: '42px', xs: '36px' },
+                                color: '#103178',
+                                fontWeight: '700',
+                                marginTop: { lg: '40px', sm: '20px', xs: '20px' }
+                            }} variant="h1">
+                                Fast Commerce Blog <sup style={{
+                                    fontSize: '.5em',
+                                    fontWeight: '300'
+                                }}>(03)</sup>
+                            </Typography>
+                        </Box>
+                        <Grid container spacing={3}>
                             <Grid item lg={10} xs={12}>
                                 <Blogs />
                             </Grid>
-                            <Grid item lg={2} xs={12}>
+                            <Grid item sx={{
+                                display: {lg: 'block', xs: 'none'}
+                            }} lg={2} xs={12}>
                                 <BlogSidebar />
                             </Grid>
                         </Grid>

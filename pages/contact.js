@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '../components/Global/Layout';
-import ShippingFeatures from '../components/Global/ShippingFeatures';
 import { Box, Grid } from '@mui/material'
 import ContactInfo from '../components/Pages/Contact/ContactInfo';
 import ResponsiveContainer from '../components/Global/ResponsiveContainer';
@@ -29,7 +28,6 @@ const Contact = () => {
                         </Box>
                     </ResponsiveContainer>
                 </Box>
-                <ShippingFeatures />
             </Layout>
         </>
     );

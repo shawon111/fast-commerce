@@ -1,110 +1,117 @@
 import { Box, Rating, Stack, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import Image from 'next/image';
-import {RiHeartAddLine, RiAlignLeft, RiShoppingCart2Line} from 'react-icons/ri';
-import {HiSearch} from 'react-icons/hi';
+import { RiHeartAddLine, RiAlignLeft, RiShoppingCart2Line } from 'react-icons/ri';
+import { HiSearch } from 'react-icons/hi';
 import Link from 'next/link';
 
 const BasicProductItem = ({ product }) => {
     const { name, price, rating_star, image } = product;
     return (
         <Box
-        className='product_card_container'
-        sx={{
-            padding: '0px 0px',
-            borderTop: '1px solid #f0f2f5',
-            borderRight: '1px solid #f0f2f5',
-            borderBottom: '1px solid #f0f2f5'
-        }}>
+            className='product_card_container'
+            sx={{
+                padding: '0px 0px',
+                borderTop: '1px solid #f0f2f5',
+                borderRight: '1px solid #f0f2f5',
+                borderBottom: '1px solid #f0f2f5'
+            }}>
             <Box sx={{
                 textAlign: 'center',
                 padding: '30px 30px 0px 30px',
                 position: 'relative'
             }}>
                 <Box>
-                    <Image
-                        src={image}
-                        alt="product image"
-                        width={150}
-                        height={150}
-                    />
+                    <Link href="/">
+                        <Image
+                            src={image}
+                            alt="product image"
+                            width={150}
+                            height={150}
+                            style={{
+                                cursor: 'pointer'
+                            }}
+                        />
+                    </Link>
                 </Box>
-                <Box className='product_card_overlay'>
+                <Box sx={{
+                    display: { sm: 'block', xs: 'none' }
+                }} className='product_card_overlay'>
                     <Stack spacing={1}>
-                    <Tooltip title="Wishlist" placement="bottom-start" arrow>
-                        <Box className="product_item_hover_element" sx={{
-                            width: '30px',
-                            height: '30px',
-                            background: '#f0f2f5',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            cursor: 'pointer'
-                        }}>
-                            <RiHeartAddLine style={{
-                                fontSize: '16px',
-                                color: '#103178',
-                                fontWeight: '700'
-                            }} />
-                        </Box>
-                    </Tooltip>
-                    <Tooltip title="Add to compare" placement="bottom-start" arrow>
-                        <Box className="product_item_hover_element" sx={{
-                            width: '30px',
-                            height: '30px',
-                            background: '#f0f2f5',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            cursor: 'pointer'
-                        }}>
-                            <RiAlignLeft style={{
-                                fontSize: '16px',
-                                color: '#103178',
-                                fontWeight: '700'
-                            }} />
-                        </Box>
-                    </Tooltip>
-                    <Tooltip title="Quick view" placement="bottom-start" arrow>
+                        <Tooltip title="Wishlist" placement="bottom-start" arrow>
+                            <Box className="product_item_hover_element" sx={{
+                                width: '30px',
+                                height: '30px',
+                                background: '#f0f2f5',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                cursor: 'pointer'
+                            }}>
+                                <RiHeartAddLine style={{
+                                    fontSize: '16px',
+                                    color: '#103178',
+                                    fontWeight: '700'
+                                }} />
+                            </Box>
+                        </Tooltip>
+                        <Tooltip title="Add to compare" placement="bottom-start" arrow>
+                            <Box className="product_item_hover_element" sx={{
+                                width: '30px',
+                                height: '30px',
+                                background: '#f0f2f5',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                cursor: 'pointer'
+                            }}>
+                                <RiAlignLeft style={{
+                                    fontSize: '16px',
+                                    color: '#103178',
+                                    fontWeight: '700'
+                                }} />
+                            </Box>
+                        </Tooltip>
+                        <Tooltip title="Quick view" placement="bottom-start" arrow>
 
-                        <Box className="product_item_hover_element" sx={{
-                            width: '30px',
-                            height: '30px',
-                            background: '#f0f2f5',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            cursor: 'pointer'
-                        }}>
-                            <HiSearch style={{
-                                fontSize: '16px',
-                                color: '#103178',
-                                fontWeight: '700'
-                            }} />
-                        </Box>
-                    </Tooltip>
-                    <Tooltip title="Add to cart" placement="bottom-start" arrow>
+                            <Box className="product_item_hover_element" sx={{
+                                width: '30px',
+                                height: '30px',
+                                background: '#f0f2f5',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                cursor: 'pointer'
+                            }}>
+                                <HiSearch style={{
+                                    fontSize: '16px',
+                                    color: '#103178',
+                                    fontWeight: '700'
+                                }} />
+                            </Box>
+                        </Tooltip>
+                        <Tooltip title="Add to cart" placement="bottom-start" arrow>
 
-                        <Box className="product_item_hover_element" sx={{
-                            width: '30px',
-                            height: '30px',
-                            background: '#f0f2f5',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            cursor: 'pointer'
-                        }}>
-                            <RiShoppingCart2Line style={{
-                                fontSize: '16px',
-                                color: '#103178',
-                                fontWeight: '700'
-                            }} />
-                        </Box>
-                    </Tooltip>
+                            <Box className="product_item_hover_element" sx={{
+                                width: '30px',
+                                height: '30px',
+                                background: '#f0f2f5',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                cursor: 'pointer'
+                            }}>
+                                <RiShoppingCart2Line style={{
+                                    fontSize: '16px',
+                                    color: '#103178',
+                                    fontWeight: '700'
+                                }} />
+                            </Box>
+                        </Tooltip>
                     </Stack>
                 </Box>
             </Box>
@@ -113,15 +120,15 @@ const BasicProductItem = ({ product }) => {
                 padding: '0px 30px 30px 30px'
             }}>
                 <Link href="/">
-                <Typography className='product_cart_title' sx={{
-                    color: '#103178',
-                    fontSize: '16px',
-                    fontWeight: '500',
-                    marginBottom: '15px',
-                    cursor: 'pointer'
-                }} variant='h5'>
-                    {name}
-                </Typography>
+                    <Typography className='product_cart_title' sx={{
+                        color: '#103178',
+                        fontSize: '16px',
+                        fontWeight: '500',
+                        marginBottom: '15px',
+                        cursor: 'pointer'
+                    }} variant='h5'>
+                        {name}
+                    </Typography>
                 </Link>
                 <Typography sx={{
                     color: '#103178',
