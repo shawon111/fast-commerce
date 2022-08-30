@@ -145,6 +145,10 @@ ul {
   color: #103178b0;
 }
 
+.header_dropdown a {
+  color: var(--darkColor);
+}
+
 /* home page */
 .banner_small img {
   transition: transform .5s ease-in;

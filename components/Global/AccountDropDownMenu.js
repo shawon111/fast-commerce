@@ -2,8 +2,9 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Badge } from '@mui/material';
+import { Badge, Box } from '@mui/material';
 import {FaRegUser} from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function AccountDropDownMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,7 +17,7 @@ export default function AccountDropDownMenu() {
     };
 
     return (
-        <div>
+        <Box>
             <span
                 id="demo-positioned-button"
                 aria-controls={open ? 'demo-positioned-menu' : undefined}
@@ -46,12 +47,15 @@ export default function AccountDropDownMenu() {
                     vertical: 'top',
                     horizontal: 'left',
                 }}
+                className='header_dropdown'
             >
-                <MenuItem onClick={handleClose}>Dashboard</MenuItem>
-                <MenuItem onClick={handleClose}>SignUp</MenuItem>
-                <MenuItem onClick={handleClose}>SignIn</MenuItem>
-                <MenuItem onClick={handleClose}>LogOut</MenuItem>
+                <MenuItem onClick={handleClose}><Link href="/dashboard">Dashboard</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link href="/login">Login</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link href="/register">Register</Link></MenuItem>
+                <MenuItem sx={{
+                    color: '#103178'
+                }} onClick={handleClose}>LogOut</MenuItem>
             </Menu>
-        </div>
+        </Box>
     );
 }
