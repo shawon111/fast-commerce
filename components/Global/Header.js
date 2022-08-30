@@ -6,6 +6,7 @@ import { FaSearch, FaRegUser } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { RiShoppingCart2Line, RiHeart2Fill } from 'react-icons/ri';
 import { HiMenu } from 'react-icons/hi';
+import DropDownMenu from './AccountDropDownMenu';
 
 const Header = () => {
     const [showMobileSearchField , setShowMobileSearchField] = useState(false);
@@ -139,16 +140,14 @@ const Header = () => {
                                 </Box>
                                 <Box>
                                     <Box sx={{ gap: '25px', flexDirection: 'row', display: 'flex' }}>
-                                        <Box>
-                                            <Badge>
-                                                <FaRegUser style={{
-                                                    fontSize: '23px',
-                                                    color: '#ff9923',
-                                                    fontWeight: '200'
-                                                }}></FaRegUser>
-                                            </Badge>
+                                        <Box sx={{
+                                            cursor: 'pointer'
+                                        }}>
+                                            <DropDownMenu />
                                         </Box>
-                                        <Box>
+                                        <Box sx={{
+                                            cursor: 'pointer'
+                                        }}>
                                             <Badge badgeContent={0} showZero
                                                 sx={{
                                                     "& .MuiBadge-badge": {
@@ -163,7 +162,9 @@ const Header = () => {
                                                 }}></FiHeart>
                                             </Badge>
                                         </Box>
-                                        <Box>
+                                        <Box sx={{
+                                            cursor: 'pointer'
+                                        }}>
                                             <Badge badgeContent={0} showZero
                                                 sx={{
                                                     "& .MuiBadge-badge": {
