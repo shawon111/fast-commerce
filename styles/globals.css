@@ -251,6 +251,9 @@ ul {
     font-size: 18px !important;
     padding: 6px 30px !important;
   }
+  .blog_img_text_block{
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 570px) {

@@ -98,7 +98,6 @@ const BlogCard = ({ blogData }) => {
                     fontWeight: '500',
                     fontSize: { lg: '16px', xs: '14px' },
                     display: 'inline-block',
-                    cursor: 'pointer',
                 }} variant='p'>
                     {description}...
                 </Typography>

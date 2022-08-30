@@ -79,7 +79,7 @@ const BlogSidebar = () => {
                 <Box sx={{
                     marginTop: '10px'
                 }}>
-                    <Grid conrainer>
+                    <Grid container>
                         {
                             relatedProducts.map((item, index) => <Grid sx={{
                                 borderLeft: '1px solid #f0f2f5'
