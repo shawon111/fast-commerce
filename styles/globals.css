@@ -280,12 +280,14 @@ ul {
 
 /* swiper slider css */
 .home_hero_banners:hover .swiper-button-prev,
-.basic_product_grid:hover .swiper-button-prev {
+.basic_product_grid:hover .swiper-button-prev,
+.shop_product_grid:hover .swiper-button-prev {
   display: flex !important;
 }
 
 .home_hero_banners:hover .swiper-button-next,
-.basic_product_grid:hover .swiper-button-next {
+.basic_product_grid:hover .swiper-button-next,
+.shop_product_grid:hover .swiper-button-next {
   display: flex !important;
 }
 

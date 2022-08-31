@@ -29,11 +29,13 @@ const Shop = () => {
                         </Typography>
                     </Box>
                     <Box>
-                        <Grid container spacing={2}>
-                            <Grid item lg={2}>
+                        <Grid container spacing={3}>
+                            <Grid sx={{
+                                display: {lg: 'block', xs: 'none'}
+                            }} item lg={2}>
                                 <ShopSidebar />
                             </Grid>
-                            <Grid item lg={10}>
+                            <Grid item lg={10} xs={12}>
                                 <ShopBody />
                             </Grid>
                         </Grid>
