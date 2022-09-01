@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link'
+import Link from 'next/link';
 
 const BannerSmall = ({ bannerData }) => {
     const { title, salePercentage, badge, bgImage, link, bgColor } = bannerData;
