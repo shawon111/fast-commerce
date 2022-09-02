@@ -3,8 +3,8 @@ import { Box, Grid, Stack, Typography } from '@mui/material';
 import ResponsiveContainer from './ResponsiveContainer';
 import Link from 'next/link';
 import { RiHeart2Fill } from 'react-icons/ri';
-import {FaFacebookF, FaPinterestP, FaLinkedinIn} from 'react-icons/fa';
-import {AiOutlineInstagram, AiFillYoutube} from 'react-icons/ai';
+import { FaFacebookF, FaPinterestP, FaLinkedinIn } from 'react-icons/fa';
+import { AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai';
 import Tooltip from '@mui/material/Tooltip';
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
                     <Box>
                         <Grid container spacing={2}>
                             <Grid item xs={6} sm={4} lg={2} sx={{
-                                marginTop: {lg: '0px', xs: '30px'}
+                                marginTop: { lg: '0px', xs: '30px' }
                             }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
@@ -49,7 +49,7 @@ const Footer = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={6} sm={4} lg={2} sx={{
-                                marginTop: {lg: '0px', xs: '30px'}
+                                marginTop: { lg: '0px', xs: '30px' }
                             }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
@@ -80,7 +80,7 @@ const Footer = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={12} sm={4} lg={2} sx={{
-                                marginTop: {lg: '0px', xs: '30px'}
+                                marginTop: { lg: '0px', xs: '30px' }
                             }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
@@ -111,7 +111,7 @@ const Footer = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={12} sm={7} lg={4} sx={{
-                                marginTop: {lg: '0px', xs: '30px'}
+                                marginTop: { lg: '0px', xs: '30px' }
                             }}>
                                 <Box>
                                     <Typography variant='h5' sx={{
@@ -159,7 +159,7 @@ const Footer = () => {
                                 </Box>
                             </Grid>
                             <Grid item xs={12} sm={5} lg={2} sx={{
-                                marginTop: {lg: '0px', xs: '30px'}
+                                marginTop: { lg: '0px', xs: '30px' }
                             }}>
                                 <Box>
                                     <Link href="/">
@@ -228,55 +228,55 @@ const Footer = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Box sx={{
-                                    display:'flex',
-                                    justifyContent: {lg: 'end', xs: 'flex-start'},
+                                    display: 'flex',
+                                    justifyContent: { lg: 'end', xs: 'flex-start' },
                                     alignItems: 'center'
                                 }}>
-                                       <Tooltip title="Facebook" placement="top" arrow>
-                                <a style={{
-                                    color: "#5b6c8f",
-                                    fontSize: '20px',
-                                    margin: '5px 9px'
-                                }} href="https://facebook.com">
-                                    <FaFacebookF />
-                                </a>
-                            </Tooltip>
-                            <Tooltip title="Instagram" placement="top" arrow>
-                            <a style={{
-                                color: "#5b6c8f",
-                                fontSize: '20px',
-                                margin: '5px 9px'
-                            }} href="https://instagram.com">
-                                <AiOutlineInstagram />
-                            </a>
-                            </Tooltip>
-                            <Tooltip title="Youtube" placement="top" arrow>
-                            <a style={{
-                                color: "#5b6c8f",
-                                fontSize: '20px',
-                                margin: '5px 9px'
-                            }} href="https://youtube.com">
-                                <AiFillYoutube />
-                            </a>
-                            </Tooltip>
-                            <Tooltip title="Pinterest" placement="top" arrow>
-                            <a style={{
-                                color: "#5b6c8f",
-                                fontSize: '20px',
-                                margin: '5px 9px'
-                            }} href="https://pinterest.com">
-                                <FaPinterestP />
-                            </a>
-                            </Tooltip>
-                            <Tooltip title="Linkedin" placement="top" arrow>
-                            <a style={{
-                                color: "#5b6c8f",
-                                fontSize: '20px',
-                                margin: '5px 9px'
-                            }} href="https://linkedin.com">
-                                <FaLinkedinIn />
-                            </a>
-                            </Tooltip>
+                                    <Tooltip title="Facebook" placement="top" arrow>
+                                        <a style={{
+                                            color: "#5b6c8f",
+                                            fontSize: '20px',
+                                            margin: '5px 9px'
+                                        }} href="https://facebook.com">
+                                            <FaFacebookF />
+                                        </a>
+                                    </Tooltip>
+                                    <Tooltip title="Instagram" placement="top" arrow>
+                                        <a style={{
+                                            color: "#5b6c8f",
+                                            fontSize: '20px',
+                                            margin: '5px 9px'
+                                        }} href="https://instagram.com">
+                                            <AiOutlineInstagram />
+                                        </a>
+                                    </Tooltip>
+                                    <Tooltip title="Youtube" placement="top" arrow>
+                                        <a style={{
+                                            color: "#5b6c8f",
+                                            fontSize: '20px',
+                                            margin: '5px 9px'
+                                        }} href="https://youtube.com">
+                                            <AiFillYoutube />
+                                        </a>
+                                    </Tooltip>
+                                    <Tooltip title="Pinterest" placement="top" arrow>
+                                        <a style={{
+                                            color: "#5b6c8f",
+                                            fontSize: '20px',
+                                            margin: '5px 9px'
+                                        }} href="https://pinterest.com">
+                                            <FaPinterestP />
+                                        </a>
+                                    </Tooltip>
+                                    <Tooltip title="Linkedin" placement="top" arrow>
+                                        <a style={{
+                                            color: "#5b6c8f",
+                                            fontSize: '20px',
+                                            margin: '5px 9px'
+                                        }} href="https://linkedin.com">
+                                            <FaLinkedinIn />
+                                        </a>
+                                    </Tooltip>
                                 </Box>
                             </Grid>
                         </Grid>
