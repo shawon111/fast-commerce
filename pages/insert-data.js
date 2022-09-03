@@ -28,6 +28,7 @@ const InsertData = () => {
     const [featuredImage, setFeaturedImage] = useState({})
     const [galleryImages, setGalleryImages] = useState([])
     const [price, setPrice] = useState("")
+    const [category, setCategory] = useState("");
 
 
     const handleAddProduct = (e) => {
@@ -59,6 +60,7 @@ const InsertData = () => {
         product.append('metaTags', tags)
         product.append('metaDescription', metaDescription)
         product.append('metaTitle', metaTitle)
+        product.append('category', category)
         product.append('price', price)
         product.append('featuredImage', featuredImage)
         // product.append('gallaryImages', galleryImages)
@@ -66,7 +68,7 @@ const InsertData = () => {
             product.append('gallaryImages', galleryImages[i])
         }
 
-        axios.post("https://fast-commerce-backend.onrender.com/addproduct", product)
+        axios.post("http://localhost:5000/addproduct", product)
             .then(res => console.log(res))
             .catch(err => console.log(err.response.data))
 
@@ -129,6 +131,8 @@ const InsertData = () => {
                         <h2>Gallery image</h2>
                         <input type="file" name="galleryImages" onChange={(e) => setGalleryImages(e.target.files)} accept="image/*" placeholder='featured image' multiple />
 
+                        <h2>Category</h2>
+                        <input type="text" placeholder='category' onChange={(e) => setCategory(e.target.value)} />
                         <h2>Price</h2>
                         <input type="number" placeholder='price' onChange={(e) => setPrice(e.target.value)} />
 
