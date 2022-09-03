@@ -2,6 +2,7 @@ import { Box, Grid } from '@mui/material';
 import React from 'react';
 import Layout from '../../components/Global/Layout';
 import ResponsiveContainer from '../../components/Global/ResponsiveContainer';
+import CustomerAlsoBuy from '../../components/Pages/Shop/CustomerAlsoBuy';
 import SingleProductBody from '../../components/Pages/Shop/SingleProductBody';
 import SingleProductSidebar from '../../components/Pages/Shop/SingleProductSidebar';
 
@@ -26,6 +27,7 @@ const Product = () => {
                         </Grid>
                     </Box>
                 </ResponsiveContainer>
+                <CustomerAlsoBuy />
             </Layout>
         </Box>
     );

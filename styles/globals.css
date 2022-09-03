@@ -189,6 +189,11 @@ ul {
   transform: scale(1.1);
 }
 
+/* shop page */
+.description_tab{
+  font-size: 24px;
+}
+
 /* footer style codes */
 .footer-links a {
   display: block;
@@ -275,6 +280,9 @@ ul {
 
   .swiper-button-prev::before {
     font-size: 20px !important;
+  }
+  .description_tab{
+    font-size: 10px;
   }
 }
 
