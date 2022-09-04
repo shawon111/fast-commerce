@@ -8,8 +8,9 @@ import { BiMinus, BiPlus } from 'react-icons/bi';
 import { FaFacebookF, FaPinterestP, FaLinkedinIn } from 'react-icons/fa';
 import { AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai';
 
-const SingleProductHeader = () => {
-    const [featuredImage, setFeaturedImage] = useState(productImage);
+const SingleProductHeader = ({ product }) => {
+    const { name, price, brand, additionalInfo, availableStock, category, desc, featuredImageUrl, features, galleryImagesUrls, metaDescription, metaTags, metaTitle, product_sizes, reviews, sku, stock, _id } = product;
+    const [featuredImage, setFeaturedImage] = useState(featuredImageUrl);
     const [quantity, setQuantity] = useState(1);
     const handleSetQuantity = (method) => {
         if (method === "minus") {
@@ -35,10 +36,11 @@ const SingleProductHeader = () => {
                             justifyContent: 'center'
                         }}>
                             <Image
-                                src={featuredImage}
+                                src={`https://fast-commerce-backend.onrender.com/${featuredImage}`}
                                 alt="product-image"
                                 width={400}
                                 height={400}
+                                priority
                             />
                         </Box>
                         <Box marginTop="30px">
@@ -50,35 +52,43 @@ const SingleProductHeader = () => {
                                             display: 'flex',
                                             justifyContent: 'center',
                                             alignItems: 'center',
-                                            padding: '10px'
+                                            padding: '10px',
+                                            cursor: 'pointer'
                                         }}>
                                             <Image
-                                                src={productImage}
+                                                src={`https://fast-commerce-backend.onrender.com/${featuredImageUrl}`}
                                                 alt="product-image"
                                                 width={100}
                                                 height={100}
-                                                onClick={() => setFeaturedImage(productImage)}
+                                                priority
+                                                onClick={() => setFeaturedImage(featuredImageUrl)}
                                             />
                                         </Box>
                                     </Grid>
                                     <Grid item xs={2}>
-                                        <Box
-                                            sx={{
-                                                border: '1px solid #103178',
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                padding: '10px'
-                                            }}
-                                        >
-                                            <Image
-                                                src={moreImage1}
-                                                alt="product-image"
-                                                width={100}
-                                                height={100}
-                                                onClick={() => setFeaturedImage(moreImage1)}
-                                            />
-                                        </Box>
+                                        {
+                                            galleryImagesUrls?.map((item, index) => <Box
+                                                sx={{
+                                                    border: '1px solid #103178',
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center',
+                                                    padding: '10px',
+                                                    cursor: 'pointer'
+                                                }}
+                                                key={index}
+                                            >
+                                                <Image
+                                                    src={`https://fast-commerce-backend.onrender.com/${item}`}
+                                                    alt="product-image"
+                                                    width={100}
+                                                    height={100}
+                                                    priority
+                                                    onClick={() => setFeaturedImage(item)}
+                                                />
+                                            </Box>)
+                                        }
+
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -99,7 +109,7 @@ const SingleProductHeader = () => {
                             display: 'inline-block',
                             boxShadow: 'none',
                             marginBottom: '20px'
-                        }} variant='contained'>ONLY 3 LEFT IN STOCK</Button>
+                        }} variant='contained'>ONLY {availableStock} LEFT IN STOCK</Button>
                         <Box sx={{
                             paddingBottom: '25px',
                             borderBottom: '1px solid #f0f2f5'
@@ -114,7 +124,7 @@ const SingleProductHeader = () => {
                                     display: 'inline-block'
                                 }}
                                 variant="p">
-                                No brand
+                                {brand}
                             </Typography>
                             <Typography
                                 sx={{
@@ -125,20 +135,20 @@ const SingleProductHeader = () => {
                                     marginBottom: '7px'
                                 }}
                                 variant="h4">
-                                Lorem ipsum dolor
+                                {name}
                             </Typography>
                             <Box sx={{
                                 display: 'flex',
                                 alignItems: 'center'
                             }}>
-                                <Rating name="read-only" value={4} size="small" readOnly />
+                                <Rating name="read-only" value={5} size="small" readOnly />
                                 <span style={{
                                     color: '#5b6c8f',
                                     fontSize: '13px',
                                     display: 'inline-flex',
                                     marginLeft: '10px',
                                     fontWeight: '500'
-                                }}>( 5 review )</span>
+                                }}>( 0 review )</span>
                             </Box>
                         </Box>
                         <Box sx={{
@@ -206,7 +216,7 @@ const SingleProductHeader = () => {
                                         marginBottom: '20px',
                                     }}
                                     variant="h4">
-                                    $60.38
+                                    ${price}
                                 </Typography>
                             </Box>
                             <Box sx={{
@@ -410,7 +420,7 @@ const SingleProductHeader = () => {
                                 }} variant='p'>
                                     SKU: <span style={{
                                         marginLeft: '15px'
-                                    }}>AU110876</span>
+                                    }}>{sku}</span>
                                 </Typography>
                             </Box>
                             <Box sx={{

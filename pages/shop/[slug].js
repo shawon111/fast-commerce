@@ -6,8 +6,10 @@ import CustomerAlsoBuy from '../../components/Pages/Shop/CustomerAlsoBuy';
 import SingleProductBody from '../../components/Pages/Shop/SingleProductBody';
 import SingleProductSidebar from '../../components/Pages/Shop/SingleProductSidebar';
 
-const Product = () => {
+const Product = ({product}) => {
     const metaInfo = { title: "Shop | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, shop, fast commerce shop", metaDesc: "Contact with fast commerce to get the best deal" };
+
+    console.log("product_101", product)
     return (
         <Box>
             <Layout metaInfo={metaInfo}>
@@ -17,7 +19,7 @@ const Product = () => {
                     }}>
                         <Grid container spacing={3}>
                             <Grid lg={10} xs={12} item>
-                                <SingleProductBody />
+                                <SingleProductBody product={product} />
                             </Grid>
                             <Grid sx={{
                                 display: {lg: 'block', xs: 'none'}
@@ -34,3 +36,32 @@ const Product = () => {
 };
 
 export default Product;
+
+export const getStaticPaths = async () =>{
+    const res = await fetch(`https://fast-commerce-backend.onrender.com/products`)
+    const data = await res.json();
+
+    const paths = data.map(product=> {
+        return {
+            params: {
+                slug: `${product._id}`
+            }
+        }
+    })
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export const getStaticProps = async ({params}) =>{
+    const { slug } = params;
+    const res = await fetch(`https://fast-commerce-backend.onrender.com/products/${slug}`);
+    const data = await res.json();
+    return {
+        props: {
+            product: data
+        }
+    }
+}

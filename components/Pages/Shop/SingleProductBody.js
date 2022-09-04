@@ -5,12 +5,12 @@ import SingleProductDescription from './SingleProductDescription';
 import SingleProductHeader from './SingleProductHeader';
 import SingleProductSaleBanner from './SingleProductSaleBanner';
 
-const SingleProductBody = () => {
+const SingleProductBody = ({product}) => {
     const sectionBannerData = {
         title: "Digital DSW-5X Smart Watch",
         price: "89.99",
         discount: "-40",
-        link: "/",
+        link: "/shop",
         bgImage: "/images/bigbanner1.jpg",
         badgeBgColor: "#FFC800",
         badgeColor: "#fff",
@@ -22,8 +22,8 @@ const SingleProductBody = () => {
 
     return (
         <Box>
-            <SingleProductHeader />
-            <SingleProductDescription />
+            <SingleProductHeader product={product} />
+            <SingleProductDescription product={product} />
             {/* <CustomerAlsoBuy /> */}
             <SingleProductSaleBanner data={sectionBannerData} />
         </Box>
