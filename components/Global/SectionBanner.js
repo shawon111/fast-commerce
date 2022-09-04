@@ -1,4 +1,5 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
+import Link from 'next/link';
 import React from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 
@@ -6,7 +7,7 @@ const SectionBanner = ({ data }) => {
     const { title, price, discount, badgeBgColor, priceColor, link, bgImage, badgeColor, buttonColor, textColor, overlayColor } = data;
     return (
         <Box sx={{
-            padding: {lg: '60px 0px', sm: '30px 0px', xs: '20px 0px'}
+            padding: { lg: '60px 0px', sm: '30px 0px', xs: '20px 0px' }
         }}>
             <ResponsiveContainer>
                 <Box sx={{
@@ -20,7 +21,7 @@ const SectionBanner = ({ data }) => {
                 }}>
                     <Grid container spacing={1}>
                         <Grid item lg={3} md={4} sm={8} xs={12} sx={{
-                            textAlign: {sm: 'start', xs: 'center'}
+                            textAlign: { sm: 'start', xs: 'center' }
                         }}>
                             <Typography
                                 sx={{
@@ -46,28 +47,30 @@ const SectionBanner = ({ data }) => {
                                 variant="h3">
                                 ${price}
                             </Typography>
-                            <Button
-                                sx={{
-                                    padding: '8px 40px',
-                                    backgroundColor: `${buttonColor}`,
-                                    color: '#fff',
-                                    textTransform: 'capitalize',
-                                    fontSize: { lg: '18px', sm: '16px', xs: '14px' },
-                                    borderRadius: '30px'
-                                }}
-                                className="basicBtn"
-                                variant="contained">Add to cart</Button>
+                            <Link href={link}>
+                                <Button
+                                    sx={{
+                                        padding: '8px 40px',
+                                        backgroundColor: `${buttonColor}`,
+                                        color: '#fff',
+                                        textTransform: 'capitalize',
+                                        fontSize: { lg: '18px', sm: '16px', xs: '14px' },
+                                        borderRadius: '30px'
+                                    }}
+                                    className="basicBtn"
+                                    variant="contained">Add to cart</Button>
+                            </Link>
                         </Grid>
                         <Grid item lg={6} md={5} sm={0} xs={0}>
 
                         </Grid>
                         <Grid sx={{
-                            marginTop: {sm: '0px', xs: '30px'}
+                            marginTop: { sm: '0px', xs: '30px' }
                         }} item lg={3} md={3} sm={4} xs={12}>
                             <Box sx={{
                                 display: 'flex',
-                                alignItems:'baseline',
-                                justifyContent:'center',
+                                alignItems: 'baseline',
+                                justifyContent: 'center',
                                 height: '100%'
                             }}>
                                 <Box sx={{

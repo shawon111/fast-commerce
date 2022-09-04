@@ -13,7 +13,7 @@ const ProductBanner = () => {
             salePercentage: "20",
             badge: "",
             bgImage: BgImage1,
-            link: "/",
+            link: "/shop",
             bgColor: '#F1F2F6'
         },
         {
@@ -21,7 +21,7 @@ const ProductBanner = () => {
             salePercentage: "10",
             badge: "",
             bgImage: BgImage2,
-            link: "/",
+            link: "/shop",
             bgColor: '#DAECFA'
         },
         {
@@ -29,7 +29,7 @@ const ProductBanner = () => {
             salePercentage: "",
             badge: "Hot!",
             bgImage: BgImage3,
-            link: "/",
+            link: "/shop",
             bgColor: '#F1F2F6'
         },
     ]

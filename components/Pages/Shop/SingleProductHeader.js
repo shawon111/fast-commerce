@@ -1,8 +1,6 @@
-import { Box, Button, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Rating, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Grid, List, ListItem, ListItemIcon, ListItemText, Rating, Tooltip, Typography } from '@mui/material';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import productImage from '../../../public/images/productDemoImage.png';
-import moreImage1 from '../../../public/images/demoProduct2.webp';
 import { BsCheckLg } from 'react-icons/bs';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { FaFacebookF, FaPinterestP, FaLinkedinIn } from 'react-icons/fa';
@@ -10,12 +8,15 @@ import { AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai';
 import { useEffect } from 'react';
 
 const SingleProductHeader = ({ product }) => {
-    const { name, price, brand, additionalInfo, availableStock, category, desc, featuredImageUrl, features, galleryImagesUrls, metaDescription, metaTags, metaTitle, product_sizes, reviews, sku, stock, _id } = product;
+    const { name, price, brand, availableStock, featuredImageUrl, features, galleryImagesUrls, metaTags, product_sizes, sku, _id } = product;
     const [featuredImage, setFeaturedImage] = useState(featuredImageUrl);
 
-    useEffect(()=>{
+    const featuresData = features.split(",");
+    const tagsData = metaTags.split(",");
+
+    useEffect(() => {
         setFeaturedImage(featuredImageUrl)
-    }, [])
+    }, [_id])
 
     const [quantity, setQuantity] = useState(1);
     const handleSetQuantity = (method) => {
@@ -71,27 +72,27 @@ const SingleProductHeader = ({ product }) => {
                                             />
                                         </Box>
                                     </Grid>
-                                        {
-                                            galleryImagesUrls?.map((item, index) => <Grid item key={index} xs={2}><Box
-                                                sx={{
-                                                    border: '1px solid #103178',
-                                                    display: 'flex',
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                    padding: '10px',
-                                                    cursor: 'pointer'
-                                                }}
-                                            >
-                                                <Image
-                                                    src={`https://fast-commerce-backend.onrender.com/${item}`}
-                                                    alt="product-image"
-                                                    width={100}
-                                                    height={100}
-                                                    priority
-                                                    onClick={() => setFeaturedImage(item)}
-                                                />
-                                            </Box></Grid>)
-                                        }
+                                    {
+                                        galleryImagesUrls?.map((item, index) => <Grid item key={index} xs={2}><Box
+                                            sx={{
+                                                border: '1px solid #103178',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                padding: '10px',
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            <Image
+                                                src={`https://fast-commerce-backend.onrender.com/${item}`}
+                                                alt="product-image"
+                                                width={100}
+                                                height={100}
+                                                priority
+                                                onClick={() => setFeaturedImage(item)}
+                                            />
+                                        </Box></Grid>)
+                                    }
                                 </Grid>
                             </Box>
                         </Box>
@@ -159,48 +160,22 @@ const SingleProductHeader = ({ product }) => {
                             borderBottom: '1px solid #f0f2f5'
                         }}>
                             <List>
-                                <ListItem disablePadding>
-                                    <ListItemIcon sx={{
-                                        minWidth: 'fit-content',
-                                        marginRight: '12px'
-                                    }}>
-                                        <BsCheckLg style={{
-                                            fontSize: '14px',
-                                            color: '#00a198'
-                                        }} />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primaryTypographyProps={{ fontSize: 13, fontWeight: '600', color: '#103178' }}
-                                        primary="Premium quality" />
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemIcon sx={{
-                                        minWidth: 'fit-content',
-                                        marginRight: '12px'
-                                    }}>
-                                        <BsCheckLg style={{
-                                            fontSize: '14px',
-                                            color: '#00a198'
-                                        }} />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primaryTypographyProps={{ fontSize: 13, fontWeight: '600', color: '#103178' }}
-                                        primary="Money back guarranty" />
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemIcon sx={{
-                                        minWidth: 'fit-content',
-                                        marginRight: '12px'
-                                    }}>
-                                        <BsCheckLg style={{
-                                            fontSize: '14px',
-                                            color: '#00a198'
-                                        }} />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primaryTypographyProps={{ fontSize: 13, fontWeight: '600', color: '#103178' }}
-                                        primary="Affordable price" />
-                                </ListItem>
+                                {
+                                    featuresData.map((item, index) => <ListItem disablePadding key={index}>
+                                        <ListItemIcon sx={{
+                                            minWidth: 'fit-content',
+                                            marginRight: '12px'
+                                        }}>
+                                            <BsCheckLg style={{
+                                                fontSize: '14px',
+                                                color: '#00a198'
+                                            }} />
+                                        </ListItemIcon>
+                                        <ListItemText
+                                            primaryTypographyProps={{ fontSize: 13, fontWeight: '600', color: '#103178' }}
+                                            primary={item} />
+                                    </ListItem>)
+                                }
                             </List>
                         </Box>
                         <Box sx={{
@@ -233,57 +208,64 @@ const SingleProductHeader = ({ product }) => {
                                 }} variant='p'>
                                     Sizes:
                                 </Typography>
-                                <Button sx={{
-                                    padding: '2px 14px',
-                                    textTransform: 'capitalize',
-                                    fontSize: { sm: '14px', xs: '11px' },
-                                    fontWeight: '600',
-                                    marginRight: "6px",
-                                    borderRadius: '20px',
-                                    boxShadow: 'none',
-                                    backgroundColor: '#fff',
-                                    border: '1px solid #f0f2f5',
-                                    color: '#103178',
-                                    "&:hover": {
+                                {
+                                    product_sizes.small==="true" && <Button sx={{
+                                        padding: '2px 14px',
+                                        textTransform: 'capitalize',
+                                        fontSize: { sm: '14px', xs: '11px' },
+                                        fontWeight: '600',
+                                        marginRight: "6px",
+                                        borderRadius: '20px',
+                                        boxShadow: 'none',
                                         backgroundColor: '#fff',
-                                        border: '1px solid #103178',
-                                        boxShadow: 'none'
-                                    },
-                                }} variant='contained'>small</Button>
-                                <Button sx={{
-                                    padding: '2px 14px',
-                                    textTransform: 'capitalize',
-                                    fontSize: { sm: '14px', xs: '11px' },
-                                    fontWeight: '600',
-                                    marginRight: "6px",
-                                    borderRadius: '20px',
-                                    boxShadow: 'none',
-                                    backgroundColor: '#fff',
-                                    border: '1px solid #f0f2f5',
-                                    color: '#103178',
-                                    "&:hover": {
+                                        border: '1px solid #f0f2f5',
+                                        color: '#103178',
+                                        "&:hover": {
+                                            backgroundColor: '#fff',
+                                            border: '1px solid #103178',
+                                            boxShadow: 'none'
+                                        },
+                                    }} variant='contained'>small</Button>
+                                }
+                                {
+                                    product_sizes.medium==="true" && <Button sx={{
+                                        padding: '2px 14px',
+                                        textTransform: 'capitalize',
+                                        fontSize: { sm: '14px', xs: '11px' },
+                                        fontWeight: '600',
+                                        marginRight: "6px",
+                                        borderRadius: '20px',
+                                        boxShadow: 'none',
                                         backgroundColor: '#fff',
-                                        border: '1px solid #103178',
-                                        boxShadow: 'none'
-                                    },
-                                }} variant='contained'>medium</Button>
-                                <Button sx={{
-                                    padding: '2px 14px',
-                                    textTransform: 'capitalize',
-                                    fontSize: { sm: '14px', xs: '11px' },
-                                    fontWeight: '600',
-                                    marginRight: "6px",
-                                    borderRadius: '20px',
-                                    boxShadow: 'none',
-                                    backgroundColor: '#fff',
-                                    border: '1px solid #f0f2f5',
-                                    color: '#103178',
-                                    "&:hover": {
+                                        border: '1px solid #f0f2f5',
+                                        color: '#103178',
+                                        "&:hover": {
+                                            backgroundColor: '#fff',
+                                            border: '1px solid #103178',
+                                            boxShadow: 'none'
+                                        },
+                                    }} variant='contained'>medium</Button>
+                                }
+                                {
+                                    product_sizes.large==="true" && <Button sx={{
+                                        padding: '2px 14px',
+                                        textTransform: 'capitalize',
+                                        fontSize: { sm: '14px', xs: '11px' },
+                                        fontWeight: '600',
+                                        marginRight: "6px",
+                                        borderRadius: '20px',
+                                        boxShadow: 'none',
                                         backgroundColor: '#fff',
-                                        border: '1px solid #103178',
-                                        boxShadow: 'none'
-                                    },
-                                }} variant='contained'>large</Button>
+                                        border: '1px solid #f0f2f5',
+                                        color: '#103178',
+                                        "&:hover": {
+                                            backgroundColor: '#fff',
+                                            border: '1px solid #103178',
+                                            boxShadow: 'none'
+                                        },
+                                    }} variant='contained'>large</Button>
+                                }
+                                
                             </Box>
                             <Box>
                                 <Typography sx={{
@@ -396,20 +378,16 @@ const SingleProductHeader = ({ product }) => {
                                     display: 'inline-block',
                                     marginRight: '20px'
                                 }} variant='p'>
-                                    Tags: <Typography sx={{
-                                        color: '#5b6c8f',
-                                        fontSize: '15px',
-                                        fontWeight: '600',
-                                        display: 'inline-block',
-                                        marginLeft: '15px'
-                                    }} variant='p'>Mens,</Typography>
-                                    <Typography sx={{
-                                        color: '#5b6c8f',
-                                        fontSize: '15px',
-                                        fontWeight: '600',
-                                        display: 'inline-block',
-                                        marginLeft: '15px'
-                                    }} variant='p'>Fashion</Typography>
+                                    Tags: {
+                                        tagsData?.map((item, index)=><Typography key={index} sx={{
+                                            color: '#5b6c8f',
+                                            fontSize: '15px',
+                                            fontWeight: '600',
+                                            display: 'inline-block',
+                                            marginLeft: '15px'
+                                        }} variant='p'>{item}</Typography>)
+                                    }
+                                    
                                 </Typography>
                             </Box>
                             <Box>

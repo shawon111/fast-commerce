@@ -1,11 +1,12 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
+import Link from 'next/link';
 import React from 'react';
 
 const SingleProductSaleBanner = ({ data }) => {
     const { title, price, discount, badgeBgColor, priceColor, link, bgImage, badgeColor, buttonColor, textColor, overlayColor } = data;
     return (
         <Box sx={{
-            marginTop: {lg: '60px', sm: '55px', xs: '50px'}
+            marginTop: { lg: '60px', sm: '55px', xs: '50px' }
         }}>
             <Box sx={{
                 backgroundImage: `url(${bgImage}), linear-gradient(${overlayColor})`,
@@ -44,17 +45,19 @@ const SingleProductSaleBanner = ({ data }) => {
                             variant="h3">
                             ${price}
                         </Typography>
-                        <Button
-                            sx={{
-                                padding: '8px 40px',
-                                backgroundColor: `${buttonColor}`,
-                                color: '#fff',
-                                textTransform: 'capitalize',
-                                fontSize: { lg: '18px', sm: '16px', xs: '14px' },
-                                borderRadius: '30px'
-                            }}
-                            className="basicBtn"
-                            variant="contained">Add to cart</Button>
+                        <Link href={link}>
+                            <Button
+                                sx={{
+                                    padding: '8px 40px',
+                                    backgroundColor: `${buttonColor}`,
+                                    color: '#fff',
+                                    textTransform: 'capitalize',
+                                    fontSize: { lg: '18px', sm: '16px', xs: '14px' },
+                                    borderRadius: '30px'
+                                }}
+                                className="basicBtn"
+                                variant="contained">Add to cart</Button>
+                        </Link>
                     </Grid>
                     <Grid item lg={6} md={5} sm={0} xs={0}>
 

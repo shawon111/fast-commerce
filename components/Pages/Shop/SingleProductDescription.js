@@ -38,7 +38,7 @@ function a11yProps(index) {
 
 // main component
 const SingleProductDescription = ({ product }) => {
-    const { name, price, brand, additionalInfo, availableStock, category, desc, featuredImageUrl, features, galleryImagesUrls, metaDescription, metaTags, metaTitle, product_sizes, reviews, sku, stock, _id } = product;
+    const { additionalInfo, desc, reviews } = product;
 
     const [value, setValue] = useState('0');
     const handleChange = (event, newValue) => {

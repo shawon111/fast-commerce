@@ -56,7 +56,7 @@ const BannerSmall = ({ bannerData }) => {
                                 -{salePercentage}%
                             </Typography> : ""
                         }
-                        <Link href={`${link}`}>
+                        <Link href={link}>
                             <Button sx={{
                                 fontSize: {lg: '16px', sm: '14px', xs: '13px'},
                                 padding: {sm: '1px 30px', xs: '3px 10px'}

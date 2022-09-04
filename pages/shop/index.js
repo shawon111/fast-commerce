@@ -8,6 +8,7 @@ import ShopSidebar from '../../components/Pages/Shop/ShopSidebar';
 const Shop = ({watch, allProducts}) => {
     const metaInfo = { title: "Shop | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, shop, fast commerce shop", metaDesc: "Contact with fast commerce to get the best deal" };
 
+    console.log("all product", allProducts)
     return (
         <>
             <Layout metaInfo={metaInfo}>
