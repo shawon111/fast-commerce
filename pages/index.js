@@ -66,7 +66,6 @@ export default function Home({latestProducts, featuredProducts}) {
     </>
   )
 }
-
 export async function getStaticProps(){
   const latestProductsRes = await fetch("https://fast-commerce-backend.onrender.com/products/latest");
   const latestProducts = await latestProductsRes.json();
