@@ -65,9 +65,8 @@ const SingleProductHeader = ({ product }) => {
                                             />
                                         </Box>
                                     </Grid>
-                                    <Grid item xs={2}>
                                         {
-                                            galleryImagesUrls?.map((item, index) => <Box
+                                            galleryImagesUrls?.map((item, index) => <Grid item key={index} xs={2}><Box
                                                 sx={{
                                                     border: '1px solid #103178',
                                                     display: 'flex',
@@ -76,7 +75,6 @@ const SingleProductHeader = ({ product }) => {
                                                     padding: '10px',
                                                     cursor: 'pointer'
                                                 }}
-                                                key={index}
                                             >
                                                 <Image
                                                     src={`https://fast-commerce-backend.onrender.com/${item}`}
@@ -86,10 +84,8 @@ const SingleProductHeader = ({ product }) => {
                                                     priority
                                                     onClick={() => setFeaturedImage(item)}
                                                 />
-                                            </Box>)
+                                            </Box></Grid>)
                                         }
-
-                                    </Grid>
                                 </Grid>
                             </Box>
                         </Box>
