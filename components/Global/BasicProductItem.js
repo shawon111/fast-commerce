@@ -6,7 +6,7 @@ import { HiSearch } from 'react-icons/hi';
 import Link from 'next/link';
 
 const BasicProductItem = ({ product }) => {
-    const { name, price, rating_star, image } = product;
+    const { name, price, _id, featuredImageUrl } = product;
     return (
         <Box
             className='product_card_container'
@@ -14,7 +14,8 @@ const BasicProductItem = ({ product }) => {
                 padding: '0px 0px',
                 borderTop: '1px solid #f0f2f5',
                 borderRight: '1px solid #f0f2f5',
-                borderBottom: '1px solid #f0f2f5'
+                borderBottom: '1px solid #f0f2f5',
+                height: '350px'
             }}>
             <Box sx={{
                 textAlign: 'center',
@@ -22,12 +23,13 @@ const BasicProductItem = ({ product }) => {
                 position: 'relative'
             }}>
                 <Box>
-                    <Link href="/">
+                    <Link href={`/shop/${_id}`}>
                         <Image
-                            src={image}
+                            src={`https://fast-commerce-backend.onrender.com/${featuredImageUrl}`}
                             alt="product image"
                             width={150}
                             height={150}
+                            priority
                             style={{
                                 cursor: 'pointer'
                             }}
@@ -119,7 +121,7 @@ const BasicProductItem = ({ product }) => {
                 marginTop: '15px',
                 padding: '0px 30px 30px 30px'
             }}>
-                <Link href="/">
+                <Link href={`/shop/${_id}`}>
                     <Typography className='product_cart_title' sx={{
                         color: '#103178',
                         fontSize: '16px',
@@ -138,7 +140,7 @@ const BasicProductItem = ({ product }) => {
                 }} variant='h4'>
                     ${price}
                 </Typography>
-                <Rating name="read-only" value={parseFloat(rating_star)} size="small" readOnly />
+                <Rating name="read-only" value={5} size="small" readOnly />
             </Box>
         </Box>
     );

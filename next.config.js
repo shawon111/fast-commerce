@@ -4,7 +4,9 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      "thumbs.dreamstime.com"
+      "thumbs.dreamstime.com",
+      "0.0.19.136",
+      "fast-commerce-backend.onrender.com"
     ]
   }
 }

@@ -12,7 +12,7 @@ const HomeHeroSection = () => {
             price: "199.99",
             backgroundImage: "/images/slider1.webp",
             bgColor: "#DAECFA",
-            ctaURL: "/",
+            ctaURL: "/shop",
             notificationText: "Sale!",
             notificationBg: "#FD8D27",
             notificationTextColor: '#103178'
@@ -23,7 +23,7 @@ const HomeHeroSection = () => {
             price: "229.99",
             backgroundImage: "/images/slider2.png",
             bgColor: "#F0F2F5",
-            ctaURL: "/",
+            ctaURL: "/shop",
             notificationText: "-25%",
             notificationBg: "#103178",
             notificationTextColor: '#fff'
@@ -34,7 +34,7 @@ const HomeHeroSection = () => {
             price: "89.99",
             backgroundImage: "/images/slider3.webp",
             bgColor: "#c7f4faa3",
-            ctaURL: "/",
+            ctaURL: "/shop",
             notificationText: "-40%",
             notificationBg: "#FFC800",
             notificationTextColor: '#103178'

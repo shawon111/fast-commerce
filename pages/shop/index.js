@@ -5,7 +5,7 @@ import ResponsiveContainer from '../../components/Global/ResponsiveContainer';
 import ShopBody from '../../components/Pages/Shop/ShopBody';
 import ShopSidebar from '../../components/Pages/Shop/ShopSidebar';
 
-const Shop = () => {
+const Shop = ({watch, allProducts}) => {
     const metaInfo = { title: "Shop | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, shop, fast commerce shop", metaDesc: "Contact with fast commerce to get the best deal" };
 
     return (
@@ -36,7 +36,7 @@ const Shop = () => {
                                 <ShopSidebar />
                             </Grid>
                             <Grid item lg={10} xs={12}>
-                                <ShopBody />
+                                <ShopBody allProducts={allProducts} bestSeller={watch} />
                             </Grid>
                         </Grid>
                     </Box>
@@ -47,3 +47,19 @@ const Shop = () => {
 };
 
 export default Shop;
+
+export async function getStaticProps(){
+
+    const watchRes = await fetch(`https://fast-commerce-backend.onrender.com/products/category/watch`);
+    const watch = await watchRes.json();
+
+    const allproductsRes = await fetch(`https://fast-commerce-backend.onrender.com/products`)
+    const allProducts = await allproductsRes.json();
+
+    return {
+        props: {
+            watch,
+            allProducts
+        }
+    }
+} 

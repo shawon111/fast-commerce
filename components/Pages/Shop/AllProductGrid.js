@@ -3,69 +3,7 @@ import React from 'react';
 import BasicProductItem from '../../Global/BasicProductItem';
 import demoProductImage from '../../../public/images/productDemoImage.png';
 
-const AllProductGrid = () => {
-    const products = [
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "50",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "40",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "60",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "20",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "50",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "40",
-            rating_star: "5",
-            image: demoProductImage
-        },
-    ]
+const AllProductGrid = ({products}) => {
     return (
         <Box>
             <Typography

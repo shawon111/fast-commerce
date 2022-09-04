@@ -7,69 +7,8 @@ import BasicProductItem from '../../Global/BasicProductItem';
 import { Navigation, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-const LatestProducts = () => {
-    const products = [
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "50",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "40",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "60",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "20",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "50",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "40",
-            rating_star: "5",
-            image: demoProductImage
-        },
-    ]
+const LatestProducts = ({products}) => {
+
     return (
         <Box sx={{
             padding: {lg: '60px 0px', sm: '30px 0px', xs: '20px 0px'}

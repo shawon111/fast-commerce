@@ -5,69 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import BasicProductItem from '../../Global/BasicProductItem';
 import demoProductImage from '../../../public/images/productDemoImage.png';
 
-const BestSellerProducts = () => {
-    const products = [
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "50",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "40",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "60",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "20",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "50",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "40",
-            rating_star: "5",
-            image: demoProductImage
-        },
-    ]
+const BestSellerProducts = ({products}) => {
     return (
         <Box sx={{
             marginBottom: {lg: '50px', sm:'42px', xs: '36px'}
