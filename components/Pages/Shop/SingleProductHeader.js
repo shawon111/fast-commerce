@@ -7,10 +7,16 @@ import { BsCheckLg } from 'react-icons/bs';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { FaFacebookF, FaPinterestP, FaLinkedinIn } from 'react-icons/fa';
 import { AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai';
+import { useEffect } from 'react';
 
 const SingleProductHeader = ({ product }) => {
     const { name, price, brand, additionalInfo, availableStock, category, desc, featuredImageUrl, features, galleryImagesUrls, metaDescription, metaTags, metaTitle, product_sizes, reviews, sku, stock, _id } = product;
     const [featuredImage, setFeaturedImage] = useState(featuredImageUrl);
+
+    useEffect(()=>{
+        setFeaturedImage(featuredImageUrl)
+    }, [])
+
     const [quantity, setQuantity] = useState(1);
     const handleSetQuantity = (method) => {
         if (method === "minus") {
