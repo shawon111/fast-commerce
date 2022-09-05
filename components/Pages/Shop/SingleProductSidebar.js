@@ -4,23 +4,8 @@ import React from 'react';
 import paymentOptionsImg from '../../../public/images/payment-options.png';
 import { TbShieldCheck } from 'react-icons/tb';
 import BasicProductItem from '../../Global/BasicProductItem';
-import demoProductImage from '../../../public/images/productDemoImage.png';
 
-const SingleProductSidebar = () => {
-    const relatedProducts = [
-        {
-            name: "Lorem imsum dolor",
-            price: "30",
-            rating_star: "5",
-            image: demoProductImage
-        },
-        {
-            name: "Lorem imsum dolor",
-            price: "50",
-            rating_star: "5",
-            image: demoProductImage
-        },
-    ]
+const SingleProductSidebar = ({relatedProducts}) => {
 
     return (
         <Box>

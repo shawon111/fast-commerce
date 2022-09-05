@@ -1,9 +1,22 @@
 import { Box, Grid, Pagination, Typography } from '@mui/material';
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import BasicProductItem from '../../Global/BasicProductItem';
-import demoProductImage from '../../../public/images/productDemoImage.png';
+const axios = require('axios');
 
-const AllProductGrid = ({products}) => {
+const AllProductGrid = ({products, setPageProduct, setProductPage, productLength}) => {
+    const pageCount = Math.ceil(productLength / 12);   
+    const [page, setPage] = useState(1)
+
+    const handlePaginationChange = (event, value) => {
+        setProductPage(value)
+        setPage(value)
+        axios.get(`https://fast-commerce-backend.onrender.com/products/page?index=${value}`).then((res)=>{
+            setPageProduct(res.data)
+            })
+    } 
+
     return (
         <Box>
             <Typography
@@ -38,7 +51,7 @@ const AllProductGrid = ({products}) => {
                         color: '#103178',
                         fontWeight: '600',
                     }
-                }} count={10} />
+                }} count={pageCount} onChange={handlePaginationChange}/>
             </Box>
         </Box>
     );

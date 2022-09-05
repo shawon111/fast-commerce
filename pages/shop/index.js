@@ -1,14 +1,17 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { useState } from 'react';
 import Layout from '../../components/Global/Layout';
 import ResponsiveContainer from '../../components/Global/ResponsiveContainer';
 import ShopBody from '../../components/Pages/Shop/ShopBody';
 import ShopSidebar from '../../components/Pages/Shop/ShopSidebar';
 
-const Shop = ({watch, allProducts}) => {
+const Shop = ({watch, Products, productLength}) => {
     const metaInfo = { title: "Shop | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, shop, fast commerce shop", metaDesc: "Contact with fast commerce to get the best deal" };
 
-    console.log("all product", allProducts)
+    const [pageProduct, setPageProduct] = useState(Products);
+    const [productPage, setProductPage] = useState(1);
+
     return (
         <>
             <Layout metaInfo={metaInfo}>
@@ -26,7 +29,7 @@ const Shop = ({watch, allProducts}) => {
                             Shop <sup style={{
                                 fontSize: '.5em',
                                 fontWeight: '300'
-                            }}>(03)</sup>
+                            }}>({productLength})</sup>
                         </Typography>
                     </Box>
                     <Box>
@@ -37,7 +40,7 @@ const Shop = ({watch, allProducts}) => {
                                 <ShopSidebar />
                             </Grid>
                             <Grid item lg={10} xs={12}>
-                                <ShopBody allProducts={allProducts} bestSeller={watch} />
+                                <ShopBody setPageProduct={setPageProduct} setProductPage={setProductPage} Products={pageProduct} productLength={productLength} bestSeller={watch} />
                             </Grid>
                         </Grid>
                     </Box>
@@ -54,13 +57,17 @@ export async function getStaticProps(){
     const watchRes = await fetch(`https://fast-commerce-backend.onrender.com/products/category/watch`);
     const watch = await watchRes.json();
 
-    const allproductsRes = await fetch(`https://fast-commerce-backend.onrender.com/products`)
-    const allProducts = await allproductsRes.json();
+    const productsRes = await fetch(`https://fast-commerce-backend.onrender.com/products/page?index=1`)
+    const Products = await productsRes.json();
+
+    const productLengthRes = await fetch(`https://fast-commerce-backend.onrender.com/products/length`);
+    const productLength = await productLengthRes.json();
 
     return {
         props: {
             watch,
-            allProducts
+            Products,
+            productLength
         }
     }
 } 
