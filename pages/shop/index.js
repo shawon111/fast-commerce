@@ -63,6 +63,7 @@ export async function getStaticProps(){
     const productLengthRes = await fetch(`https://fast-commerce-backend.onrender.com/products/length`);
     const productLength = await productLengthRes.json();
 
+    
     return {
         props: {
             watch,
