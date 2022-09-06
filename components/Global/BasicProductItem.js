@@ -15,11 +15,11 @@ const BasicProductItem = ({ product }) => {
                 borderTop: '1px solid #f0f2f5',
                 borderRight: '1px solid #f0f2f5',
                 borderBottom: '1px solid #f0f2f5',
-                height: '350px'
+                height: {lg: '350px', sm: '320px', xs: '300px'}
             }}>
             <Box sx={{
                 textAlign: 'center',
-                padding: '30px 30px 0px 30px',
+                padding: {lg: '30px 30px 0px 30px', sm: '20px 20px 0px 20px', xs: '10px 10px 0px 10px'},
                 position: 'relative'
             }}>
                 <Box>
@@ -119,7 +119,7 @@ const BasicProductItem = ({ product }) => {
             </Box>
             <Box sx={{
                 marginTop: '15px',
-                padding: '0px 30px 30px 30px'
+                padding: {lg: '0px 30px 30px 30px', sm: '0px 20px 20px 20px', xs: '0px 15px 15px 15px'}
             }}>
                 <Link href={`/shop/${_id}`}>
                     <Typography className='product_cart_title' sx={{

@@ -8,11 +8,19 @@ import { RiShoppingCart2Line, RiHeart2Fill } from 'react-icons/ri';
 import { HiMenu } from 'react-icons/hi';
 import DropDownMenu from './AccountDropDownMenu';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { AddToSearchResult } from '../../redux/actions';
+import { useRouter } from 'next/router';
 
 const Header = () => {
     const [showMobileSearchField, setShowMobileSearchField] = useState(false);
     const [searchSuggestions, setSearchSuggestions] = useState([]);
-    const [showSuggestion, setShowSuggestion] = useState(false)
+    const [showSuggestion, setShowSuggestion] = useState(false);
+    const router = useRouter();
+
+    const searchResults = useSelector((state)=> state.getSearchResult)
+    const dispatch = useDispatch();
+    // console.log("redux state", searchResults)
 
     const handleSearch = (e) => {
         const searchText = e.target.value;
@@ -28,6 +36,13 @@ const Header = () => {
         if (searchText === "") {
             setShowSuggestion(false)
         }
+    }
+
+    const handleGoToSearchResult = () =>{
+        dispatch(AddToSearchResult(searchSuggestions));
+        setShowSuggestion(false)
+        router.push('/search-result/products')
+
     }
 
     return (
@@ -135,6 +150,7 @@ const Header = () => {
                                     variant="text"
                                     height="35px"
                                     fontSize="40px"
+                                    onClick={()=> handleGoToSearchResult()}
                                 ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
                             </Box>
                         </Grid>
@@ -201,6 +217,7 @@ const Header = () => {
                                     variant="text"
                                     height="35px"
                                     fontSize="40px"
+                                    onClick={()=> handleGoToSearchResult()}
                                 ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
                             </Box>
                         </Grid>
