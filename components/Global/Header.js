@@ -25,7 +25,7 @@ const Header = () => {
                 setShowSuggestion(true)
             }
         })
-        if(searchText === ""){
+        if (searchText === "") {
             setShowSuggestion(false)
         }
     }
@@ -78,14 +78,46 @@ const Header = () => {
                         {/* mobile search bar  */}
                         <Grid item xs={12} sx={{
                             display: { md: 'none', xs: `${showMobileSearchField ? "flex" : "none"}` },
-                            justifyContent: 'center'
+                            justifyContent: 'center',
                         }}>
                             <Box sx={{
                                 background: '#F0F2F5',
                                 width: 'fit-content',
                                 padding: '5px 0px',
-                                borderRadius: '30px'
+                                borderRadius: '30px',
+                                position: 'relative'
                             }}>
+                                {
+                                    showSuggestion && <Box sx={{
+                                        position: 'absolute',
+                                        left: '0',
+                                        top: '60px',
+                                        zIndex: '5',
+                                        backgroundColor: '#fff',
+                                        width: '100%',
+                                        borderRadius: '4px'
+                                    }}>
+                                        <List sx={{
+                                            padding: '0',
+                                            boxShadow: '0px 0px 25px -10px #c7c7c9'
+                                        }}>
+                                            {
+                                                searchSuggestions.length > 0 && searchSuggestions?.map((item, index) => <Link href={item.name === "No product found!" ? "/" : `/shop/${item._id}`} key={index}><ListItem onClick={() => setShowSuggestion(false)} sx={{
+                                                    cursor: 'pointer',
+                                                    borderBottom: '1px solid #f0f2f5',
+                                                    transition: 'all .2s',
+                                                    '&:hover': {
+                                                        backgroundColor: '#f0f2f5'
+                                                    }
+                                                }}>
+                                                    <ListItemText
+                                                        primary={item.name}
+                                                    />
+                                                </ListItem></Link>)
+                                            }
+                                        </List>
+                                    </Box>
+                                }
                                 <input style={{
                                     border: 'none',
                                     outline: 'none',
@@ -98,6 +130,7 @@ const Header = () => {
                                     type="search"
                                     className='search-input'
                                     placeholder='Search for products'
+                                    onChange={(e) => handleSearch(e)}
                                 /><Button
                                     variant="text"
                                     height="35px"
@@ -133,13 +166,13 @@ const Header = () => {
                                             boxShadow: '0px 0px 25px -10px #c7c7c9'
                                         }}>
                                             {
-                                                searchSuggestions.length > 0 && searchSuggestions?.map((item, index) => <Link href={ item.name === "No product found!" ? "/" : `/shop/${item._id}`} key={index}><ListItem onClick={()=> setShowSuggestion(false)} sx={{
+                                                searchSuggestions.length > 0 && searchSuggestions?.map((item, index) => <Link href={item.name === "No product found!" ? "/" : `/shop/${item._id}`} key={index}><ListItem onClick={() => setShowSuggestion(false)} sx={{
                                                     cursor: 'pointer',
                                                     borderBottom: '1px solid #f0f2f5',
                                                     transition: 'all .2s',
-                                                    '&:hover':{
+                                                    '&:hover': {
                                                         backgroundColor: '#f0f2f5'
-                                                    } 
+                                                    }
                                                 }}>
                                                     <ListItemText
                                                         primary={item.name}
