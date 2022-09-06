@@ -35,7 +35,7 @@ const Header = () => {
             padding: { md: '30px 0px 0px 0px', xs: '10px 0px 0px 0px' }
         }}>
             <Stack spacing={0} sx={{
-                paddingBottom: { md: '30px', xs: '0px' },
+                paddingBottom: { md: '30px', xs: '10px' },
             }}>
                 <ResponsiveContainer>
                     <Grid sx={{ alignItems: 'center' }} container spacing={2}>
