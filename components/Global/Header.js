@@ -1,4 +1,4 @@
-import { Badge, Box, Button, Divider, Grid, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { Badge, Box, Button, Divider, Grid, List, ListItem, ListItemText, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 import Link from 'next/link';
@@ -7,16 +7,35 @@ import { FiHeart } from 'react-icons/fi';
 import { RiShoppingCart2Line, RiHeart2Fill } from 'react-icons/ri';
 import { HiMenu } from 'react-icons/hi';
 import DropDownMenu from './AccountDropDownMenu';
+import axios from 'axios';
 
 const Header = () => {
-    const [showMobileSearchField , setShowMobileSearchField] = useState(false);
+    const [showMobileSearchField, setShowMobileSearchField] = useState(false);
+    const [searchSuggestions, setSearchSuggestions] = useState([]);
+    const [showSuggestion, setShowSuggestion] = useState(false)
+
+    const handleSearch = (e) => {
+        const searchText = e.target.value;
+        axios.get(`https://fast-commerce-backend.onrender.com/all/search?text=${searchText}`).then((res) => {
+            console.log(res.data)
+            if (res.data === "No documents found!") {
+                setSearchSuggestions([{ name: "No product found!", _id: "/" }])
+            } else {
+                setSearchSuggestions(res.data);
+                setShowSuggestion(true)
+            }
+        })
+        if(searchText === ""){
+            setShowSuggestion(false)
+        }
+    }
 
     return (
         <Box sx={{
-            padding: {md: '30px 0px 0px 0px', xs: '10px 0px 0px 0px'}
+            padding: { md: '30px 0px 0px 0px', xs: '10px 0px 0px 0px' }
         }}>
             <Stack spacing={0} sx={{
-                paddingBottom: {md: '30px', xs: '0px'}
+                paddingBottom: { md: '30px', xs: '0px' },
             }}>
                 <ResponsiveContainer>
                     <Grid sx={{ alignItems: 'center' }} container spacing={2}>
@@ -52,13 +71,13 @@ const Header = () => {
                                 variant="text"
                                 height="35px"
                                 fontSize="40px"
-                                onClick={()=> setShowMobileSearchField(!showMobileSearchField)}
+                                onClick={() => setShowMobileSearchField(!showMobileSearchField)}
                             ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
                         </Grid>
 
                         {/* mobile search bar  */}
                         <Grid item xs={12} sx={{
-                            display: { md: 'none', xs:  `${showMobileSearchField ? "flex" : "none"}`},
+                            display: { md: 'none', xs: `${showMobileSearchField ? "flex" : "none"}` },
                             justifyContent: 'center'
                         }}>
                             <Box sx={{
@@ -89,14 +108,49 @@ const Header = () => {
                         {/* tablet and desktop search bar */}
                         <Grid item xs={12} sm={6} lg={5} sx={{
                             alignItems: 'center',
-                            display: {md: 'block', xs: 'none'}
+                            display: { md: 'block', xs: 'none' }
                         }}>
                             <Box sx={{
                                 background: '#F0F2F5',
                                 width: 'fit-content',
                                 padding: '5px 0px',
-                                borderRadius: '30px'
+                                borderRadius: '30px',
+                                position: 'relative'
                             }}>
+                                {/* search suggestions box */}
+                                {
+                                    showSuggestion && <Box sx={{
+                                        position: 'absolute',
+                                        left: '0',
+                                        top: '60px',
+                                        zIndex: '5',
+                                        backgroundColor: '#fff',
+                                        width: '100%',
+                                        borderRadius: '4px'
+                                    }}>
+                                        <List sx={{
+                                            padding: '0',
+                                            boxShadow: '0px 0px 25px -10px #c7c7c9'
+                                        }}>
+                                            {
+                                                searchSuggestions.length > 0 && searchSuggestions?.map((item, index) => <Link href={ item.name === "No product found!" ? "/" : `/shop/${item._id}`} key={index}><ListItem onClick={()=> setShowSuggestion(false)} sx={{
+                                                    cursor: 'pointer',
+                                                    borderBottom: '1px solid #f0f2f5',
+                                                    transition: 'all .2s',
+                                                    '&:hover':{
+                                                        backgroundColor: '#f0f2f5'
+                                                    } 
+                                                }}>
+                                                    <ListItemText
+                                                        primary={item.name}
+                                                    />
+                                                </ListItem></Link>)
+                                            }
+                                        </List>
+                                    </Box>
+
+                                }
+
                                 <input style={{
                                     border: 'none',
                                     outline: 'none',
@@ -109,6 +163,7 @@ const Header = () => {
                                     type="search"
                                     className='search-input'
                                     placeholder='Search for products'
+                                    onChange={(e) => handleSearch(e)}
                                 /><Button
                                     variant="text"
                                     height="35px"
@@ -189,7 +244,7 @@ const Header = () => {
             </Stack>
             <Stack pt="20px" sx={{
                 display: { md: 'block', xs: 'none' },
-                paddingBottom: {md: '20px', xs: '10px'}
+                paddingBottom: { md: '20px', xs: '10px' }
             }} borderTop="1px solid #f0f2f5" borderBottom="1px solid #f0f2f5">
                 <ResponsiveContainer>
                     <Grid container spacing={2}>
