@@ -8,7 +8,7 @@ import productImage from '../public/images/productDemoImage.png';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import Image from 'next/image';
 
-const cart = () => {
+const Cart = () => {
     const metaInfo = { title: "Cart | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, blog, fast commerce blog", metaDesc: "Contact with fast commerce to get the best deal" };
 
     const [quantity, setQuantity] = useState(1);
@@ -392,4 +392,4 @@ const cart = () => {
     );
 };
 
-export default cart;
+export default Cart;
