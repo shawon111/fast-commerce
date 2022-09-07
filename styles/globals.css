@@ -179,6 +179,11 @@ ul {
   width: 100%;
 }
 
+.cart_input {
+  font-family: 'Jost', sans-serif;
+  color: var(--darkColor);
+}
+
 /* blog page */
 
 .blog_card_img img {
