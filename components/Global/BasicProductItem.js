@@ -4,9 +4,17 @@ import Image from 'next/image';
 import { RiHeartAddLine, RiAlignLeft, RiShoppingCart2Line } from 'react-icons/ri';
 import { HiSearch } from 'react-icons/hi';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { AddToCartSingle } from '../../redux/actions';
 
 const BasicProductItem = ({ product }) => {
     const { name, price, _id, featuredImageUrl } = product;
+
+    const cart_items = useSelector((state)=> state.addItemToCart);
+
+    const dispatch = useDispatch();
+
+    const payload_info = {id: _id, qty: 1}
     return (
         <Box
             className='product_card_container'
@@ -106,7 +114,9 @@ const BasicProductItem = ({ product }) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 cursor: 'pointer'
-                            }}>
+                            }}
+                            onClick={()=> dispatch(AddToCartSingle(payload_info))}
+                            >
                                 <RiShoppingCart2Line style={{
                                     fontSize: '16px',
                                     color: '#103178',

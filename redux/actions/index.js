@@ -10,3 +10,17 @@ export const EmptySearchResult = () =>{
         type: "EMPTYSEARCHRESULT"
     }
 }
+
+export const AddToCartSingle = (item) => {
+    return {
+        type: "ADDTOCARTSINGLE",
+        payload: item
+    }
+}
+
+export const AddToCart = (item) => {
+    return {
+        type: "ADDTOCART",
+        payload: item
+    }
+}

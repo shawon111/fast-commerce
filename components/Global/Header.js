@@ -18,9 +18,9 @@ const Header = () => {
     const [showSuggestion, setShowSuggestion] = useState(false);
     const router = useRouter();
 
-    const searchResults = useSelector((state)=> state.getSearchResult)
+    const cart_items = useSelector((state)=> state.addItemToCart);
+    console.log("cart items 101", cart_items)
     const dispatch = useDispatch();
-    // console.log("redux state", searchResults)
 
     const handleSearch = (e) => {
         const searchText = e.target.value;
@@ -270,7 +270,7 @@ const Header = () => {
                                         <Box sx={{
                                             cursor: 'pointer'
                                         }}>
-                                            <Badge badgeContent={0} showZero
+                                            <Badge badgeContent={cart_items.length} showZero
                                                 sx={{
                                                     "& .MuiBadge-badge": {
                                                         color: "#fff",
@@ -278,11 +278,13 @@ const Header = () => {
                                                     }
                                                 }}
                                             >
+                                                <Link href="/cart">
                                                 <RiShoppingCart2Line style={{
                                                     fontSize: '23px',
                                                     color: '#ff9923',
                                                     fontWeight: '200'
                                                 }}></RiShoppingCart2Line>
+                                                </Link>
                                             </Badge>
                                         </Box>
                                     </Box>

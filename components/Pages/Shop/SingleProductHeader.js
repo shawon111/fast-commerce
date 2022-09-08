@@ -6,19 +6,19 @@ import { BiMinus, BiPlus } from 'react-icons/bi';
 import { FaFacebookF, FaPinterestP, FaLinkedinIn } from 'react-icons/fa';
 import { AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { AddToCart } from '../../../redux/actions';
 
 const SingleProductHeader = ({ product }) => {
     const { name, price, brand, availableStock, featuredImageUrl, features, galleryImagesUrls, metaTags, product_sizes, sku, _id } = product;
     const [featuredImage, setFeaturedImage] = useState(featuredImageUrl);
+    const dispatch = useDispatch();
 
     const featuresData = features.split(",");
     const tagsData = metaTags.split(",");
 
-    useEffect(() => {
-        setFeaturedImage(featuredImageUrl)
-    }, [_id])
-
     const [quantity, setQuantity] = useState(1);
+
     const handleSetQuantity = (method) => {
         if (method === "minus") {
             if (quantity === 1) {
@@ -32,6 +32,13 @@ const SingleProductHeader = ({ product }) => {
             setQuantity(quantity + 1)
         }
     }
+
+    useEffect(() => {
+        setFeaturedImage(featuredImageUrl);
+        setQuantity(1)
+    }, [_id])
+
+    const payload_info = {id: _id, qty: quantity}
 
     return (
         <Box>
@@ -313,6 +320,7 @@ const SingleProductHeader = ({ product }) => {
                                         }} onClick={() => handleSetQuantity("plus")} />
                                     </Box>
                                     <Box
+                                        onClick={()=> dispatch(AddToCart(payload_info))}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'space-around',
