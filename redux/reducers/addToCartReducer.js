@@ -24,7 +24,52 @@ const addItemToCart = (state = initialState, action) => {
         else {
             return state = [action.payload, ...state]
         }
-    }else {
+    }
+    else if(action.type === "INCREASEQTY"){
+        if (state.find(item => item.id === action.payload)){
+            const index = state.findIndex(item => item.id === action.payload);
+            const newState = [...state];
+            newState[index].qty += 1;
+            return state = newState;
+        }
+        else {
+            return state
+        }
+    }
+
+    else if(action.type === "DECREASEQTY"){
+        if (state.find(item => item.id === action.payload)){
+            const index = state.findIndex(item => item.id === action.payload);
+            const newState = [...state];
+            if(newState[index].qty === 1) {
+                return state = newState
+            }else {
+                newState[index].qty -= 1;
+            }
+            return state = newState;
+        }
+        else {
+            return state
+        }
+    }
+    else if(action.type === "DELETEFROMCART"){
+        // if (state.find(item => item.id === action.payload)){
+        //     const index = state.findIndex(item => item.id === action.payload);
+        //     const newState = [...state];
+        //     if(newState[index].qty === 1) {
+        //         return state = newState
+        //     }else {
+        //         newState[index].qty -= 1;
+        //     }
+        //     return state = newState;
+        // }
+        // else {
+        //     return state
+        // }
+        const newState = state.filter(item => item.id !== action.payload);
+        return state = newState;
+    }
+    else {
         return state
     }
 }

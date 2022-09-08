@@ -24,3 +24,23 @@ export const AddToCart = (item) => {
         payload: item
     }
 }
+
+export const increaseQtyState = (id) =>{
+    return {
+        type: "INCREASEQTY",
+        payload: id
+    }
+}
+export const decreaseQtyState = (id) =>{
+    return {
+        type: "DECREASEQTY",
+        payload: id
+    }
+}
+
+export const deleteProductFromCart = (id) => {
+    return {
+        type: "DELETEFROMCART",
+        payload: id
+    }
+}
