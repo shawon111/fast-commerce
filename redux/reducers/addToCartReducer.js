@@ -1,7 +1,6 @@
 const initialState = [];
 
 const addItemToCart = (state = initialState, action) => {
-    console.log("cart payload", action.payload)
 
     if (action.type === "ADDTOCARTSINGLE") {
         if (state.find(item => item.id === action.payload.id)) {

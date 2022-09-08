@@ -8,9 +8,6 @@ import SingleProductSidebar from '../../components/Pages/Shop/SingleProductSideb
 
 const Product = ({product, peopleAlsoBuyData, relatedProducts}) => {
     const metaInfo = { title: `${product.metaTitle} | Fast Commerce`, keywords: product.metaTags, metaDesc: product.metaDescription };
-    console.log("related", relatedProducts)
-
-
     return (
         <Box>
             <Layout metaInfo={metaInfo}>

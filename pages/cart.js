@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Global/Layout';
 import ResponsiveContainer from '../components/Global/ResponsiveContainer';
 import { AiFillWarning } from 'react-icons/ai';
@@ -7,9 +7,13 @@ import { BsX } from 'react-icons/bs';
 import productImage from '../public/images/productDemoImage.png';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import axios from "axios";
 
 const Cart = () => {
     const metaInfo = { title: "Cart | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, blog, fast commerce blog", metaDesc: "Contact with fast commerce to get the best deal" };
+
+    const cart_items = useSelector((state) => state.addItemToCart);
 
     const [quantity, setQuantity] = useState(1);
     const handleSetQuantity = (method) => {
@@ -25,6 +29,17 @@ const Cart = () => {
             setQuantity(quantity + 1)
         }
     }
+
+    useEffect(() => {
+        let cart_items_id = [];
+        cart_items.map(item => cart_items_id.push(item.id))
+        if (cart_items_id.length > 0) {
+            axios.get(`https://fast-commerce-backend.onrender.com/cart-items?products=${cart_items_id}`).then((res) => {
+                console.log("cart response", res.data)
+            })
+        }
+
+    }, [cart_items])
 
 
     return (

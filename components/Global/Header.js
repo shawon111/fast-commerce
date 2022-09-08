@@ -1,5 +1,5 @@
 import { Badge, Box, Button, Divider, Grid, List, ListItem, ListItemText, Menu, MenuItem, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 import Link from 'next/link';
 import { FaSearch, FaRegUser } from 'react-icons/fa';
@@ -19,7 +19,7 @@ const Header = () => {
     const router = useRouter();
 
     const cart_items = useSelector((state)=> state.addItemToCart);
-    console.log("cart items 101", cart_items)
+    console.log("cart-items-cart-page", cart_items)
     const dispatch = useDispatch();
 
     const handleSearch = (e) => {
