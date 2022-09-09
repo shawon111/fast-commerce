@@ -9,7 +9,7 @@ import { HiMenu } from 'react-icons/hi';
 import DropDownMenu from './AccountDropDownMenu';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddToSearchResult } from '../../redux/actions';
+import { AddToSearchResult, setInitialState } from '../../redux/actions';
 import { useRouter } from 'next/router';
 
 const Header = () => {
@@ -17,8 +17,17 @@ const Header = () => {
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
     const router = useRouter();
-
+    const [cartItems, setCartItems] = useState([])
     const cart_items = useSelector((state)=> state.addItemToCart);
+    useEffect(()=>{
+        if(typeof window !== 'undefined'){
+                const checkLocalStorage = JSON.parse(localStorage.getItem("cart_items"));
+                if(checkLocalStorage.length > 0){
+                    console.log("got from localstorage", checkLocalStorage)
+                    dispatch(setInitialState(checkLocalStorage))
+                }
+            }
+    }, [])
     console.log("cart-items-cart-page", cart_items)
     const dispatch = useDispatch();
 

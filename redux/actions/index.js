@@ -44,3 +44,10 @@ export const deleteProductFromCart = (id) => {
         payload: id
     }
 }
+
+export const setInitialState = (items) => {
+    return {
+        type: "SETINITIALSTATE",
+        payload: items
+    }
+}

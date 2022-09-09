@@ -4,13 +4,11 @@ import Image from 'next/image';
 import { RiHeartAddLine, RiAlignLeft, RiShoppingCart2Line } from 'react-icons/ri';
 import { HiSearch } from 'react-icons/hi';
 import Link from 'next/link';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AddToCartSingle } from '../../redux/actions';
 
 const BasicProductItem = ({ product }) => {
     const { name, price, _id, featuredImageUrl } = product;
-
-    const cart_items = useSelector((state)=> state.addItemToCart);
 
     const dispatch = useDispatch();
 
