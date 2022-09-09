@@ -4,7 +4,6 @@ import Layout from '../components/Global/Layout';
 import ResponsiveContainer from '../components/Global/ResponsiveContainer';
 import { AiFillWarning } from 'react-icons/ai';
 import { BsX } from 'react-icons/bs';
-import productImage from '../public/images/productDemoImage.png';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
@@ -61,7 +60,11 @@ const Cart = () => {
     const getCartSubTotal = () => {
         let subtotal = 0;
         for (const item = 0; item < cart_items.length; item++) {
-            subtotal = subtotal + (cart_items[item].qty * cartItemsDetails[item].price)
+            const findInCart = cart_items.find(cartItem => cartItem.id === cartItemsDetails[item]._id);
+            // console.log("find item in cart", findInCart)
+            if (findInCart) {
+                subtotal = subtotal + (findInCart.qty * parseFloat(cartItemsDetails[item].price))
+            }
         }
         return subtotal;
     }
@@ -265,17 +268,17 @@ const Cart = () => {
                                                             ${getTotalPriceOfAnItem(item._id)}
                                                         </Typography>
                                                     </Grid>
-                                                </Grid>) 
-                                                :
-                                                 <Typography sx={{
-                                                    color: '#103178',
-                                                    fontWeight: '400',
-                                                    lineHeight: '1.3',
-                                                    fontSize: { lg: '16px', sm: '15px', xs: '14px' },
-                                                    marginTop: '25px',
-                                                }} variant='h3'>
-                                                    <cite>No product in the cart.</cite>
-                                                </Typography>
+                                                </Grid>)
+                                                    :
+                                                    <Typography sx={{
+                                                        color: '#103178',
+                                                        fontWeight: '400',
+                                                        lineHeight: '1.3',
+                                                        fontSize: { lg: '16px', sm: '15px', xs: '14px' },
+                                                        marginTop: '25px',
+                                                    }} variant='h3'>
+                                                        <cite>No product in the cart.</cite>
+                                                    </Typography>
                                             }
                                             <Grid container spacing={2} sx={{
                                                 marginTop: '40px'
