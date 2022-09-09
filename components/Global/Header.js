@@ -18,15 +18,17 @@ const Header = () => {
     const [showSuggestion, setShowSuggestion] = useState(false);
     const router = useRouter();
     const [cartItems, setCartItems] = useState([])
-    const cart_items = useSelector((state)=> state.addItemToCart);
-    useEffect(()=>{
-        if(typeof window !== 'undefined'){
+    const cart_items = useSelector((state) => state.addItemToCart);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if (localStorage.getItem("cart_items") !== null) {
                 const checkLocalStorage = JSON.parse(localStorage.getItem("cart_items"));
-                if(checkLocalStorage.length > 0){
+                if (checkLocalStorage.length > 0) {
                     console.log("got from localstorage", checkLocalStorage)
                     dispatch(setInitialState(checkLocalStorage))
                 }
             }
+        }
     }, [])
     console.log("cart-items-cart-page", cart_items)
     const dispatch = useDispatch();
@@ -47,7 +49,7 @@ const Header = () => {
         }
     }
 
-    const handleGoToSearchResult = () =>{
+    const handleGoToSearchResult = () => {
         dispatch(AddToSearchResult(searchSuggestions));
         setShowSuggestion(false)
         router.push('/search-result/products')
@@ -159,7 +161,7 @@ const Header = () => {
                                     variant="text"
                                     height="35px"
                                     fontSize="40px"
-                                    onClick={()=> handleGoToSearchResult()}
+                                    onClick={() => handleGoToSearchResult()}
                                 ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
                             </Box>
                         </Grid>
@@ -226,7 +228,7 @@ const Header = () => {
                                     variant="text"
                                     height="35px"
                                     fontSize="40px"
-                                    onClick={()=> handleGoToSearchResult()}
+                                    onClick={() => handleGoToSearchResult()}
                                 ><FaSearch className='darkText' style={{ fontSize: '20px' }} /></Button>
                             </Box>
                         </Grid>
@@ -288,11 +290,11 @@ const Header = () => {
                                                 }}
                                             >
                                                 <Link href="/cart">
-                                                <RiShoppingCart2Line style={{
-                                                    fontSize: '23px',
-                                                    color: '#ff9923',
-                                                    fontWeight: '200'
-                                                }}></RiShoppingCart2Line>
+                                                    <RiShoppingCart2Line style={{
+                                                        fontSize: '23px',
+                                                        color: '#ff9923',
+                                                        fontWeight: '200'
+                                                    }}></RiShoppingCart2Line>
                                                 </Link>
                                             </Badge>
                                         </Box>
