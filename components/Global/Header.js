@@ -17,7 +17,6 @@ const Header = () => {
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
     const router = useRouter();
-    const [cartItems, setCartItems] = useState([])
     const cart_items = useSelector((state) => state.addItemToCart);
     useEffect(() => {
         if (typeof window !== 'undefined') {

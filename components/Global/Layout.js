@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Header from './Header';
 import Footer from './Footer';
 import ShippingFeatures from './ShippingFeatures';
+import MobileBottomNavigation from './MobileBottomNavigation';
 
 const Layout = ({ children, metaInfo }) => {
     const { title, keywords, metaDesc } = metaInfo;
@@ -21,6 +22,7 @@ const Layout = ({ children, metaInfo }) => {
                 <ShippingFeatures />
             </main>
             <Footer />
+            <MobileBottomNavigation />
         </div>
     );
 };
