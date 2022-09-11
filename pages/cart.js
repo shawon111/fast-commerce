@@ -129,8 +129,10 @@ const Cart = () => {
                                 <Grid container spacing={4}>
                                     <Grid item md={8} xs={12}>
                                         <Box>
-                                            <Grid container spacing={0}>
-                                                <Grid item md={6} sx={{
+                                            <Grid sx={{
+                                                display: { sm: 'block', xs: 'none' }
+                                            }} container spacing={0}>
+                                                <Grid item md={6} sm={6} sx={{
                                                     paddingRight: '45px'
                                                 }}>
                                                     <Typography variant='h6' sx={{
@@ -142,7 +144,7 @@ const Cart = () => {
                                                         Product
                                                     </Typography>
                                                 </Grid>
-                                                <Grid item md={5} sx={{
+                                                <Grid item md={5} sm={4} sx={{
                                                     paddingRight: '45px'
                                                 }}>
                                                     <Typography variant='h6' sx={{
@@ -154,7 +156,7 @@ const Cart = () => {
                                                         Quantity
                                                     </Typography>
                                                 </Grid>
-                                                <Grid item md={1}>
+                                                <Grid item md={1} sm={2}>
                                                     <Typography variant='h6' sx={{
                                                         color: '#103178',
                                                         fontWeight: '600',
@@ -172,8 +174,8 @@ const Cart = () => {
                                                     marginTop: '15px',
                                                     alignItems: 'center'
                                                 }} container spacing={0}>
-                                                    <Grid item md={6} sx={{
-                                                        paddingRight: '45px'
+                                                    <Grid item md={6} sm={6} xs={12} sx={{
+                                                        paddingRight: {sm: '45px', xs: '0px'}
                                                     }}>
                                                         <Box sx={{
                                                             display: 'flex',
@@ -225,8 +227,9 @@ const Cart = () => {
                                                             </Box>
                                                         </Box>
                                                     </Grid>
-                                                    <Grid item md={5} sx={{
-                                                        paddingRight: '45px'
+                                                    <Grid item md={5} sm={4} xs={8} sx={{
+                                                        paddingRight: '45px',
+                                                        display: { sm: 'block', xs: 'none' }
                                                     }}>
                                                         <Box sx={{
                                                             display: 'flex',
@@ -257,7 +260,10 @@ const Cart = () => {
                                                             }} onClick={() => increaseQty(item._id)} />
                                                         </Box>
                                                     </Grid>
-                                                    <Grid item md={1}>
+                                                    <Grid item md={1} sx={{
+                                                        display: { sm: 'block', xs: 'none' }
+                                                    }} 
+                                                    sm={2} xs={4}>
                                                         <Typography variant='h6' sx={{
                                                             color: '#103178',
                                                             fontWeight: '700',
@@ -268,6 +274,80 @@ const Cart = () => {
                                                             ${getTotalPriceOfAnItem(item._id)}
                                                         </Typography>
                                                     </Grid>
+                                                    <Box sx={{
+                                                        display: { sm: 'none', xs: 'block' },
+                                                        width: '100%'
+                                                    }}>
+                                                        <Box sx={{
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            borderTop: '1px solid #f0f2f6',
+                                                            padding: '6px 0px'
+                                                        }}>
+                                                            <Typography variant='h6' sx={{
+                                                                color: '#103178',
+                                                                fontWeight: '600',
+                                                                lineHeight: '1.3',
+                                                                fontSize: { lg: '16px', xs: '14px' },
+                                                            }}>
+                                                                Quantity:
+                                                            </Typography>
+                                                            <Box sx={{
+                                                                display: 'flex',
+                                                                justifyContent: 'space-around',
+                                                                padding: '12px 15px',
+                                                                backgroundColor: '#F0F2F5',
+                                                                alignItems: 'center',
+                                                                borderRadius: '40px',
+                                                            }}>
+                                                                <BiMinus style={{
+                                                                    color: '#103178',
+                                                                    cursor: 'pointer',
+                                                                    width: '40px',
+                                                                    display: 'inline-block'
+                                                                }} onClick={() => decreaseQty(item._id)} />
+                                                                <Typography sx={{
+                                                                    color: '#103178',
+                                                                    fontWeight: '600',
+                                                                    width: { sm: '50px', xs: '30px' },
+                                                                    display: 'inline-block',
+                                                                    textAlign: 'center'
+                                                                }} variant='p'>{getQuantityValueFromState(item._id)}</Typography>
+                                                                <BiPlus style={{
+                                                                    color: '#103178',
+                                                                    cursor: 'pointer',
+                                                                    width: '40px',
+                                                                    display: 'inline-block'
+                                                                }} onClick={() => increaseQty(item._id)} />
+                                                            </Box>
+                                                        </Box>
+                                                        <Box sx={{
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            borderTop: '1px solid #f0f2f6',
+                                                            padding: '6px 0px'
+                                                        }}>
+                                                            <Typography variant='h6' sx={{
+                                                                color: '#103178',
+                                                                fontWeight: '600',
+                                                                lineHeight: '1.3',
+                                                                fontSize: { lg: '16px', xs: '14px' },
+                                                            }}>
+                                                                Total:
+                                                            </Typography>
+                                                            <Typography variant='h6' sx={{
+                                                                color: '#103178',
+                                                                fontWeight: '700',
+                                                                lineHeight: '1.3',
+                                                                fontSize: { lg: '16px', xs: '14px' },
+                                                                marginTop: '10px'
+                                                            }}>
+                                                                ${getTotalPriceOfAnItem(item._id)}
+                                                            </Typography>
+                                                        </Box>
+                                                    </Box>
                                                 </Grid>)
                                                     :
                                                     <Typography sx={{
@@ -281,7 +361,7 @@ const Cart = () => {
                                                     </Typography>
                                             }
                                             <Grid container spacing={2} sx={{
-                                                marginTop: '40px'
+                                                marginTop: { lg: '40px', sm: '30px', xs: '20px' }
                                             }}>
                                                 <Grid item lg={6} md={4} xs={12}>
                                                     <Box>
