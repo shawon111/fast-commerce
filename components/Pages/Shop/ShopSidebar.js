@@ -3,16 +3,7 @@ import React from 'react';
 import Link from 'next/link'
 
 const ShopSidebar = () => {
-    const allCategories = [
-        "Fashion",
-        "Womens",
-        "Mens",
-        "Clothes",
-        "Shoes",
-        "Pants",
-        "Watches",
-        "Bags"
-    ];
+    const categoryList = [{ name: "Fashion", link: '/category/fashion' }, { name: "Womens", link: '/category/women' }, { name: "Men", link: '/category/men' }, { name: "Clothes", link: '/category/clothes' }, { name: "Shoes", link: '/category/shoes' }, { name: "Pants", link: '/category/pants' }, { name: "Watches", link: '/category/watch' }, { name: "Bags", link: '/category/bags' }];;
     return (
         <Box>
             <Box sx={{
@@ -29,7 +20,7 @@ const ShopSidebar = () => {
                     Categories
                 </Typography>
                 {
-                    allCategories.map((item, index) => <Link key={index} href="/">
+                    categoryList.map((item, index) => <Link key={index} href={item.link}>
                         <Typography sx={{
                             color: '#103178',
                             fontSize: { lg: '18px', sm: '16px', xs: '14px' },
@@ -41,7 +32,7 @@ const ShopSidebar = () => {
                                 color: '#FD8D27'
                             }
                         }} variant='h5'>
-                            {item}
+                            {item.name}
                         </Typography>
                     </Link>)
                 }

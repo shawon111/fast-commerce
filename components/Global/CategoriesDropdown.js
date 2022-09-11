@@ -4,7 +4,7 @@ import React from 'react';
 import ResponsiveContainer from './ResponsiveContainer';
 
 const CategoriesDropdown = ({setShowCategoryDropdown, showCategoryDropdown}) => {
-    const categoryList = [{ name: "Fashion", link: '/category/fashion' }, { name: "Womens", link: '/category/womens' }, { name: "Mens", link: '/category/mens' }, { name: "Clothes", link: '/category/clothes' }, { name: "Shoes", link: '/category/shoes' }, { name: "Pants", link: '/category/pants' }, { name: "Watches", link: '/category/watches' }, { name: "Bags", link: '/category/bags' }];
+    const categoryList = [{ name: "Fashion", link: '/category/fashion' }, { name: "Womens", link: '/category/women' }, { name: "Men", link: '/category/men' }, { name: "Clothes", link: '/category/clothes' }, { name: "Shoes", link: '/category/shoes' }, { name: "Pants", link: '/category/pants' }, { name: "Watches", link: '/category/watch' }, { name: "Bags", link: '/category/bags' }];
     return (
         <Box sx={{
             position: 'relative',
@@ -25,7 +25,7 @@ const CategoriesDropdown = ({setShowCategoryDropdown, showCategoryDropdown}) => 
                         boxShadow: '0px 0px 25px -10px #c7c7c9'
                     }}>
                         {
-                            categoryList.map((item, index) => <Link onClick={()=> setShowCategoryDropdown(false)} href={item.link} key={index}><ListItem sx={{
+                            categoryList.map((item, index) => <Link href={item.link} key={index}><ListItem onClick={()=> setShowCategoryDropdown(false)} sx={{
                                 cursor: 'pointer',
                                 backgroundColor: `${index%2 === 0 ? "#fff" : "#f0f2f5"}`,
                                 borderBottom: '1px solid #f0f2f5',

@@ -27,20 +27,17 @@ const Header = () => {
             if (localStorage.getItem("cart_items") !== null) {
                 const checkLocalStorage = JSON.parse(localStorage.getItem("cart_items"));
                 if (checkLocalStorage.length > 0) {
-                    console.log("got from localstorage", checkLocalStorage)
                     dispatch(setInitialState(checkLocalStorage))
                 }
             }
         }
     }, [])
-    console.log("cart-items-cart-page", cart_items)
     const dispatch = useDispatch();
 
     const handleSearch = (e) => {
         const searchText = e.target.value;
         setSearchTextValue(searchText);
         axios.get(`https://fast-commerce-backend.onrender.com/all/search?text=${searchText}`).then((res) => {
-            console.log(res.data)
             if (res.data === "No documents found!") {
                 setSearchSuggestions([{ name: "No product found!", _id: "/" }])
             } else {

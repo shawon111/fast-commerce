@@ -24,7 +24,6 @@ const Cart = () => {
         cart_items.map(item => cart_items_id.push(item.id))
         if (cart_items_id.length > 0) {
             axios.get(`https://fast-commerce-backend.onrender.com/cart-items?products=${cart_items_id}`).then((res) => {
-                console.log("cart response", res.data)
                 setCartItemsDetails(res.data)
             })
         }
@@ -61,7 +60,6 @@ const Cart = () => {
         let subtotal = 0;
         for (const item = 0; item < cart_items.length; item++) {
             const findInCart = cart_items.find(cartItem => cartItem.id === cartItemsDetails[item]._id);
-            // console.log("find item in cart", findInCart)
             if (findInCart) {
                 subtotal = subtotal + (findInCart.qty * parseFloat(cartItemsDetails[item].price))
             }
