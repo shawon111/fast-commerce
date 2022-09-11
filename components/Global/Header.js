@@ -11,12 +11,15 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { AddToSearchResult, getSearchText, setInitialState } from '../../redux/actions';
 import { useRouter } from 'next/router';
+import CategoriesDropdown from './CategoriesDropdown';
 
 const Header = () => {
     const [showMobileSearchField, setShowMobileSearchField] = useState(false);
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
     const [searchTextValue, setSearchTextValue] = useState('');
+    const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
+
     const router = useRouter();
     const cart_items = useSelector((state) => state.addItemToCart);
     useEffect(() => {
@@ -318,10 +321,10 @@ const Header = () => {
                                 <ul className='nav-menu' style={{
                                     display: 'flex',
                                 }}>
-                                    <li style={{ cursor: 'pointer' }}><span style={{
+                                    <li onClick={()=> setShowCategoryDropdown(!showCategoryDropdown)} style={{ cursor: 'pointer' }}><span style={{
                                         display: 'flex',
                                         alignItems: 'center'
-                                    }}><HiMenu style={{ marginRight: '5px', fontSize: '20px', fontWeight: '700' }} />Products</span></li>
+                                    }}><HiMenu style={{ marginRight: '5px', fontSize: '20px', fontWeight: '700' }} />Categories</span></li>
                                     <li><Link href="/">Homepage</Link></li>
                                     <li><Link href="/shop">Shop</Link></li>
                                     <li><Link href="/blog">Blog</Link></li>
@@ -335,6 +338,9 @@ const Header = () => {
                             </Typography>
                         </Grid>
                     </Grid>
+                    <Box>
+                        <CategoriesDropdown showCategoryDropdown={showCategoryDropdown} setShowCategoryDropdown={setShowCategoryDropdown} />
+                    </Box>
                 </ResponsiveContainer>
             </Stack>
         </Box>
