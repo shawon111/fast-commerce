@@ -98,7 +98,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
     const { slug } = params;
-    const productsRes = await fetch(`http://localhost:5000/products/category/${slug}`);
+    const productsRes = await fetch(`https://fast-commerce-backend.onrender.com/products/category/${slug}`);
     const products = await productsRes.json();
 
     return {
