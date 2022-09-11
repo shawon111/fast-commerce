@@ -51,3 +51,11 @@ export const setInitialState = (items) => {
         payload: items
     }
 }
+
+export const getSearchText = (text) => {
+    console.log("payload", text)
+    return {
+        type: "SEARCHTEXT",
+        payload: text
+    }
+}

@@ -9,13 +9,14 @@ import { HiMenu } from 'react-icons/hi';
 import DropDownMenu from './AccountDropDownMenu';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddToSearchResult, setInitialState } from '../../redux/actions';
+import { AddToSearchResult, getSearchText, setInitialState } from '../../redux/actions';
 import { useRouter } from 'next/router';
 
 const Header = () => {
     const [showMobileSearchField, setShowMobileSearchField] = useState(false);
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
+    const [searchTextValue, setSearchTextValue] = useState('');
     const router = useRouter();
     const cart_items = useSelector((state) => state.addItemToCart);
     useEffect(() => {
@@ -34,6 +35,7 @@ const Header = () => {
 
     const handleSearch = (e) => {
         const searchText = e.target.value;
+        setSearchTextValue(searchText);
         axios.get(`https://fast-commerce-backend.onrender.com/all/search?text=${searchText}`).then((res) => {
             console.log(res.data)
             if (res.data === "No documents found!") {
@@ -50,8 +52,9 @@ const Header = () => {
 
     const handleGoToSearchResult = () => {
         dispatch(AddToSearchResult(searchSuggestions));
-        setShowSuggestion(false)
-        router.push('/search-result/products')
+        dispatch(getSearchText(searchTextValue));
+        setShowSuggestion(false);
+        router.push('/search-result/products');
 
     }
 
