@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
 import { decreaseQtyState, deleteProductFromCart, increaseQtyState } from '../redux/actions';
 import Link from 'next/link';
+import { Bars } from 'react-loader-spinner';
 
 const Cart = () => {
     const metaInfo = { title: "Cart | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, blog, fast commerce blog", metaDesc: "Contact with fast commerce to get the best deal" };
@@ -18,13 +19,16 @@ const Cart = () => {
 
     const [cartItemsDetails, setCartItemsDetails] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
+    const [showPreloader, setShowPreloader] = useState(false)
 
     useEffect(() => {
         let cart_items_id = [];
         cart_items.map(item => cart_items_id.push(item.id))
         if (cart_items_id.length > 0) {
+            setShowPreloader(true)
             axios.get(`https://fast-commerce-backend.onrender.com/cart-items?products=${cart_items_id}`).then((res) => {
                 setCartItemsDetails(res.data)
+                setShowPreloader(false)
             })
         }
 
@@ -86,290 +90,346 @@ const Cart = () => {
         <>
             <Layout metaInfo={metaInfo}>
                 <ResponsiveContainer>
-                    <Box sx={{
-                        paddingTop: { lg: '50px', sm: '30px', xs: '20px' }
-                    }}>
-                        <Typography sx={{
-                            color: '#103178',
-                            fontWeight: '600',
-                            lineHeight: '1.3',
-                            fontSize: { lg: '40px', sm: '30px', xs: '25px' },
-                            marginBottom: '30px'
-                        }} variant='h3'>
-                            Shopping Cart
-                        </Typography>
-                        {cartItemsDetails.length < 1 ?
+                    {
+                        showPreloader ?
                             <Box sx={{
-                                padding: '40px 0px',
                                 display: 'flex',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                marginTop: {lg: '50px', sm: '30px', xs: '20px'}
                             }}>
-                                <Box>
-                                    <AiFillWarning style={{
-                                        color: '#FAAD14',
-                                        fontSize: '70px',
-                                        display: 'block',
-                                        margin: 'auto',
-                                        marginBottom: '15px'
-                                    }} />
-                                    <Typography sx={{
-                                        color: '#000000d9',
-                                        fontWeight: '500',
-                                        lineHeight: '1.3',
-                                        fontSize: { lg: '20px', sm: '18px', xs: '16px' },
-                                    }} variant='h3'>
-                                        No product in cart.
-                                    </Typography>
-                                </Box>
+                                <Bars
+                                    height="100"
+                                    width="100"
+                                    color="#103178"
+                                    ariaLabel="bars-loading"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                    visible={true}
+                                />
                             </Box>
+
                             :
+
                             <Box sx={{
+                                paddingTop: { lg: '50px', sm: '30px', xs: '20px' }
                             }}>
-                                <Grid container spacing={4}>
-                                    <Grid item md={8} xs={12}>
+                                <Typography sx={{
+                                    color: '#103178',
+                                    fontWeight: '600',
+                                    lineHeight: '1.3',
+                                    fontSize: { lg: '40px', sm: '30px', xs: '25px' },
+                                    marginBottom: '30px'
+                                }} variant='h3'>
+                                    Shopping Cart
+                                </Typography>
+                                {cartItemsDetails.length < 1 ?
+                                    <Box sx={{
+                                        padding: '40px 0px',
+                                        display: 'flex',
+                                        justifyContent: 'center'
+                                    }}>
                                         <Box>
-                                            <Grid sx={{
-                                                display: { sm: 'block', xs: 'none' }
-                                            }} container spacing={0}>
-                                                <Grid item md={6} sm={6} sx={{
-                                                    paddingRight: '45px'
-                                                }}>
-                                                    <Typography variant='h6' sx={{
-                                                        color: '#103178',
-                                                        fontWeight: '600',
-                                                        lineHeight: '1.3',
-                                                        fontSize: { lg: '16px', xs: '14px' },
-                                                    }}>
-                                                        Product
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item md={5} sm={4} sx={{
-                                                    paddingRight: '45px'
-                                                }}>
-                                                    <Typography variant='h6' sx={{
-                                                        color: '#103178',
-                                                        fontWeight: '600',
-                                                        lineHeight: '1.3',
-                                                        fontSize: { lg: '16px', xs: '14px' },
-                                                    }}>
-                                                        Quantity
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item md={1} sm={2}>
-                                                    <Typography variant='h6' sx={{
-                                                        color: '#103178',
-                                                        fontWeight: '600',
-                                                        lineHeight: '1.3',
-                                                        fontSize: { lg: '16px', xs: '14px' },
-                                                    }}>
-                                                        Total
-                                                    </Typography>
-                                                </Grid>
-                                            </Grid>
-                                            {
-                                                cart_items.length ? cartItemsDetails.map((item, index) => <Grid key={index} sx={{
-                                                    padding: '8px 8px',
-                                                    border: '1px solid #f0f2f5',
-                                                    marginTop: '15px',
-                                                    alignItems: 'center'
-                                                }} container spacing={0}>
-                                                    <Grid item md={6} sm={6} xs={12} sx={{
-                                                        paddingRight: {sm: '45px', xs: '0px'}
-                                                    }}>
-                                                        <Box sx={{
-                                                            display: 'flex',
-                                                            justifyContent: 'flex-start',
-                                                            alignItems: 'center',
-                                                            gap: '15px'
+                                            <AiFillWarning style={{
+                                                color: '#FAAD14',
+                                                fontSize: '70px',
+                                                display: 'block',
+                                                margin: 'auto',
+                                                marginBottom: '15px'
+                                            }} />
+                                            <Typography sx={{
+                                                color: '#000000d9',
+                                                fontWeight: '500',
+                                                lineHeight: '1.3',
+                                                fontSize: { lg: '20px', sm: '18px', xs: '16px' },
+                                            }} variant='h3'>
+                                                No product in cart.
+                                            </Typography>
+                                        </Box>
+                                    </Box>
+                                    :
+                                    <Box sx={{
+                                    }}>
+                                        <Grid container spacing={4}>
+                                            <Grid item md={8} xs={12}>
+                                                <Box>
+                                                    <Grid sx={{
+                                                        display: { sm: 'flex', xs: 'none' }
+                                                    }} container spacing={0}>
+                                                        <Grid item md={6} sm={6} sx={{
+                                                            paddingRight: '45px'
                                                         }}>
-                                                            <Box>
-                                                                <button style={{
-                                                                    backgroundColor: 'transparent',
-                                                                    border: 'none',
-                                                                    cursor: 'pointer'
-                                                                }}
-                                                                    onClick={() => deleteItemFromCart(item._id)}
-                                                                >
-                                                                    <BsX style={{
-                                                                        color: '#103178',
-                                                                        fontSize: '22px'
-                                                                    }} />
-                                                                </button>
-                                                            </Box>
-                                                            <Box>
-                                                                <Image
-                                                                    src={`https://fast-commerce-backend.onrender.com/${item.featuredImageUrl}`}
-                                                                    alt="cart-product-image"
-                                                                    width={90}
-                                                                    height={90}
-                                                                    priority
-                                                                />
-                                                            </Box>
-                                                            <Box>
-                                                                <Typography variant='h6' sx={{
-                                                                    color: '#103178',
-                                                                    fontWeight: '500',
-                                                                    lineHeight: '1.3',
-                                                                    fontSize: { lg: '15px', xs: '14px' },
+                                                            <Typography variant='h6' sx={{
+                                                                color: '#103178',
+                                                                fontWeight: '600',
+                                                                lineHeight: '1.3',
+                                                                fontSize: { lg: '16px', xs: '14px' },
+                                                            }}>
+                                                                Product
+                                                            </Typography>
+                                                        </Grid>
+                                                        <Grid item md={5} sm={4} sx={{
+                                                            paddingRight: '45px'
+                                                        }}>
+                                                            <Typography variant='h6' sx={{
+                                                                color: '#103178',
+                                                                fontWeight: '600',
+                                                                lineHeight: '1.3',
+                                                                fontSize: { lg: '16px', xs: '14px' },
+                                                            }}>
+                                                                Quantity
+                                                            </Typography>
+                                                        </Grid>
+                                                        <Grid item md={1} sm={2}>
+                                                            <Typography variant='h6' sx={{
+                                                                color: '#103178',
+                                                                fontWeight: '600',
+                                                                lineHeight: '1.3',
+                                                                fontSize: { lg: '16px', xs: '14px' },
+                                                            }}>
+                                                                Total
+                                                            </Typography>
+                                                        </Grid>
+                                                    </Grid>
+                                                    {
+                                                        cart_items.length ? cartItemsDetails.map((item, index) => <Grid key={index} sx={{
+                                                            padding: '8px 8px',
+                                                            border: '1px solid #f0f2f5',
+                                                            marginTop: '15px',
+                                                            alignItems: 'center'
+                                                        }} container spacing={0}>
+                                                            <Grid item md={6} sm={6} xs={12} sx={{
+                                                                paddingRight: { sm: '45px', xs: '0px' }
+                                                            }}>
+                                                                <Box sx={{
+                                                                    display: 'flex',
+                                                                    justifyContent: 'flex-start',
+                                                                    alignItems: 'center',
+                                                                    gap: '15px'
                                                                 }}>
-                                                                    {item.name}
-                                                                </Typography>
+                                                                    <Box>
+                                                                        <button style={{
+                                                                            backgroundColor: 'transparent',
+                                                                            border: 'none',
+                                                                            cursor: 'pointer'
+                                                                        }}
+                                                                            onClick={() => deleteItemFromCart(item._id)}
+                                                                        >
+                                                                            <BsX style={{
+                                                                                color: '#103178',
+                                                                                fontSize: '22px'
+                                                                            }} />
+                                                                        </button>
+                                                                    </Box>
+                                                                    <Box>
+                                                                        <Image
+                                                                            src={`https://fast-commerce-backend.onrender.com/${item.featuredImageUrl}`}
+                                                                            alt="cart-product-image"
+                                                                            width={90}
+                                                                            height={90}
+                                                                            priority
+                                                                        />
+                                                                    </Box>
+                                                                    <Box>
+                                                                        <Typography variant='h6' sx={{
+                                                                            color: '#103178',
+                                                                            fontWeight: '500',
+                                                                            lineHeight: '1.3',
+                                                                            fontSize: { lg: '15px', xs: '14px' },
+                                                                        }}>
+                                                                            {item.name}
+                                                                        </Typography>
+                                                                        <Typography variant='h6' sx={{
+                                                                            color: '#103178',
+                                                                            fontWeight: '600',
+                                                                            lineHeight: '1.3',
+                                                                            fontSize: { lg: '16px', xs: '14px' },
+                                                                            marginTop: '10px'
+                                                                        }}>
+                                                                            ${item.price}
+                                                                        </Typography>
+                                                                    </Box>
+                                                                </Box>
+                                                            </Grid>
+                                                            <Grid item md={5} sm={4} xs={8} sx={{
+                                                                paddingRight: '45px',
+                                                                display: { sm: 'block', xs: 'none' }
+                                                            }}>
+                                                                <Box sx={{
+                                                                    display: 'flex',
+                                                                    justifyContent: 'space-around',
+                                                                    padding: '12px 15px',
+                                                                    backgroundColor: '#F0F2F5',
+                                                                    alignItems: 'center',
+                                                                    borderRadius: '40px',
+                                                                }}>
+                                                                    <BiMinus style={{
+                                                                        color: '#103178',
+                                                                        cursor: 'pointer',
+                                                                        width: '40px',
+                                                                        display: 'inline-block'
+                                                                    }} onClick={() => decreaseQty(item._id)} />
+                                                                    <Typography sx={{
+                                                                        color: '#103178',
+                                                                        fontWeight: '600',
+                                                                        width: { sm: '50px', xs: '30px' },
+                                                                        display: 'inline-block',
+                                                                        textAlign: 'center'
+                                                                    }} variant='p'>{getQuantityValueFromState(item._id)}</Typography>
+                                                                    <BiPlus style={{
+                                                                        color: '#103178',
+                                                                        cursor: 'pointer',
+                                                                        width: '40px',
+                                                                        display: 'inline-block'
+                                                                    }} onClick={() => increaseQty(item._id)} />
+                                                                </Box>
+                                                            </Grid>
+                                                            <Grid item md={1} sx={{
+                                                                display: { sm: 'block', xs: 'none' }
+                                                            }}
+                                                                sm={2} xs={4}>
                                                                 <Typography variant='h6' sx={{
                                                                     color: '#103178',
-                                                                    fontWeight: '600',
+                                                                    fontWeight: '700',
                                                                     lineHeight: '1.3',
                                                                     fontSize: { lg: '16px', xs: '14px' },
                                                                     marginTop: '10px'
                                                                 }}>
-                                                                    ${item.price}
+                                                                    ${getTotalPriceOfAnItem(item._id)}
                                                                 </Typography>
+                                                            </Grid>
+                                                            <Box sx={{
+                                                                display: { sm: 'none', xs: 'block' },
+                                                                width: '100%'
+                                                            }}>
+                                                                <Box sx={{
+                                                                    display: 'flex',
+                                                                    justifyContent: 'space-between',
+                                                                    alignItems: 'center',
+                                                                    borderTop: '1px solid #f0f2f6',
+                                                                    padding: '6px 0px'
+                                                                }}>
+                                                                    <Typography variant='h6' sx={{
+                                                                        color: '#103178',
+                                                                        fontWeight: '600',
+                                                                        lineHeight: '1.3',
+                                                                        fontSize: { lg: '16px', xs: '14px' },
+                                                                    }}>
+                                                                        Quantity:
+                                                                    </Typography>
+                                                                    <Box sx={{
+                                                                        display: 'flex',
+                                                                        justifyContent: 'space-around',
+                                                                        padding: '12px 15px',
+                                                                        backgroundColor: '#F0F2F5',
+                                                                        alignItems: 'center',
+                                                                        borderRadius: '40px',
+                                                                    }}>
+                                                                        <BiMinus style={{
+                                                                            color: '#103178',
+                                                                            cursor: 'pointer',
+                                                                            width: '40px',
+                                                                            display: 'inline-block'
+                                                                        }} onClick={() => decreaseQty(item._id)} />
+                                                                        <Typography sx={{
+                                                                            color: '#103178',
+                                                                            fontWeight: '600',
+                                                                            width: { sm: '50px', xs: '30px' },
+                                                                            display: 'inline-block',
+                                                                            textAlign: 'center'
+                                                                        }} variant='p'>{getQuantityValueFromState(item._id)}</Typography>
+                                                                        <BiPlus style={{
+                                                                            color: '#103178',
+                                                                            cursor: 'pointer',
+                                                                            width: '40px',
+                                                                            display: 'inline-block'
+                                                                        }} onClick={() => increaseQty(item._id)} />
+                                                                    </Box>
+                                                                </Box>
+                                                                <Box sx={{
+                                                                    display: 'flex',
+                                                                    justifyContent: 'space-between',
+                                                                    alignItems: 'center',
+                                                                    borderTop: '1px solid #f0f2f6',
+                                                                    padding: '6px 0px'
+                                                                }}>
+                                                                    <Typography variant='h6' sx={{
+                                                                        color: '#103178',
+                                                                        fontWeight: '600',
+                                                                        lineHeight: '1.3',
+                                                                        fontSize: { lg: '16px', xs: '14px' },
+                                                                    }}>
+                                                                        Total:
+                                                                    </Typography>
+                                                                    <Typography variant='h6' sx={{
+                                                                        color: '#103178',
+                                                                        fontWeight: '700',
+                                                                        lineHeight: '1.3',
+                                                                        fontSize: { lg: '16px', xs: '14px' },
+                                                                        marginTop: '10px'
+                                                                    }}>
+                                                                        ${getTotalPriceOfAnItem(item._id)}
+                                                                    </Typography>
+                                                                </Box>
                                                             </Box>
-                                                        </Box>
-                                                    </Grid>
-                                                    <Grid item md={5} sm={4} xs={8} sx={{
-                                                        paddingRight: '45px',
-                                                        display: { sm: 'block', xs: 'none' }
-                                                    }}>
-                                                        <Box sx={{
-                                                            display: 'flex',
-                                                            justifyContent: 'space-around',
-                                                            padding: '12px 15px',
-                                                            backgroundColor: '#F0F2F5',
-                                                            alignItems: 'center',
-                                                            borderRadius: '40px',
-                                                        }}>
-                                                            <BiMinus style={{
-                                                                color: '#103178',
-                                                                cursor: 'pointer',
-                                                                width: '40px',
-                                                                display: 'inline-block'
-                                                            }} onClick={() => decreaseQty(item._id)} />
+                                                        </Grid>)
+                                                            :
                                                             <Typography sx={{
                                                                 color: '#103178',
-                                                                fontWeight: '600',
-                                                                width: { sm: '50px', xs: '30px' },
-                                                                display: 'inline-block',
-                                                                textAlign: 'center'
-                                                            }} variant='p'>{getQuantityValueFromState(item._id)}</Typography>
-                                                            <BiPlus style={{
-                                                                color: '#103178',
-                                                                cursor: 'pointer',
-                                                                width: '40px',
-                                                                display: 'inline-block'
-                                                            }} onClick={() => increaseQty(item._id)} />
-                                                        </Box>
-                                                    </Grid>
-                                                    <Grid item md={1} sx={{
-                                                        display: { sm: 'block', xs: 'none' }
-                                                    }} 
-                                                    sm={2} xs={4}>
-                                                        <Typography variant='h6' sx={{
-                                                            color: '#103178',
-                                                            fontWeight: '700',
-                                                            lineHeight: '1.3',
-                                                            fontSize: { lg: '16px', xs: '14px' },
-                                                            marginTop: '10px'
-                                                        }}>
-                                                            ${getTotalPriceOfAnItem(item._id)}
-                                                        </Typography>
-                                                    </Grid>
-                                                    <Box sx={{
-                                                        display: { sm: 'none', xs: 'block' },
-                                                        width: '100%'
+                                                                fontWeight: '400',
+                                                                lineHeight: '1.3',
+                                                                fontSize: { lg: '16px', sm: '15px', xs: '14px' },
+                                                                marginTop: '25px',
+                                                            }} variant='h3'>
+                                                                <cite>No product in the cart.</cite>
+                                                            </Typography>
+                                                    }
+                                                    <Grid container spacing={2} sx={{
+                                                        marginTop: { lg: '40px', sm: '30px', xs: '20px' }
                                                     }}>
-                                                        <Box sx={{
-                                                            display: 'flex',
-                                                            justifyContent: 'space-between',
-                                                            alignItems: 'center',
-                                                            borderTop: '1px solid #f0f2f6',
-                                                            padding: '6px 0px'
-                                                        }}>
-                                                            <Typography variant='h6' sx={{
-                                                                color: '#103178',
-                                                                fontWeight: '600',
-                                                                lineHeight: '1.3',
-                                                                fontSize: { lg: '16px', xs: '14px' },
-                                                            }}>
-                                                                Quantity:
-                                                            </Typography>
-                                                            <Box sx={{
-                                                                display: 'flex',
-                                                                justifyContent: 'space-around',
-                                                                padding: '12px 15px',
-                                                                backgroundColor: '#F0F2F5',
-                                                                alignItems: 'center',
-                                                                borderRadius: '40px',
-                                                            }}>
-                                                                <BiMinus style={{
-                                                                    color: '#103178',
-                                                                    cursor: 'pointer',
-                                                                    width: '40px',
-                                                                    display: 'inline-block'
-                                                                }} onClick={() => decreaseQty(item._id)} />
-                                                                <Typography sx={{
-                                                                    color: '#103178',
-                                                                    fontWeight: '600',
-                                                                    width: { sm: '50px', xs: '30px' },
-                                                                    display: 'inline-block',
-                                                                    textAlign: 'center'
-                                                                }} variant='p'>{getQuantityValueFromState(item._id)}</Typography>
-                                                                <BiPlus style={{
-                                                                    color: '#103178',
-                                                                    cursor: 'pointer',
-                                                                    width: '40px',
-                                                                    display: 'inline-block'
-                                                                }} onClick={() => increaseQty(item._id)} />
+                                                        <Grid item lg={6} md={4} xs={12}>
+                                                            <Box>
+                                                                <Link href="/shop">
+                                                                    <Button sx={{
+                                                                        textTransform: 'capitalize',
+                                                                        fontSize: { lg: '16px', xs: '14px' },
+                                                                        color: '#fff',
+                                                                        backgroundColor: '#FD8D27',
+                                                                        display: 'inline-block',
+                                                                        boxShadow: 'none',
+                                                                        borderRadius: '30px',
+                                                                        transition: 'all',
+                                                                        padding: '8px 30px',
+                                                                        "&:hover": {
+                                                                            backgroundColor: '#103178',
+                                                                            boxShadow: 'none'
+                                                                        }
+                                                                    }} variant="contained">back to shop</Button>
+                                                                </Link>
                                                             </Box>
-                                                        </Box>
-                                                        <Box sx={{
-                                                            display: 'flex',
-                                                            justifyContent: 'space-between',
-                                                            alignItems: 'center',
-                                                            borderTop: '1px solid #f0f2f6',
-                                                            padding: '6px 0px'
-                                                        }}>
-                                                            <Typography variant='h6' sx={{
-                                                                color: '#103178',
+                                                        </Grid>
+                                                        <Grid item lg={6} md={8} xs={12}>
+                                                            <input style={{
+                                                                border: 'none',
+                                                                outline: 'none',
+                                                                height: '35px',
+                                                                background: '#F0F2F5',
+                                                                padding: '23px 20px',
+                                                                fontSize: '15px',
                                                                 fontWeight: '600',
-                                                                lineHeight: '1.3',
-                                                                fontSize: { lg: '16px', xs: '14px' },
-                                                            }}>
-                                                                Total:
-                                                            </Typography>
-                                                            <Typography variant='h6' sx={{
-                                                                color: '#103178',
-                                                                fontWeight: '700',
-                                                                lineHeight: '1.3',
-                                                                fontSize: { lg: '16px', xs: '14px' },
-                                                                marginTop: '10px'
-                                                            }}>
-                                                                ${getTotalPriceOfAnItem(item._id)}
-                                                            </Typography>
-                                                        </Box>
-                                                    </Box>
-                                                </Grid>)
-                                                    :
-                                                    <Typography sx={{
-                                                        color: '#103178',
-                                                        fontWeight: '400',
-                                                        lineHeight: '1.3',
-                                                        fontSize: { lg: '16px', sm: '15px', xs: '14px' },
-                                                        marginTop: '25px',
-                                                    }} variant='h3'>
-                                                        <cite>No product in the cart.</cite>
-                                                    </Typography>
-                                            }
-                                            <Grid container spacing={2} sx={{
-                                                marginTop: { lg: '40px', sm: '30px', xs: '20px' }
-                                            }}>
-                                                <Grid item lg={6} md={4} xs={12}>
-                                                    <Box>
-                                                        <Link href="/shop">
+                                                                borderRadius: '30px',
+                                                                width: '65%',
+                                                                marginRight: '15px'
+                                                            }}
+                                                                type="text"
+                                                                required
+                                                                className='cart_input'
+                                                                placeholder='Enter your coupon'
+                                                            />
                                                             <Button sx={{
                                                                 textTransform: 'capitalize',
                                                                 fontSize: { lg: '16px', xs: '14px' },
                                                                 color: '#fff',
-                                                                backgroundColor: '#FD8D27',
+                                                                backgroundColor: '#103178',
                                                                 display: 'inline-block',
                                                                 boxShadow: 'none',
                                                                 borderRadius: '30px',
@@ -379,168 +439,133 @@ const Cart = () => {
                                                                     backgroundColor: '#103178',
                                                                     boxShadow: 'none'
                                                                 }
-                                                            }} variant="contained">back to shop</Button>
-                                                        </Link>
-                                                    </Box>
-                                                </Grid>
-                                                <Grid item lg={6} md={8} xs={12}>
-                                                    <input style={{
-                                                        border: 'none',
-                                                        outline: 'none',
-                                                        height: '35px',
-                                                        background: '#F0F2F5',
-                                                        padding: '23px 20px',
-                                                        fontSize: '15px',
-                                                        fontWeight: '600',
-                                                        borderRadius: '30px',
-                                                        width: '65%',
-                                                        marginRight: '15px'
-                                                    }}
-                                                        type="text"
-                                                        required
-                                                        className='cart_input'
-                                                        placeholder='Enter your coupon'
-                                                    />
-                                                    <Button sx={{
-                                                        textTransform: 'capitalize',
-                                                        fontSize: { lg: '16px', xs: '14px' },
-                                                        color: '#fff',
-                                                        backgroundColor: '#103178',
-                                                        display: 'inline-block',
-                                                        boxShadow: 'none',
-                                                        borderRadius: '30px',
-                                                        transition: 'all',
-                                                        padding: '8px 30px',
-                                                        "&:hover": {
-                                                            backgroundColor: '#103178',
-                                                            boxShadow: 'none'
-                                                        }
-                                                    }} variant="contained">apply</Button>
-                                                </Grid>
+                                                            }} variant="contained">apply</Button>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Box>
                                             </Grid>
-                                        </Box>
-                                    </Grid>
-                                    <Grid item md={4} xs={12}>
-                                        <Box>
-                                            <Box>
-                                                <Typography variant='h6' sx={{
-                                                    color: '#103178',
-                                                    fontWeight: '600',
-                                                    lineHeight: '1.3',
-                                                    fontSize: { lg: '16px', xs: '14px' },
-                                                }}>
-                                                    Cart Total
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{
-                                                padding: '20px',
-                                                border: '1px solid #f0f2f6',
-                                                marginTop: '15px'
-                                            }}>
-                                                <Stack>
-                                                    <Box sx={{
-                                                        padding: '15px 0px',
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        borderBottom: '1px solid #f0f2f6'
-                                                    }}>
+                                            <Grid item md={4} xs={12}>
+                                                <Box>
+                                                    <Box>
                                                         <Typography variant='h6' sx={{
                                                             color: '#103178',
                                                             fontWeight: '600',
                                                             lineHeight: '1.3',
-                                                            fontSize: { lg: '15px', xs: '13px' },
-                                                        }}>
-                                                            Sub Total
-                                                        </Typography>
-                                                        <Typography variant='h6' sx={{
-                                                            color: '#103178',
-                                                            fontWeight: '700',
-                                                            lineHeight: '1.3',
-                                                            fontSize: { lg: '15px', xs: '13px' },
-                                                        }}>
-                                                            ${getCartSubTotal()}
-                                                        </Typography>
-                                                    </Box>
-                                                    <Box sx={{
-                                                        padding: '15px 0px',
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        borderBottom: '1px solid #f0f2f6'
-                                                    }}>
-                                                        <Typography variant='h6' sx={{
-                                                            color: '#103178',
-                                                            fontWeight: '600',
-                                                            lineHeight: '1.3',
-                                                            fontSize: { lg: '15px', xs: '13px' },
-                                                        }}>
-                                                            Tax
-                                                        </Typography>
-                                                        <Typography variant='h6' sx={{
-                                                            color: '#103178',
-                                                            fontWeight: '700',
-                                                            lineHeight: '1.3',
-                                                            fontSize: { lg: '15px', xs: '13px' },
-                                                        }}>
-                                                            Not Applicable
-                                                        </Typography>
-                                                    </Box>
-                                                    <Box sx={{
-                                                        padding: '15px 0px',
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        borderBottom: '1px solid #f0f2f6'
-                                                    }}>
-                                                        <Typography variant='h6' sx={{
-                                                            color: '#103178',
-                                                            fontWeight: '600',
-                                                            lineHeight: '1.3',
-                                                            fontSize: { lg: '15px', xs: '13px' },
-                                                        }}>
-                                                            Total
-                                                        </Typography>
-                                                        <Typography variant='h6' sx={{
-                                                            color: '#103178',
-                                                            fontWeight: '700',
-                                                            lineHeight: '1.3',
-                                                            fontSize: { lg: '15px', xs: '13px' },
-                                                        }}>
-                                                            ${getCartTotal()}
-                                                        </Typography>
-                                                    </Box>
-                                                    <Box sx={{
-                                                        padding: '15px 0px 0px 0px',
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center'
-                                                    }}>
-                                                        <Button sx={{
-                                                            textTransform: 'capitalize',
                                                             fontSize: { lg: '16px', xs: '14px' },
-                                                            color: '#fff',
-                                                            backgroundColor: '#FD8D27',
-                                                            display: 'inline-block',
-                                                            width: '100%',
-                                                            boxShadow: 'none',
-                                                            borderRadius: '30px',
-                                                            transition: 'all',
-                                                            padding: '8px 0px',
-                                                            "&:hover": {
-                                                                backgroundColor: '#103178',
-                                                                boxShadow: 'none'
-                                                            }
-                                                        }} variant="contained">Proceed to checkout</Button>
+                                                        }}>
+                                                            Cart Total
+                                                        </Typography>
                                                     </Box>
-                                                </Stack>
-                                            </Box>
-                                        </Box>
-                                    </Grid>
-                                </Grid>
+                                                    <Box sx={{
+                                                        padding: '20px',
+                                                        border: '1px solid #f0f2f6',
+                                                        marginTop: '15px'
+                                                    }}>
+                                                        <Stack>
+                                                            <Box sx={{
+                                                                padding: '15px 0px',
+                                                                display: 'flex',
+                                                                justifyContent: 'space-between',
+                                                                alignItems: 'center',
+                                                                borderBottom: '1px solid #f0f2f6'
+                                                            }}>
+                                                                <Typography variant='h6' sx={{
+                                                                    color: '#103178',
+                                                                    fontWeight: '600',
+                                                                    lineHeight: '1.3',
+                                                                    fontSize: { lg: '15px', xs: '13px' },
+                                                                }}>
+                                                                    Sub Total
+                                                                </Typography>
+                                                                <Typography variant='h6' sx={{
+                                                                    color: '#103178',
+                                                                    fontWeight: '700',
+                                                                    lineHeight: '1.3',
+                                                                    fontSize: { lg: '15px', xs: '13px' },
+                                                                }}>
+                                                                    ${getCartSubTotal()}
+                                                                </Typography>
+                                                            </Box>
+                                                            <Box sx={{
+                                                                padding: '15px 0px',
+                                                                display: 'flex',
+                                                                justifyContent: 'space-between',
+                                                                alignItems: 'center',
+                                                                borderBottom: '1px solid #f0f2f6'
+                                                            }}>
+                                                                <Typography variant='h6' sx={{
+                                                                    color: '#103178',
+                                                                    fontWeight: '600',
+                                                                    lineHeight: '1.3',
+                                                                    fontSize: { lg: '15px', xs: '13px' },
+                                                                }}>
+                                                                    Tax
+                                                                </Typography>
+                                                                <Typography variant='h6' sx={{
+                                                                    color: '#103178',
+                                                                    fontWeight: '700',
+                                                                    lineHeight: '1.3',
+                                                                    fontSize: { lg: '15px', xs: '13px' },
+                                                                }}>
+                                                                    Not Applicable
+                                                                </Typography>
+                                                            </Box>
+                                                            <Box sx={{
+                                                                padding: '15px 0px',
+                                                                display: 'flex',
+                                                                justifyContent: 'space-between',
+                                                                alignItems: 'center',
+                                                                borderBottom: '1px solid #f0f2f6'
+                                                            }}>
+                                                                <Typography variant='h6' sx={{
+                                                                    color: '#103178',
+                                                                    fontWeight: '600',
+                                                                    lineHeight: '1.3',
+                                                                    fontSize: { lg: '15px', xs: '13px' },
+                                                                }}>
+                                                                    Total
+                                                                </Typography>
+                                                                <Typography variant='h6' sx={{
+                                                                    color: '#103178',
+                                                                    fontWeight: '700',
+                                                                    lineHeight: '1.3',
+                                                                    fontSize: { lg: '15px', xs: '13px' },
+                                                                }}>
+                                                                    ${getCartTotal()}
+                                                                </Typography>
+                                                            </Box>
+                                                            <Box sx={{
+                                                                padding: '15px 0px 0px 0px',
+                                                                display: 'flex',
+                                                                justifyContent: 'space-between',
+                                                                alignItems: 'center'
+                                                            }}>
+                                                                <Button sx={{
+                                                                    textTransform: 'capitalize',
+                                                                    fontSize: { lg: '16px', xs: '14px' },
+                                                                    color: '#fff',
+                                                                    backgroundColor: '#FD8D27',
+                                                                    display: 'inline-block',
+                                                                    width: '100%',
+                                                                    boxShadow: 'none',
+                                                                    borderRadius: '30px',
+                                                                    transition: 'all',
+                                                                    padding: '8px 0px',
+                                                                    "&:hover": {
+                                                                        backgroundColor: '#103178',
+                                                                        boxShadow: 'none'
+                                                                    }
+                                                                }} variant="contained">Proceed to checkout</Button>
+                                                            </Box>
+                                                        </Stack>
+                                                    </Box>
+                                                </Box>
+                                            </Grid>
+                                        </Grid>
+                                    </Box>
+                                }
                             </Box>
-                        }
-                    </Box>
+                    }
                 </ResponsiveContainer>
             </Layout>
         </>
