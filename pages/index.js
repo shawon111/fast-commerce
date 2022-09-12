@@ -12,19 +12,6 @@ import SecureDeliveryBanner from "../components/Pages/Shop/SecureDeliveryBanner"
 export default function Home({latestProducts, featuredProducts}) {
   const metaInfo = {title: "FastComerce - best fashion store online", keywords: "fast commerce, ecommerce", metaDesc: "Fast commerce is the best shopping website online"};
 
-  const sectionBannerOneData = {
-    title: "Long sleeve denim shirt",
-    price: "35.99",
-    discount: "-30",
-    link: "/shop",
-    bgImage: "/images/bigbanner2.png",
-    badgeBgColor: "#FD8D27",
-    badgeColor: "#fff",
-    buttonColor: "#FD8D27",
-    textColor: "#103178",
-    priceColor: '#FD8D27',
-    overlayColor: '#ffffff8f, #ffffff8f'
-  }
   const sectionBannerTwoData = {
     title: "Women's L3X5 Leather Bag",
     price: "119.99",
@@ -58,7 +45,6 @@ export default function Home({latestProducts, featuredProducts}) {
           <ProductBanner />
           <PopularCategories />
           <LatestProducts products={latestProducts} />
-          {/* <SectionBanner data={sectionBannerOneData} /> */}
           <SecureDeliveryBanner />
           <FeaturedProducts products={featuredProducts} />
           <SectionBanner data={sectionBannerTwoData} />

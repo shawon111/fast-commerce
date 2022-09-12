@@ -8,6 +8,7 @@ import { AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddToCart } from '../../../redux/actions';
+import { showToast } from '../../Global/Layout';
 
 const SingleProductHeader = ({ product }) => {
     const { name, price, brand, availableStock, featuredImageUrl, features, galleryImagesUrls, metaTags, product_sizes, sku, _id } = product;
@@ -40,6 +41,10 @@ const SingleProductHeader = ({ product }) => {
 
     const payload_info = {id: _id, qty: quantity}
 
+    const handleAddToCart = () => {
+        dispatch(AddToCart(payload_info));
+        showToast('success', 'Added to the cart!')
+    }
     return (
         <Box>
             <Grid container spacing={3}>
@@ -320,7 +325,7 @@ const SingleProductHeader = ({ product }) => {
                                         }} onClick={() => handleSetQuantity("plus")} />
                                     </Box>
                                     <Box
-                                        onClick={()=> dispatch(AddToCart(payload_info))}
+                                        onClick={()=> handleAddToCart()}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'space-around',

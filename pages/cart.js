@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import Layout from '../components/Global/Layout';
+import Layout, { showToast } from '../components/Global/Layout';
 import ResponsiveContainer from '../components/Global/ResponsiveContainer';
 import { AiFillWarning } from 'react-icons/ai';
 import { BsX } from 'react-icons/bs';
@@ -31,7 +31,8 @@ const Cart = () => {
     }, [cart_items])
 
     const deleteItemFromCart = (id) => {
-        dispatch(deleteProductFromCart(id))
+        dispatch(deleteProductFromCart(id));
+        showToast('success', 'Removed from the cart!')
     }
 
     const increaseQty = (id) => {

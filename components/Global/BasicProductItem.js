@@ -6,13 +6,20 @@ import { HiSearch } from 'react-icons/hi';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { AddToCartSingle } from '../../redux/actions';
+import { showToast } from './Layout';
 
 const BasicProductItem = ({ product }) => {
     const { name, price, _id, featuredImageUrl } = product;
 
     const dispatch = useDispatch();
 
-    const payload_info = {id: _id, qty: 1}
+    const payload_info = { id: _id, qty: 1 }
+
+    const handleAddToCart = () => {
+        dispatch(AddToCartSingle(payload_info));
+        showToast('success', 'Added to the cart!')
+    }
+
     return (
         <Box
             className='product_card_container'
@@ -21,11 +28,11 @@ const BasicProductItem = ({ product }) => {
                 borderTop: '1px solid #f0f2f5',
                 borderRight: '1px solid #f0f2f5',
                 borderBottom: '1px solid #f0f2f5',
-                height: {lg: '350px', sm: '320px', xs: '300px'}
+                height: { lg: '350px', sm: '320px', xs: '300px' }
             }}>
             <Box sx={{
                 textAlign: 'center',
-                padding: {lg: '30px 30px 0px 30px', sm: '20px 20px 0px 20px', xs: '10px 10px 0px 10px'},
+                padding: { lg: '30px 30px 0px 30px', sm: '20px 20px 0px 20px', xs: '10px 10px 0px 10px' },
                 position: 'relative'
             }}>
                 <Box>
@@ -113,7 +120,7 @@ const BasicProductItem = ({ product }) => {
                                 alignItems: 'center',
                                 cursor: 'pointer'
                             }}
-                            onClick={()=> dispatch(AddToCartSingle(payload_info))}
+                                onClick={() => handleAddToCart()}
                             >
                                 <RiShoppingCart2Line style={{
                                     fontSize: '16px',
@@ -127,7 +134,7 @@ const BasicProductItem = ({ product }) => {
             </Box>
             <Box sx={{
                 marginTop: '15px',
-                padding: {lg: '0px 30px 30px 30px', sm: '0px 20px 20px 20px', xs: '0px 15px 15px 15px'}
+                padding: { lg: '0px 30px 30px 30px', sm: '0px 20px 20px 20px', xs: '0px 15px 15px 15px' }
             }}>
                 <Link href={`/shop/${_id}`}>
                     <Typography className='product_cart_title' sx={{

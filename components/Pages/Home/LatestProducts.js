@@ -8,7 +8,6 @@ import { Navigation, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const LatestProducts = ({products}) => {
-
     return (
         <Box sx={{
             padding: {lg: '60px 0px', sm: '30px 0px', xs: '20px 0px'}
