@@ -4,12 +4,12 @@ import FeaturedProducts from "../components/Pages/Home/FeaturedProducts";
 import HomeHeroSection from "../components/Pages/Home/HomeHeroSection";
 import JoinNewsLetter from "../components/Pages/Home/JoinNewsLetter";
 import LatestProducts from "../components/Pages/Home/LatestProducts";
+import PopularCategories from "../components/Pages/Home/PopularCategories";
 import PopularProducts from "../components/Pages/Home/PopularProducts";
 import ProductBanner from "../components/Pages/Home/ProductBanner";
 
 export default function Home({latestProducts, featuredProducts}) {
   const metaInfo = {title: "FastComerce - best fashion store online", keywords: "fast commerce, ecommerce", metaDesc: "Fast commerce is the best shopping website online"};
-  // console.log("latest_101", featuredProducts)
 
   const sectionBannerOneData = {
     title: "Long sleeve denim shirt",
@@ -55,6 +55,7 @@ export default function Home({latestProducts, featuredProducts}) {
       <Layout metaInfo={metaInfo}>
           <HomeHeroSection />
           <ProductBanner />
+          <PopularCategories />
           <LatestProducts products={latestProducts} />
           <SectionBanner data={sectionBannerOneData} />
           <FeaturedProducts products={featuredProducts} />
