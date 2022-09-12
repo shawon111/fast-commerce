@@ -7,6 +7,7 @@ import LatestProducts from "../components/Pages/Home/LatestProducts";
 import PopularCategories from "../components/Pages/Home/PopularCategories";
 import PopularProducts from "../components/Pages/Home/PopularProducts";
 import ProductBanner from "../components/Pages/Home/ProductBanner";
+import SecureDeliveryBanner from "../components/Pages/Shop/SecureDeliveryBanner";
 
 export default function Home({latestProducts, featuredProducts}) {
   const metaInfo = {title: "FastComerce - best fashion store online", keywords: "fast commerce, ecommerce", metaDesc: "Fast commerce is the best shopping website online"};
@@ -57,7 +58,8 @@ export default function Home({latestProducts, featuredProducts}) {
           <ProductBanner />
           <PopularCategories />
           <LatestProducts products={latestProducts} />
-          <SectionBanner data={sectionBannerOneData} />
+          {/* <SectionBanner data={sectionBannerOneData} /> */}
+          <SecureDeliveryBanner />
           <FeaturedProducts products={featuredProducts} />
           <SectionBanner data={sectionBannerTwoData} />
           <PopularProducts products={featuredProducts} />

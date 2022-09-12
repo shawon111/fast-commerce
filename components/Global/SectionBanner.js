@@ -16,7 +16,7 @@ const SectionBanner = ({ data }) => {
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
-                    padding: '60px 50px',
+                    padding: '80px 50px',
                     borderRadius: '5px'
                 }}>
                     <Grid container spacing={1}>

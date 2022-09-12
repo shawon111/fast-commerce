@@ -5,7 +5,6 @@ import { TbShieldCheck } from 'react-icons/tb';
 const SecureDeliveryBanner = () => {
     return (
         <Box sx={{
-            marginTop: '80px',
             padding: {lg: '40px', sm: '30px', xs: '20px'},
             backgroundImage: 'url(/images/sheild-bg.png)',
             backgroundRepeat: 'no-repeat',
