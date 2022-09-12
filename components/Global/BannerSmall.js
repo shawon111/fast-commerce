@@ -21,7 +21,7 @@ const BannerSmall = ({ bannerData }) => {
                     justifyContent: 'flex-start',
                     alignItems: 'center'
                 }} item xs={5}>
-                    <Box>
+                    <Box className="small-banner-contents">
                         {
                             badge.length ? <span style={{
                                 backgroundColor: '#12A05C',

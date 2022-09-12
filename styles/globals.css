@@ -151,11 +151,18 @@ ul {
 
 /* home page */
 .banner_small img {
-  transition: transform .5s ease-in;
+  transition: transform .5s ease-in-out;
+}
+
+.small-banner-contents {
+  transition: transform .5s ease-in-out;
 }
 
 .banner_small:hover img {
-  transform: scale(1.1) rotate(-30deg);
+  transform: scale(.7);
+}
+.banner_small:hover .small-banner-contents {
+  transform: scale(1.2) translateX(30px);
 }
 
 /* contact page */
