@@ -1,4 +1,5 @@
 import Layout from "../components/Global/Layout";
+import ResponsiveContainer from "../components/Global/ResponsiveContainer";
 import SectionBanner from "../components/Global/SectionBanner";
 import FeaturedProducts from "../components/Pages/Home/FeaturedProducts";
 import HomeHeroSection from "../components/Pages/Home/HomeHeroSection";
@@ -9,8 +10,8 @@ import PopularProducts from "../components/Pages/Home/PopularProducts";
 import ProductBanner from "../components/Pages/Home/ProductBanner";
 import SecureDeliveryBanner from "../components/Pages/Shop/SecureDeliveryBanner";
 
-export default function Home({latestProducts, featuredProducts}) {
-  const metaInfo = {title: "FastComerce - best fashion store online", keywords: "fast commerce, ecommerce", metaDesc: "Fast commerce is the best shopping website online"};
+export default function Home({ latestProducts, featuredProducts }) {
+  const metaInfo = { title: "FastComerce - best fashion store online", keywords: "fast commerce, ecommerce", metaDesc: "Fast commerce is the best shopping website online" };
 
   const sectionBannerTwoData = {
     title: "Women's L3X5 Leather Bag",
@@ -41,21 +42,23 @@ export default function Home({latestProducts, featuredProducts}) {
   return (
     <>
       <Layout metaInfo={metaInfo}>
-          <HomeHeroSection />
-          <ProductBanner />
-          <PopularCategories />
-          <LatestProducts products={latestProducts} />
+        <HomeHeroSection />
+        <ProductBanner />
+        <PopularCategories />
+        <LatestProducts products={latestProducts} />
+        <ResponsiveContainer>
           <SecureDeliveryBanner />
-          <FeaturedProducts products={featuredProducts} />
-          <SectionBanner data={sectionBannerTwoData} />
-          <PopularProducts products={featuredProducts} />
-          <SectionBanner data={sectionBannerThreeData} />
-          <JoinNewsLetter />
+        </ResponsiveContainer>
+        <FeaturedProducts products={featuredProducts} />
+        <SectionBanner data={sectionBannerTwoData} />
+        <PopularProducts products={featuredProducts} />
+        <SectionBanner data={sectionBannerThreeData} />
+        <JoinNewsLetter />
       </Layout>
     </>
   )
 }
-export async function getStaticProps(){
+export async function getStaticProps() {
   const latestProductsRes = await fetch("https://fast-commerce-backend.onrender.com/products/latest");
   const latestProducts = await latestProductsRes.json();
 
