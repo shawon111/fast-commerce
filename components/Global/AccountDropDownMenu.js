@@ -49,7 +49,7 @@ export default function AccountDropDownMenu() {
                 }}
                 className='header_dropdown'
             >
-                <MenuItem onClick={handleClose}><Link href="/dashboard">Dashboard</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link href="/account/user-dashboard">Dashboard</Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link href="/login">Login</Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link href="/register">Register</Link></MenuItem>
                 <MenuItem sx={{
