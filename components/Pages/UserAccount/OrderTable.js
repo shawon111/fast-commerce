@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import Link from 'next/link';
 
 const OrderTable = () => {
 
@@ -64,26 +65,28 @@ const OrderTable = () => {
                 variant='h5'>
                 $300
             </Typography>
-            <Typography
-                sx={{
-                    color: '#12A05C',
-                    fontWeight: '500',
-                    fontSize: { lg: '15px', sm: '13px', xs: '11px' },
-                    width: '140px',
-                    border: '2px solid #12A05C',
-                    padding: '10px 5px',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    transition: 'all .3s',
-                    borderRadius: '4px',
-                    "&:hover": {
-                        backgroundColor: '#12a05c',
-                        color: '#fff'
-                    }
-                }}
-                variant='h5'>
-                Details
-            </Typography>
+            <Link href="/account/orders/45">
+                <Typography
+                    sx={{
+                        color: '#12A05C',
+                        fontWeight: '500',
+                        fontSize: { lg: '15px', sm: '13px', xs: '11px' },
+                        width: '140px',
+                        border: '2px solid #12A05C',
+                        padding: '10px 5px',
+                        textAlign: 'center',
+                        cursor: 'pointer',
+                        transition: 'all .3s',
+                        borderRadius: '4px',
+                        "&:hover": {
+                            backgroundColor: '#12a05c',
+                            color: '#fff'
+                        }
+                    }}
+                    variant='h5'>
+                    Details
+                </Typography>
+            </Link>
         </Box>
     );
 };
