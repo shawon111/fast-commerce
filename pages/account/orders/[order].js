@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import Layout from '../../../components/Global/Layout';
 import ResponsiveContainer from '../../../components/Global/ResponsiveContainer';
@@ -39,11 +39,43 @@ const SingleOrder = () => {
                             </Typography>
                         </Box>
                         <Box>
-                            <OrderDetails />
-                            <OrderedProducts />
+                            <Grid container spacing={8}>
+                                <Grid item md={6} xs={12}>
+                                    <OrderDetails />
+                                </Grid>
+                                <Grid item md={6} xs={12}>
+                                    <OrderedProducts />
+                                </Grid>
+                            </Grid>
                         </Box>
-                        <Box>
-                            {/* cancel order functionality here */}
+                        <Box sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}>
+                            <Typography sx={{
+                                color: '#103178',
+                                fontWeight: '400',
+                                fontSize: { lg: '14px', sm: '13px', xs: '12px' },
+                            }}>
+                                <cite> *Contact us for more information</cite>
+                            </Typography>
+                            <Button
+                                sx={{
+                                    padding: '8px 40px',
+                                    backgroundColor: '#FD8D27',
+                                    color: '#fff',
+                                    textTransform: 'capitalize',
+                                    fontSize: { lg: '18px', sm: '16px', xs: '14px' },
+                                    borderRadius: '30px',
+                                    transition: 'all .3s',
+                                    boxShadow: 'none',
+                                    "&:hover": {
+                                        boxShadow: 'none',
+                                        backgroundColor: '#103178'
+                                    }
+                                }}
+                                variant="contained">Cancel Order</Button>
                         </Box>
                     </Box>
                 </ResponsiveContainer>
