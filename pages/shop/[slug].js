@@ -88,6 +88,6 @@ export const getStaticProps = async ({ params }) => {
             peopleAlsoBuyData,
             relatedProducts
         },
-        revalidate: 86400
+        revalidate: 86400,
     }
 }
