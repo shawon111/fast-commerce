@@ -69,6 +69,7 @@ export async function getStaticProps() {
     props: {
       latestProducts,
       featuredProducts
-    }
+    },
+    revalidate: 86400,
   }
 }

@@ -60,7 +60,19 @@ const Product = ({ product, peopleAlsoBuyData, relatedProducts }) => {
 
 export default Product;
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticPaths = async () => {
+    const res = await fetch(`https://fast-commerce-backend.onrender.com/products`);
+    const data = await res.json();
+    const paths = data.map((product) => ({
+        params: { slug: product._id },
+      }))
+      return {
+        paths,
+        fallback: 'blocking'
+      }
+}
+
+export const getStaticProps = async ({ params }) => {
     const { slug } = params;
     const res = await fetch(`https://fast-commerce-backend.onrender.com/products/${slug}`);
     const data = await res.json();
@@ -75,6 +87,7 @@ export const getServerSideProps = async ({ params }) => {
             product: data,
             peopleAlsoBuyData,
             relatedProducts
-        }
+        },
+        revalidate: 86400
     }
 }

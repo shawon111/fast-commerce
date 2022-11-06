@@ -78,7 +78,7 @@ const Shop = ({ watch, Products, productLength }) => {
 
 export default Shop;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     const watchRes = await fetch(`https://fast-commerce-backend.onrender.com/products/category/watch`);
     const watch = await watchRes.json();
@@ -95,6 +95,7 @@ export async function getServerSideProps() {
             watch,
             Products,
             productLength
-        }
+        },
+        revalidate: 86400,
     }
 } 
