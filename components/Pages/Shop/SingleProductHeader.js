@@ -59,7 +59,7 @@ const SingleProductHeader = ({ product }) => {
                                 alt="product-image"
                                 width={400}
                                 height={400}
-                                priority
+                                loading="lazy"
                             />
                         </Box>
                         <Box marginTop="30px">
@@ -79,7 +79,7 @@ const SingleProductHeader = ({ product }) => {
                                                 alt="product-image"
                                                 width={100}
                                                 height={100}
-                                                priority
+                                                loading="lazy"
                                                 onClick={() => setFeaturedImage(featuredImageUrl)}
                                             />
                                         </Box>
@@ -100,7 +100,7 @@ const SingleProductHeader = ({ product }) => {
                                                 alt="product-image"
                                                 width={100}
                                                 height={100}
-                                                priority
+                                                loading="lazy"
                                                 onClick={() => setFeaturedImage(item)}
                                             />
                                         </Box></Grid>)

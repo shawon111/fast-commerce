@@ -42,7 +42,7 @@ const BasicProductItem = ({ product }) => {
                             alt="product image"
                             width={150}
                             height={150}
-                            priority
+                            loading="lazy"
                             style={{
                                 cursor: 'pointer'
                             }}

@@ -25,10 +25,8 @@ const Cart = () => {
         let cart_items_id = [];
         cart_items.map(item => cart_items_id.push(item.id))
         if (cart_items_id.length > 0) {
-            setShowPreloader(true)
             axios.get(`https://fast-commerce-backend.onrender.com/cart-items?products=${cart_items_id}`).then((res) => {
                 setCartItemsDetails(res.data)
-                setShowPreloader(false)
             })
         }
 
@@ -95,7 +93,7 @@ const Cart = () => {
                             <Box sx={{
                                 display: 'flex',
                                 justifyContent: 'center',
-                                marginTop: {lg: '50px', sm: '30px', xs: '20px'}
+                                marginTop: { lg: '50px', sm: '30px', xs: '20px' }
                             }}>
                                 <Bars
                                     height="100"
@@ -226,7 +224,7 @@ const Cart = () => {
                                                                             alt="cart-product-image"
                                                                             width={90}
                                                                             height={90}
-                                                                            priority
+                                                                            loading="lazy"
                                                                         />
                                                                     </Box>
                                                                     <Box>

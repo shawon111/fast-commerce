@@ -86,7 +86,7 @@ const PopularCategories = () => {
                                                 alt="category-image"
                                                 width={300}
                                                 height={300}
-                                                priority
+                                                loading="lazy"
                                             />
                                         </Box>
                                     </Box>
