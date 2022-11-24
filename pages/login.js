@@ -1,11 +1,43 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
+import axios from 'axios';
 import Link from 'next/link';
-import React from 'react';
-import Layout from '../components/Global/Layout';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { Bars } from 'react-loader-spinner';
+import Layout, { showToast } from '../components/Global/Layout';
 import ResponsiveContainer from '../components/Global/ResponsiveContainer';
 
 const Login = () => {
     const metaInfo = { title: "Login | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, blog, fast commerce blog", metaDesc: "Contact with fast commerce to get the best deal" };
+
+    const router = useRouter();
+
+    // states
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [showPreloader, setShowPreloader] = useState(false);
+
+    // customer login
+    const loginInfo = {
+        email,
+        password
+    }
+    const handleLogin = (e) => {
+        setShowPreloader(true)
+        e.preventDefault();
+        axios.get(`https://fast-commerce-backend.onrender.com/login?email=${email}&pass=${password}`).then(response=>{
+            const data = response.data;
+            setShowPreloader(false);
+            if(data.loginStatus === true){
+                showToast('success', 'Login Successfull!');
+                localStorage.setItem("userData", JSON.stringify(loginInfo));
+                router.push('/account/user-dashboard')
+            }else{
+                showToast('error', 'No user found with this email');
+            }
+        })
+    }
+  
     return (
         <>
             <Layout metaInfo={metaInfo}>
@@ -25,7 +57,7 @@ const Login = () => {
                         <Grid container spacing={2}>
                             <Grid item lg={6} md={6} xs={12}>
                                 <Box>
-                                    <form>
+                                    <form onSubmit={(e)=> handleLogin(e)}>
                                         <Grid container spacing={3}>
                                             <Grid item xs={12}>
                                                 <Typography sx={{
@@ -34,9 +66,11 @@ const Login = () => {
                                                     fontWeight: '500',
                                                     marginBottom: '10px'
                                                 }} variant="h5">
-                                                    Username or email address *
+                                                    Email address *
                                                 </Typography>
-                                                <input style={{
+                                                <input
+                                                onChange={(e)=> setEmail(e.target.value)}
+                                                style={{
                                                     border: 'none',
                                                     outline: 'none',
                                                     height: '35px',
@@ -47,7 +81,7 @@ const Login = () => {
                                                     borderRadius: '30px'
 
                                                 }}
-                                                    type="text"
+                                                    type="email"
                                                     required
                                                     className='contact_input'
                                                 />
@@ -61,7 +95,9 @@ const Login = () => {
                                                 }} variant="h5">
                                                     Password *
                                                 </Typography>
-                                                <input style={{
+                                                <input
+                                                onChange={(e)=> setPassword(e.target.value)}
+                                                style={{
                                                     border: 'none',
                                                     outline: 'none',
                                                     height: '35px',
@@ -78,17 +114,29 @@ const Login = () => {
                                                 />
                                             </Grid>
                                         </Grid>
-                                        <Button className='brandBtn' sx={{
-                                            marginTop: '30px',
-                                            fontSize: { lg: '20px', sm: '18px', xs: '16px' }
-                                        }} variant='contained'>Login</Button>
+                                        {
+                                            !showPreloader ? <input type="submit" className='brandBtn' style={{
+                                                marginTop: '30px',
+                                                cursor: 'pointer',
+                                                display: 'block',
+                                                zIndex: '5'
+                                            }} /> : <Bars
+                                                height="100"
+                                                width="100"
+                                                color="#103178"
+                                                ariaLabel="bars-loading"
+                                                wrapperStyle={{}}
+                                                wrapperClass=""
+                                                visible={true}
+                                            />
+                                        }
                                     </form>
                                 </Box>
                             </Grid>
                             <Grid item lg={6} md={6} xs={12}></Grid>
                         </Grid>
-                        <Grid container spacing={4}>
-                            <Grid item>
+                        <Grid container spacing={0}>
+                            <Grid item sx={{marginRight: '15px'}}>
                                 <Link href="/">
                                     <Typography sx={{
                                         color: '#103178',
