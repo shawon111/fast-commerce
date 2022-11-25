@@ -1,10 +1,20 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const PrivateCustomer = ({children}) => {
+    const router = useRouter();
+    const isLoggedIn = useSelector(state=> state.isloggedIn);
+    if(isLoggedIn === false){
+        router.push('/login')
+    }
+
     return (
         <Box>
-            {children}
+           {
+            isLoggedIn && children
+           }
         </Box>
     );
 };

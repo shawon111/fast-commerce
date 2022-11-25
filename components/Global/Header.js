@@ -9,7 +9,7 @@ import { HiMenu } from 'react-icons/hi';
 import DropDownMenu from './AccountDropDownMenu';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddToSearchResult, getSearchText, setInitialState } from '../../redux/actions';
+import { AddToSearchResult, getSearchText, setInitialState, loginInfo, updateLoginStatus } from '../../redux/actions';
 import { useRouter } from 'next/router';
 import CategoriesDropdown from './CategoriesDropdown';
 
@@ -19,7 +19,9 @@ const Header = () => {
     const [showSuggestion, setShowSuggestion] = useState(false);
     const [searchTextValue, setSearchTextValue] = useState('');
     const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
+    const dispatch = useDispatch();
 
+    // get the cart items
     const router = useRouter();
     const cart_items = useSelector((state) => state.addItemToCart);
     useEffect(() => {
@@ -32,7 +34,7 @@ const Header = () => {
             }
         }
     }, [])
-    const dispatch = useDispatch();
+
 
     const handleSearch = (e) => {
         const searchText = e.target.value;
@@ -57,6 +59,34 @@ const Header = () => {
         router.push('/search-result/products');
 
     }
+
+
+    // // // authenticate user
+    // check if the login details are available
+    const userInfo = useSelector(state => state.authenticationeducer);
+
+    useEffect(() => {
+        if (typeof window !== undefined) {
+            if (localStorage.getItem("userData") !== null) {
+                const checkUser = JSON.parse(localStorage.getItem("userData"));
+                if (checkUser.email) {
+                    dispatch(loginInfo(checkUser))
+                }
+            }
+        }
+    }, [])
+
+    //   validate the login info
+    useEffect(() => {
+        if (userInfo.email) {
+            axios.get(`https://fast-commerce-backend.onrender.com/login?email=${userInfo.email}&pass=${userInfo.password}`).then(response => {
+                const data = response.data;
+                if (data) {
+                    dispatch(updateLoginStatus(data.loginStatus))
+                }
+            })
+        }
+    }, [userInfo])
 
     return (
         <Box sx={{
@@ -318,7 +348,7 @@ const Header = () => {
                                 <ul className='nav-menu' style={{
                                     display: 'flex',
                                 }}>
-                                    <li onClick={()=> setShowCategoryDropdown(!showCategoryDropdown)} style={{ cursor: 'pointer' }}><span style={{
+                                    <li onClick={() => setShowCategoryDropdown(!showCategoryDropdown)} style={{ cursor: 'pointer' }}><span style={{
                                         display: 'flex',
                                         alignItems: 'center'
                                     }}><HiMenu style={{ marginRight: '5px', fontSize: '20px', fontWeight: '700' }} />Categories</span></li>

@@ -4,13 +4,16 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { Bars } from 'react-loader-spinner';
+import { useDispatch } from 'react-redux';
 import Layout, { showToast } from '../components/Global/Layout';
 import ResponsiveContainer from '../components/Global/ResponsiveContainer';
+import { updateLoginStatus } from '../redux/actions';
 
 const Login = () => {
     const metaInfo = { title: "Login | FastComerce | Best fashion store online", keywords: "fast commerce, ecommerce, blog, fast commerce blog", metaDesc: "Contact with fast commerce to get the best deal" };
 
     const router = useRouter();
+    const dispatch = useDispatch();
 
     // states
     const [email, setEmail] = useState("");
@@ -30,6 +33,7 @@ const Login = () => {
             setShowPreloader(false);
             if(data.loginStatus === true){
                 showToast('success', 'Login Successfull!');
+                dispatch(updateLoginStatus(data.loginStatus))
                 localStorage.setItem("userData", JSON.stringify(loginInfo));
                 router.push('/account/user-dashboard')
             }else{
