@@ -20,8 +20,7 @@ const Header = () => {
     const [searchTextValue, setSearchTextValue] = useState('');
     const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
     const dispatch = useDispatch();
-    const login = useSelector(state=> state.isloggedIn)
-    console.log("from header", login)
+
     // get the cart items
     const router = useRouter();
     const cart_items = useSelector((state) => state.addItemToCart);
@@ -78,22 +77,21 @@ const Header = () => {
     }, [])
 
     //   validate the login info
-    useEffect(() => {
-        if (userInfo.email) {
-            axios.get(`https://fast-commerce-backend.onrender.com/login`, {
-                headers: {
-                    "email": userInfo.email,
-                    "password": userInfo.password
-                }
-            }).then(response => {
-                const data = response.data;
-                if (data) {
-                    dispatch(updateLoginStatus(data.loginStatus))
-                    console.log("data from header", data)
-                }
-            })
-        }
-    }, [userInfo])
+    // useEffect(() => {
+    //     if (userInfo.email) {
+    //         axios.get(`https://fast-commerce-backend.onrender.com/login`, {
+    //             headers: {
+    //                 "email": userInfo.email,
+    //                 "password": userInfo.password
+    //             }
+    //         }).then(response => {
+    //             const data = response.data;
+    //             if (data) {
+    //                 dispatch(updateLoginStatus(data.loginStatus))
+    //             }
+    //         })
+    //     }
+    // }, [userInfo])
 
     return (
         <Box sx={{
