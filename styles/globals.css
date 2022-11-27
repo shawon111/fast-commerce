@@ -256,6 +256,14 @@ ul {
   color: #103178b0;
 }
 
+/* login page style */
+.loginBtn{
+  color: #fff;
+}
+.loginBtn:hover {
+  color: var(--darkColor)
+}
+
 /* media queries */
 
 @media only screen and (max-width: 1200px) {

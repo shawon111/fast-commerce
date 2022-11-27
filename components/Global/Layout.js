@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Header from './Header';
 import Footer from './Footer';
@@ -6,6 +6,9 @@ import ShippingFeatures from './ShippingFeatures';
 import MobileBottomNavigation from './MobileBottomNavigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { updateLoginStatus } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 // notification toast functions
 
@@ -21,7 +24,7 @@ export const showToast = (type, message) => {
             progress: undefined,
         });
     }
-    else if (type === "error"){
+    else if (type === "error") {
         toast.error(`${message}`, {
             position: "top-right",
             autoClose: 1000,
@@ -32,7 +35,7 @@ export const showToast = (type, message) => {
             progress: undefined,
         });
     }
-    else if (type === "warn"){
+    else if (type === "warn") {
         toast.warn(`${message}`, {
             position: "top-right",
             autoClose: 1000,
@@ -50,6 +53,28 @@ export const showToast = (type, message) => {
 
 const Layout = ({ children, metaInfo }) => {
     const { title, keywords, metaDesc } = metaInfo;
+    const dispatch = useDispatch();
+    // // // authenticate user
+    useEffect(() => {
+        if (typeof window !== undefined) {
+            if (localStorage.getItem("userData") !== null) {
+                const checkUser = JSON.parse(localStorage.getItem("userData"));
+                if (checkUser.email) {
+                    axios.get(`https://fast-commerce-backend.onrender.com/login`, {
+                        headers: {
+                            "email": checkUser.email,
+                            "password": checkUser.password
+                        }
+                    }).then(response => {
+                        const data = response.data;
+                        if (data) {
+                            dispatch(updateLoginStatus(data.loginStatus))
+                        }
+                    })
+                }
+            }
+        }
+    }, [])
     return (
         <div>
             <Head>
