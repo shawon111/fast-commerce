@@ -20,7 +20,8 @@ const Header = () => {
     const [searchTextValue, setSearchTextValue] = useState('');
     const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
     const dispatch = useDispatch();
-
+    const login = useSelector(state=> state.isloggedIn)
+    console.log("from header", login)
     // get the cart items
     const router = useRouter();
     const cart_items = useSelector((state) => state.addItemToCart);
@@ -88,6 +89,7 @@ const Header = () => {
                 const data = response.data;
                 if (data) {
                     dispatch(updateLoginStatus(data.loginStatus))
+                    console.log("data from header", data)
                 }
             })
         }

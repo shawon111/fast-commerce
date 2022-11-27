@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { updateLoginStatus } from '../../redux/actions';
+import { loginInfo } from '../../redux/actions';
 
 export default function AccountDropDownMenu() {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function AccountDropDownMenu() {
         localStorage.removeItem("userData");
         localStorage.removeItem("token");
         dispatch(updateLoginStatus(false));
+        dispatch(loginInfo({}))
         handleClose();
         router.push('/login')
     }
