@@ -59,13 +59,6 @@ export const getSearchText = (text) => {
     }
 }
 
-export const loginInfo = (loginData) => {
-    return {
-        type: "LOGININFO",
-        payload: loginData
-    }
-}
-
 export const updateLoginStatus = (login) => {
     return {
         type: "LOGINSTATUS",

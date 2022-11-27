@@ -1,3 +1,6 @@
+import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Layout from "../components/Global/Layout";
 import ResponsiveContainer from "../components/Global/ResponsiveContainer";
 import SectionBanner from "../components/Global/SectionBanner";
@@ -9,6 +12,7 @@ import PopularCategories from "../components/Pages/Home/PopularCategories";
 import PopularProducts from "../components/Pages/Home/PopularProducts";
 import ProductBanner from "../components/Pages/Home/ProductBanner";
 import SecureDeliveryBanner from "../components/Pages/Shop/SecureDeliveryBanner";
+import { updateLoginStatus } from "../redux/actions";
 
 export default function Home({ latestProducts, featuredProducts }) {
   const metaInfo = { title: "FastComerce - best fashion store online", keywords: "fast commerce, ecommerce", metaDesc: "Fast commerce is the best shopping website online" };
@@ -39,6 +43,32 @@ export default function Home({ latestProducts, featuredProducts }) {
     priceColor: '#FFC800',
     overlayColor: '#0000004d, #0000004d'
   }
+
+  const dispatch = useDispatch();
+
+
+  // // // authenticate user
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      if (localStorage.getItem("userData") !== null) {
+        const checkUser = JSON.parse(localStorage.getItem("userData"));
+        if (checkUser.email) {
+          axios.get(`https://fast-commerce-backend.onrender.com/login`, {
+            headers: {
+              "email": checkUser.email,
+              "password": checkUser.password
+            }
+          }).then(response => {
+            const data = response.data;
+            if (data) {
+              dispatch(updateLoginStatus(data.loginStatus))
+            }
+          })
+        }
+      }
+    }
+  }, [])
+
   return (
     <>
       <Layout metaInfo={metaInfo}>
