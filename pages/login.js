@@ -28,13 +28,19 @@ const Login = () => {
     const handleLogin = (e) => {
         setShowPreloader(true)
         e.preventDefault();
-        axios.get(`https://fast-commerce-backend.onrender.com/login?email=${email}&pass=${password}`).then(response=>{
+        axios.get(`https://fast-commerce-backend.onrender.com/login`, {
+            headers: {
+                "email": loginInfo.email,
+                "password": loginInfo.password
+            }
+        }).then(response=>{
             const data = response.data;
             setShowPreloader(false);
             if(data.loginStatus === true){
                 showToast('success', 'Login Successfull!');
                 dispatch(updateLoginStatus(data.loginStatus))
                 localStorage.setItem("userData", JSON.stringify(loginInfo));
+                localStorage.setItem("token", data.token)
                 router.push('/account/user-dashboard')
             }else{
                 showToast('error', 'No user found with this email');
