@@ -3,10 +3,16 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Badge, Box } from '@mui/material';
-import {FaRegUser} from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import { updateLoginStatus } from '../../redux/actions';
 
 export default function AccountDropDownMenu() {
+    const dispatch = useDispatch();
+    const router = useRouter();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -15,6 +21,16 @@ export default function AccountDropDownMenu() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    // logout
+    const isLoggedIn = useSelector(state => state.isloggedIn)
+    const handleLogOut = () =>{
+        localStorage.removeItem("userData");
+        localStorage.removeItem("token");
+        dispatch(updateLoginStatus(false));
+        handleClose();
+        router.push('/login')
+    }
 
     return (
         <Box>
@@ -49,12 +65,18 @@ export default function AccountDropDownMenu() {
                 }}
                 className='header_dropdown'
             >
-                <MenuItem onClick={handleClose}><Link href="/account/user-dashboard">Dashboard</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link href="/login">Login</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link href="/register">Register</Link></MenuItem>
-                <MenuItem sx={{
-                    color: '#103178'
-                }} onClick={handleClose}>LogOut</MenuItem>
+                { isLoggedIn ?
+                <Box>
+                    <MenuItem onClick={handleClose}><Link href="/account/user-dashboard">Dashboard</Link></MenuItem>
+                    <MenuItem sx={{
+                        color: '#103178'
+                    }} onClick={handleLogOut}>LogOut</MenuItem>
+                </Box> :
+                <Box>
+                    <MenuItem onClick={handleClose}><Link href="/login">Login</Link></MenuItem>
+                    <MenuItem onClick={handleClose}><Link href="/register">Register</Link></MenuItem>
+                </Box>
+                }
             </Menu>
         </Box>
     );

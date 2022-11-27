@@ -79,7 +79,12 @@ const Header = () => {
     //   validate the login info
     useEffect(() => {
         if (userInfo.email) {
-            axios.get(`https://fast-commerce-backend.onrender.com/login?email=${userInfo.email}&pass=${userInfo.password}`).then(response => {
+            axios.get(`https://fast-commerce-backend.onrender.com/login`, {
+                headers: {
+                    "email": userInfo.email,
+                    "password": userInfo.password
+                }
+            }).then(response => {
                 const data = response.data;
                 if (data) {
                     dispatch(updateLoginStatus(data.loginStatus))
