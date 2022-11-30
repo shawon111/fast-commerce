@@ -39,14 +39,26 @@ const Register = () => {
                 if (data.acknowledged === true) {
                     showToast('success', 'Registration Successfull!');
                     router.push('/login')
-                } else {
+                } 
+                else if(data.err === "both"){
+                    showToast('error', 'Email and user name is already taken!');
+                }
+                else if(data.err === "email"){
+                    showToast('error', 'Email is already taken!');
+                }
+                else if(data.err === "userName"){
+                    showToast('error', 'User name is already taken!');
+                }
+                else if(data.err === "unknown"){
+                    showToast('error', 'Something is wrong, please try again');
+                }
+                else {
                     showToast('error', 'Something is wrong, please try again');
                 }
             } else {
                 setShowPreloader(false)
                 showToast('error', 'Something is wrong, please try again');
             }
-            console.log(data)
         })
     }
 
