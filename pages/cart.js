@@ -538,6 +538,8 @@ const Cart = () => {
                                                                 justifyContent: 'space-between',
                                                                 alignItems: 'center'
                                                             }}>
+                                                                
+                                                                <Link href='/checkout'>
                                                                 <Button sx={{
                                                                     textTransform: 'capitalize',
                                                                     fontSize: { lg: '16px', xs: '14px' },
@@ -554,6 +556,7 @@ const Cart = () => {
                                                                         boxShadow: 'none'
                                                                     }
                                                                 }} variant="contained">Proceed to checkout</Button>
+                                                                </Link>
                                                             </Box>
                                                         </Stack>
                                                     </Box>
